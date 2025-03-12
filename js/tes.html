@@ -1755,7 +1755,7 @@ function uuidv4() {
   statusElement.style.color = 'green';
     
   const startTime = performance.now(); // Mencatat waktu awal
-  const StatusURL = `https://web.bmkg.xyz/check?ip=${ip}:${port}`;
+  const StatusURL = `https://web.bmkg.xyz/check-proxy?ip=${ip}:${port}`;
 
   // Mengambil data dari API untuk memeriksa status proxy
   fetch(StatusURL)
