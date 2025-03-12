@@ -1765,7 +1765,7 @@ function uuidv4() {
       let latency = endTime - startTime; // Menghitung latency dalam ms
 
       // Memperkecil nilai latency, misalnya dibagi dengan 10
-      latency = latency / 5; // Faktor pembagi untuk memperkecil nilai latency
+      latency = latency / 100; // Faktor pembagi untuk memperkecil nilai latency
 
       // Membuang bagian setelah desimal, hanya menyisakan nilai integer
       const latencyString = Math.floor(latency); // Hanya ambil angka bulat (membuang bagian desimal)
