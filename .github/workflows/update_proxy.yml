@@ -26,7 +26,7 @@ jobs:
     - name: Debug check proxyip.txt
       run: cat proxyip.txt || echo "proxyip.txt tidak ditemukan atau kosong"
 
-    - name: Update proxy IP
+    - name: 🌍 Update Proxy IP 🌍
       env:
         IP_FILE: 'proxyip.txt'
         API_URL: 'https://proxy.ndeso.xyz/check?ip={ip}:{port}'
