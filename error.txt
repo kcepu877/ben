@@ -1,8 +1,13 @@
-Error checking 80.76.33.36:443: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=80.76.33.36:443
-Error checking 138.197.191.77:2053: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=138.197.191.77:2053
-Error checking 209.38.209.201:2053: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=209.38.209.201:2053
-Error checking 45.95.80.120:2053: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=45.95.80.120:2053
-Error checking 91.107.146.165:3232: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
-Error checking 45.144.235.85:443: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=45.144.235.85:443
-Error checking 103.195.49.225:1009: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
-Error checking 217.29.23.169:443: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Error checking 145.239.187.169:2053: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=145.239.187.169:2053
+Error checking 188.165.17.102:2053: 503 Server Error: Service Temporarily Unavailable for url: https://proxy.ndeso.xyz/check?ip=188.165.17.102:2053
+Error checking 191.96.153.6:8443: 503 Server Error: Service Temporarily Unavailable for url: https://proxy.ndeso.xyz/check?ip=191.96.153.6:8443
+Error checking 193.42.63.236:2086: 503 Server Error: Service Temporarily Unavailable for url: https://proxy.ndeso.xyz/check?ip=193.42.63.236:2086
+Error checking 193.176.158.242:58260: 503 Server Error: Service Temporarily Unavailable for url: https://proxy.ndeso.xyz/check?ip=193.176.158.242:58260
+Error checking 194.116.217.61:443: 503 Server Error: Service Temporarily Unavailable for url: https://proxy.ndeso.xyz/check?ip=194.116.217.61:443
+Error checking 2.57.242.120:2053: 503 Server Error: Service Temporarily Unavailable for url: https://proxy.ndeso.xyz/check?ip=2.57.242.120:2053
+Error checking 51.75.20.74:8443: 503 Server Error: Service Temporarily Unavailable for url: https://proxy.ndeso.xyz/check?ip=51.75.20.74:8443
+Error checking 57.128.181.221:443: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Error checking 221.161.58.134:10334: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=221.161.58.134:10334
+Error checking 59.27.135.56:23953: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=59.27.135.56:23953
+Error checking 69.30.212.2:6643: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=69.30.212.2:6643
+Error checking 103.170.72.120:25956: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=103.170.72.120:25956
