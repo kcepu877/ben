@@ -1,6 +1,6 @@
 import { connect } from "cloudflare:sockets";
 
-const proxyListURL = 'https://bmkg.xyz/update_proxyip.txt';
+const proxyListURL = 'https://proxy.xhamster.biz.id/proxyList.txt';
 const serverku = 'bxie84k3ndk.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg'
 const pagehost = '/'
 const namaWeb = 'FREE PROXY LIFETIME'
