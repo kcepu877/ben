@@ -40,7 +40,7 @@ on:
       - "run"
 
   schedule:
-    - cron: '0 1 * * 0'  # Runs every Sunday at 00:00 UTC
+    - cron: '0 10 * * 0'  # Runs every Sunday at 00:00 UTC
 
 env:
   GIT_REF: ${{ github.event.inputs.commit || github.ref }}
@@ -57,6 +57,14 @@ jobs:
         with:
           ref: ${{ env.GIT_REF }}
           fetch-depth: 0
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Cek Versi Node.js
+        run: node -v
 
       - name: 🛸 Env?
         if: github.event.inputs.environment == 'prod' || github.event.inputs.environment == 'one'
@@ -78,11 +86,11 @@ jobs:
           WENV: 'prod'
           COMMIT_SHA: ${{ github.sha }}
 
-      - name: 🏗 Get dependencies
-        run: npm i
+      - name: 🏗 Install Dependencies
+        run: npm install
 
       - name: 📚 Wrangler publish
-        uses: cloudflare/wrangler-action@2.0.0  # Update to the latest version
+        uses: cloudflare/wrangler-action@3.0.0
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           environment: ${{ env.WORKERS_ENV }}
