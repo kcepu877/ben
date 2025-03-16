@@ -1,7 +1,7 @@
 import { connect } from "cloudflare:sockets";
 
 const proxyListURL = 'https://proxy.xhamster.biz.id/proxyList.txt';
-const serverku = 'bxie84k3ndk.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg'
+const serverku = 'bzj384jdo.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg'
 const pagehost = '/'
 const namaWeb = 'FREE PROXY LIFETIME'
 const telegramku = 'https://t.me/seaker877'
