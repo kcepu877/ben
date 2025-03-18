@@ -1,7 +1,6 @@
 import { connect } from "cloudflare:sockets";
 
 const proxyListURL = 'https://proxy.xhamster.biz.id/proxyList.txt';
-const serverku = 'bzj384jdo.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg'
 const pagehost = '/'
 const namaWeb = 'FREE PROXY LIFETIME'
 const telegramku = 'https://t.me/seaker877'
@@ -3150,7 +3149,102 @@ function buildCountryFlag() {
         .navbar.show .toggle-btn {
             right: -29px;
         }
+              .menu {
+  display: flex; /* Mengubah elemen menjadi flexbox */
+  align-items: center; /* Memposisikan gambar dan teks di tengah secara vertikal */
+  margin-left: 5px; /* Memberikan jarak 5px dari tepi kiri */
+  margin-bottom: 5px; /* Jarak antar elemen */
+  padding: 5px; /* Memberikan ruang dalam */
+  border-radius: 5px; /* Lengkungan sudut untuk setiap elemen */
+}
+
+.menu a {
+  font-family: 'Rajdhani', sans-serif;
+  text-decoration: none; /* Menghapus garis bawah pada teks */
+  display: flex;
+  align-items: center; /* Memastikan gambar dan teks sejajar secara vertikal */
+}
+
+.menu img {
+  margin-right: 5px; /* Jarak antara gambar dan teks */
+}
+.menu:nth-child(odd) {
+  color: #fff; /* Warna teks untuk baris ganjil */
+  background-color: rgba(239, 80, 0, 0.87); /* Warna latar belakang untuk baris ganjil */
+}
+
+.menu:nth-child(even) {
+  color: #fff; /* Warna teks untuk baris genap */
+  background-color: rgba(3, 117, 1, 0.87); /* Warna latar belakang untuk baris genap */
+}
+
+
+     
+       .button7 {
+      margin: 10px;
+      padding: 10px 10px;
+      border: 1px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
+      border-radius: 10px;
+      border-radius: 5px;
+      background-color: rgba(255, 0, 0, 0.86);
+      color: #fff;
+      cursor: pointer;
+    position: relative; /* Pastikan tombol berada di atas elemen lainnya */
+  z-index: 2; /* Tingkatkan prioritas tombol */
+  pointer-events: auto; /* Aktifkan interaksi pointer */
+
+    }
+      .popup {
+      display: none; /* Hidden by default */
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border: 0px solid rgba(197, 51, 6, 0.89); /* Border dengan warna abu-abu */
+      border-radius: 10px;
+      background-color: ;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      pointer-events: auto;
+    animation: slideInLeft 0.5s forwards; /* Animasi popup muncul dari kiri */
+        }
+
+        /* Animasi untuk popup masuk dari kiri */
+        @keyframes slideInLeft {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 0;
+            }
+        }
+
+        /* Animasi untuk popup keluar dari kanan ke kiri */
+        @keyframes slideOutRightToLeft {
+            from {
+                left: 0;
+            }
+            to {
+                left: -100%;
+            }
+        }
         
+        .popup-content {
+      background-color: rgba(0, 0, 0, 0.82);
+      padding: 20px;
+      border: 0px solid rgba(197, 51, 6, 0.89); /* Border dengan warna abu-abu */
+      border-radius: 5px;
+      text-align: center;
+    
+      position: relative;
+  z-index: 1000; /* Pastikan elemen ini berada di atas */
+  pointer-events: auto;
+    }
+    
+    
+
 
 </style>
 </head>
@@ -3207,7 +3301,70 @@ function buildCountryFlag() {
 </div></div>            
             
             <div class="wildcard-dropdown">
-  <select id="wildcard" name="wildcard" onchange="onWildcardChange(event)" style="width: 90px; height: 45px;">
+      <div onclick="showPopup('list-domain')" style="background: transparent; border: none; padding: 0;">
+      <img src="https://bmkg.xyz/img/menu.png" alt="menu" width="40" style="margin-top: 5px;">
+    </div>		
+     <div class="popup" id="list-domain">
+<div class="popup-content">
+  <div class="table-container"><br>
+    <span class="menu" style="color: #000; text-decoration: none; display: block; text-align: center;"><center><strong>LIST SERVER DOMAIN
+  </strong></center></span>
+  <span class="menu">
+                    <a href="https://bzj384jdo.kere.us.kg" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.kere.us.kg</a>
+                </span> 
+                <span class="menu">
+                    <a href="https://bzj384jdo.ndeso.xyz" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.ndeso.xyz</a>
+                </span> 
+                <span class="menu">
+                    <a href="https://bzj384jdo.ndeso.web.id" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.ndeso.web.id</a>
+                </span> 
+                <span class="menu">
+                    <a href="https://bzj384jdo.xhamster.biz.id" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.xhamster.biz.id</a>
+                </span> 
+                <span class="menu">
+                    <a href="https://bzj384jdo.turah.my.id" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.turah.my.id</a>
+                </span> 
+                <span class="menu">
+                    <a href="https://bzj384jdo.najah.biz.id" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.najah.biz.id</a>
+                </span> 
+                <span class="menu">
+                    <a href="https://bzj384jdo.cloudproxyip.my.id" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.cloudproxyip.my.id</a>
+                </span> 
+                <span class="menu">
+                    <a href="https://bzj384jdo.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg</a>
+                </span> 
+                <span class="menu">
+                    <a href="https://bzj384jdo.bmkg.xyz" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.bmkg.xyz</a>
+                </span> 
+                <span class="menu">
+                    <a href="https://bzj384jdo.cepu.us.kg" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.cepu.us.kg</a>
+                </span> <br>
+   </div>
+   <button class="button7" id="close" onclick="hidePopup('list-domain')">Close</button>
+    </div>
+  </div>
+  
+  <script>
+    // Function to show a popup
+    function showPopup(popupId) {
+        var popup = document.getElementById(popupId);
+        popup.style.display = "flex";
+        popup.style.animation = "slideInLeft 0.5s forwards"; // Animasi popup muncul dari kiri
+    }
+
+    // Function to hide a popup
+    function hidePopup(popupId) {
+        var popup = document.getElementById(popupId);
+        
+        // Mulai animasi popup keluar dari kanan ke kiri
+        popup.style.animation = "slideOutRightToLeft 0.5s forwards";
+
+        // Menyembunyikan popup setelah animasi selesai
+        setTimeout(function() {
+            popup.style.display = "none"; 
+        }, 500); // Menunggu durasi animasi selesai (500ms)
+    }
+</script><select id="wildcard" name="wildcard" onchange="onWildcardChange(event)" style="width: 90px; height: 45px;">
     <option value="" ${!selectedWildcard ? 'selected' : ''}>No Wildcard</option>
     ${wildcards.map(w => `<option value="${w}" ${selectedWildcard === w ? 'selected' : ''}>${w}</option>`).join('')}
   </select>
