@@ -3310,34 +3310,34 @@ function buildCountryFlag() {
     <span class="menu" style="color: #000; text-decoration: none; display: block; text-align: center;"><center><strong>LIST SERVER DOMAIN
   </strong></center></span>
     <span class="menu">
-                    <a href="https://bzj384jdo.kere.us.kg" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.kere.us.kg</a>
+                    <a href="https://nzi38dkw92.kere.us.kg" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">nzi38dkw92.kere.us.kg</a>
                 </span> 
                 <span class="menu">
-                    <a href="https://bzj384jdo.ndeso.xyz" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.ndeso.xyz</a>
+                    <a href="https://nzi38dkw92.ndeso.xyz" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">nzi38dkw92.ndeso.xyz</a>
                 </span> 
                 <span class="menu">
-                    <a href="https://bzj384jdo.ndeso.web.id" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.ndeso.web.id</a>
+                    <a href="https://nzi38dkw92.ndeso.web.id" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">nzi38dkw92.ndeso.web.id</a>
                 </span> 
                 <span class="menu">
-                    <a href="https://bzj384jdo.xhamster.biz.id" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.xhamster.biz.id</a>
+                    <a href="https://nzi38dkw92.xhamster.biz.id" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">nzi38dkw92.xhamster.biz.id</a>
                 </span> 
                 <span class="menu">
-                    <a href="https://bzj384jdo.turah.my.id" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.turah.my.id</a>
+                    <a href="https://nzi38dkw92.turah.my.id" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">nzi38dkw92.turah.my.id</a>
                 </span> 
                 <span class="menu">
-                    <a href="https://bzj384jdo.najah.biz.id" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.najah.biz.id</a>
+                    <a href="https://nzi38dkw92.najah.biz.id" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">nzi38dkw92.najah.biz.id</a>
                 </span> 
                 <span class="menu">
-                    <a href="https://bzj384jdo.cloudproxyip.my.id" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.cloudproxyip.my.id</a>
+                    <a href="https://nzi38dkw92.cloudproxyip.my.id" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">nzi38dkw92.cloudproxyip.my.id</a>
                 </span> 
                 <span class="menu">
-                    <a href="https://bzj384jdo.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg</a>
+                    <a href="https://nzi38dkw92.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">nzi38dkw92.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg</a>
                 </span> 
                 <span class="menu">
-                    <a href="https://bzj384jdo.bmkg.xyz" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.bmkg.xyz</a>
+                    <a href="https://nzi38dkw92.bmkg.xyz" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">nzi38dkw92.bmkg.xyz</a>
                 </span> 
                 <span class="menu">
-                    <a href="https://bzj384jdo.cepu.us.kg" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">bzj384jdo.cepu.us.kg</a>
+                    <a href="https://nzi38dkw92.cepu.us.kg" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">nzi38dkw92.cepu.us.kg</a>
                 </span> <br>
    </div>
    <button class="button7" id="close" onclick="hidePopup('list-domain')">Close</button>
