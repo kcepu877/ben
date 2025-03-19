@@ -237,13 +237,8 @@ case "/proxy/check":
 
           
 
-      
 
-
-
-
-
-async function handleCheck(paramss) {
+    async function handleCheck(paramss) {
   const ipPort = paramss.get("ip");
 
   if (!ipPort) {
@@ -255,105 +250,58 @@ async function handleCheck(paramss) {
     return new Response("Format IP:PORT tidak valid", { status: 400 });
   }
 
-  const apiUrl = `https://p01--boiling-frame--kw6dd7bjv2nr.code.run/check?ip=${ip}&port=${port}&host=speed.cloudflare.com&tls=true`;
+  const apiUrl = `https://api.ndeso.xyz/check?ip=${ip}:${port}`;
 
   try {
-    const startTime = Date.now();
     const apiResponse = await fetch(apiUrl);
-    const endTime = Date.now();
-    let latency = endTime - startTime;
-    latency = Math.round(latency / 100) + "ms";
-
     const result = await apiResponse.json();
-    
-    const flags = {
-      "AD": "🇦🇩", "AE": "🇦🇪", "AF": "🇦🇫", "AG": "🇦🇬", "AI": "🇦🇮", "AL": "🇦🇱", "AM": "🇦🇲", "AO": "🇦🇴",
-      "AR": "🇦🇷", "AT": "🇦🇹", "AU": "🇦🇺", "AW": "🇦🇼", "AZ": "🇦🇿", "BA": "🇧🇦", "BB": "🇧🇧", "BD": "🇧🇩",
-      "BE": "🇧🇪", "BF": "🇧🇫", "BG": "🇧🇬", "BH": "🇧🇭", "BI": "🇧🇮", "BJ": "🇧🇯", "BN": "🇧🇳", "BO": "🇧🇴",
-      "BR": "🇧🇷", "BS": "🇧🇸", "BT": "🇧🇹", "BW": "🇧🇼", "BY": "🇧🇾", "BZ": "🇧🇿", "CA": "🇨🇦", "CD": "🇨🇩",
-      "CF": "🇨🇫", "CG": "🇨🇬", "CH": "🇨🇭", "CI": "🇨🇮", "CL": "🇨🇱", "CM": "🇨🇲", "CN": "🇨🇳", "CO": "🇨🇴",
-      "CR": "🇨🇷", "CU": "🇨🇺", "CV": "🇨🇻", "CY": "🇨🇾", "CZ": "🇨🇿", "DE": "🇩🇪", "DJ": "🇩🇯", "DK": "🇩🇰",
-      "DM": "🇩🇲", "DO": "🇩🇴", "DZ": "🇩🇿", "EC": "🇪🇨", "EE": "🇪🇪", "EG": "🇪🇬", "ER": "🇪🇷", "ES": "🇪🇸",
-      "ET": "🇪🇹", "FI": "🇫🇮", "FJ": "🇫🇯", "FM": "🇫🇲", "FR": "🇫🇷", "GA": "🇬🇦", "GB": "🇬🇧", "GD": "🇬🇩",
-      "GE": "🇬🇪", "GH": "🇬🇭", "GM": "🇬🇲", "GN": "🇬🇳", "GQ": "🇬🇶", "GR": "🇬🇷", "GT": "🇬🇹", "GW": "🇬🇼",
-      "GY": "🇬🇾", "HN": "🇭🇳", "HR": "🇭🇷", "HT": "🇭🇹", "HU": "🇭🇺", "ID": "🇮🇩", "IE": "🇮🇪", "IL": "🇮🇱",
-      "IN": "🇮🇳", "IQ": "🇮🇶", "IR": "🇮🇷", "IS": "🇮🇸", "IT": "🇮🇹", "JM": "🇯🇲", "JO": "🇯🇴", "JP": "🇯🇵",
-      "KE": "🇰🇪", "KG": "🇰🇬", "KH": "🇰🇭", "KI": "🇰🇮", "KM": "🇰🇲", "KN": "🇰🇳", "KP": "🇰🇵", "KR": "🇰🇷",
-      "KW": "🇰🇼", "KZ": "🇰🇿", "LA": "🇱🇦", "LB": "🇱🇧", "LC": "🇱🇨", "LI": "🇱🇮", "LK": "🇱🇰", "LR": "🇱🇷",
-      "LS": "🇱🇸", "LT": "🇱🇹", "LU": "🇱🇺", "LV": "🇱🇻", "LY": "🇱🇾", "MA": "🇲🇦", "MC": "🇲🇨", "MD": "🇲🇩",
-      "ME": "🇲🇪", "MG": "🇲🇬", "MH": "🇲🇭", "MK": "🇲🇰", "ML": "🇲🇱", "MM": "🇲🇲", "MN": "🇲🇳", "MR": "🇲🇷",
-      "MT": "🇲🇹", "MU": "🇲🇺", "MV": "🇲🇻", "MW": "🇲🇼", "MX": "🇲🇽", "MY": "🇲🇾", "MZ": "🇲🇿", "NA": "🇳🇦",
-      "NE": "🇳🇪", "NG": "🇳🇬", "NI": "🇳🇮", "NL": "🇳🇱", "NO": "🇳🇴", "NP": "🇳🇵", "NR": "🇳🇷", "NZ": "🇳🇿",
-      "OM": "🇴🇲", "PA": "🇵🇦", "PE": "🇵🇪", "PG": "🇵🇬", "PH": "🇵🇭", "PK": "🇵🇰", "PL": "🇵🇱", "PT": "🇵🇹",
-      "PW": "🇵🇼", "PY": "🇵🇾", "QA": "🇶🇦", "RO": "🇷🇴", "RU": "🇷🇺", "RW": "🇷🇼", "SA": "🇸🇦", "SB": "🇸🇧",
-      "SC": "🇸🇨", "SD": "🇸🇩", "SE": "🇸🇪", "SG": "🇸🇬", "SI": "🇸🇮", "SK": "🇸🇰", "SL": "🇸🇱", "SM": "🇸🇲",
-      "SN": "🇸🇳", "SO": "🇸🇴", "SR": "🇸🇷", "SS": "🇸🇸", "ST": "🇸🇹", "SV": "🇸🇻", "SY": "🇸🇾", "SZ": "🇸🇿",
-      "TD": "🇹🇩", "TG": "🇹🇬", "TH": "🇹🇭", "TJ": "🇹🇯", "TL": "🇹🇱", "TM": "🇹🇲", "TN": "🇹🇳", "TO": "🇹🇴",
-      "TR": "🇹🇷", "TT": "🇹🇹", "TV": "🇹🇻", "TZ": "🇹🇿", "UA": "🇺🇦", "UG": "🇺🇬", "US": "🇺🇸", "UY": "🇺🇾",
-      "UZ": "🇺🇿", "VA": "🇻🇦", "VC": "🇻🇨", "VE": "🇻🇪", "VN": "🇻🇳", "VU": "🇻🇺", "WF": "🇼🇫", "WS": "🇼🇸",
-      "YE": "🇾🇪", "ZA": "🇿🇦", "ZM": "🇿🇲", "ZW": "🇿🇼"
-    };
-
-    const countryCode = result.country?.split(" ")[0] || "Unknown";
-    const countryFlag = flags[countryCode] || "🏳️";
 
     const responseData = {
-      proxy: result.origin || "Unknown",
-      port: parseInt(port, 10) || 0,
-      proxyip: result.proxyip || false,
-      delay: latency || 0,
+      proxy: result.proxy || "Unknown",
       ip: result.ip || "Unknown",
-      colo: result.colo || "Unknown",
-      longitude: result.longitude || "Unknown",
-      httpProtocol: result.httpProtocol || "Unknown",
-      continent: result.continent || "Unknown",
-      asn: result.asn || 0,
-      country: `${countryCode} ${countryFlag}` || "Unknown 🏳️",
-      vpn: result.proxyip || "false",
+      countryCode: result.countryCode || "Unknown",
+      country: result.country || "Unknown",
+      flag: result.flag || "🏳️",
       city: result.city || "Unknown",
-      timezone: result.timezone || "Unknown",
-      postalCode: result.postalCode || "Unknown",
-      region: result.region || "Unknown",
-      latitude: result.tlsVersion || "Unknown",
-      regionCode: result.regionCode || "Unknown",
-      isp: result.asOrganization || "Unknown",
-      message: ` ${ip}:${port}: ACTIVE ✅`
+      timezone: result.timezone && result.timezone.trim() ? result.timezone : "Not Provided",
+      latitude: result.latitude && result.latitude.trim() ? result.latitude : "Not Provided",
+      longitude: result.longitude || "Unknown",
+      delay: result.delay || "Unknown",
+      asn: result.asn || "Unknown",
+      colo: result.colo || "Unknown",
+      isp: result.isp || "Unknown",
+      port: port || "-",
+      message: "✅ ACTIVE"
     };
 
-    const jsonData = JSON.stringify(responseData, null, 2);
-    
-    return new Response(jsonData, {
-      headers: { "Content-Type": "application/json" }
-    });
-    
+    return new Response(JSON.stringify(responseData, null, 2), { headers: { "Content-Type": "application/json" } });
+
   } catch (error) {
+    console.error("Error fetching proxy data:", error);
+
     const errorData = {
       proxy: "Unknown",
-      port: parseInt(port, 10) || 0,
-      proxyip: false,
-      delay: "0ms",
       ip: ip || "Unknown",
-      colo: "Unknown",
-      longitude: "Unknown",
-      httpProtocol: "Unknown",
-      continent: "Unknown",
-      asn: 0,
-      country: "Unknown 🏳️",
-      vpn: "false",
+      countryCode: "Unknown",
+      country: "Unknown",
+      flag: "🏳️",
       city: "Unknown",
-      timezone: "Unknown",
-      postalCode: "Unknown",
-      region: "Unknown",
-      latitude: "Unknown",
-      regionCode: "Unknown",
+      timezone: "Not Provided",
+      latitude: "Not Provided",
+      longitude: "Unknown",
+      delay: "Unknown",
+      asn: "Unknown",
+      colo: "Unknown",
       isp: "Unknown",
-      message: ` ${ip}:${port}: DEAD ❌`
+      port: port || "-",
+      message: "❌ DEAD"
     };
-    return new Response(JSON.stringify(errorData, null, 2), {
-      headers: { "Content-Type": "application/json" }
-    });
+
+    return new Response(JSON.stringify(errorData, null, 2), { headers: { "Content-Type": "application/json" } });
   }
 }
+
+
 
 
 function mamangenerateHTML() {
@@ -369,6 +317,8 @@ function mamangenerateHTML() {
     <meta property="og:type" content="website">
     <meta name="twitter:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
     <link href="https://kere.us.kg/img/botvpn.jpg" rel="icon" type="image/png">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
     <style>
           :root {
         --primary: #00ff88;
@@ -718,7 +668,18 @@ input[type="text"] { padding: 10px; width: 150px; margin-bottom: 15px; }
         .navbar.show .toggle-btn {
             right: -29px;
         }
-        
+        @keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0.3; }
+  }
+        #map {
+  height: 350px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
 </style>
 </head>
 
@@ -782,74 +743,179 @@ input[type="text"] { padding: 10px; width: 150px; margin-bottom: 15px; }
           </tr>
         </thead>
         <tbody>
-          <tr><td>ISP</td><td>-</td></tr>
-          <tr><td>IP</td><td>-</td></tr>          
-          <tr><td>Port</td><td>-</td></tr>
-          <tr><td>ASN</td><td>-</td></tr>
-          <tr><td>Country</td><td>-</td></tr>
-          <tr><td>City</td><td>-</td></tr>
-          <tr><td>VPN</td><td>-</td></tr>
+        <tr><td>ISP</td><td>-</td></tr>
+        <tr><td>IP</td><td>-</td></tr>
+        <tr><td>Port</td><td>-</td></tr>
+        <tr><td>ASN</td><td>-</td></tr>
+        <tr><td>Country</td><td>-</td></tr>
+        <tr><td>City</td><td>-</td></tr>
+        <tr><td>Timezone</td><td>-</td></tr>
+        <tr><td>Latitude</td><td>-</td></tr>
+        <tr><td>Longitude</td><td>-</td></tr>
           <tr><td>Delay</td><td style="color: red; font-weight: bold;">-</td></tr>
           <tr><td>Message</td><td style="font-weight: bold;">-</td></tr>
         </tbody>
     </table><center><br/>
     <div style="display: flex; align-items: center; gap: 5px;">
   </div></center><br/><br/>          
+  <div id="map"></div>
     </div>
     <footer>
    <h2> &copy; 2025 Proxy Checker. All rights reserved.</h2>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        // Saat halaman dimuat, periksa jika ada data di localStorage
-        window.onload = function() {
-            const storedData = localStorage.getItem("proxyData");
-            if (storedData) {
-                const data = JSON.parse(storedData);
-                updateTable(data);
-            }
-        };
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-        async function checkProxy() {
-            const ipPort = document.getElementById("ipInput").value;
-            if (!ipPort) {
-                Swal.fire({
-            icon: 'warning',
-            title: 'Peringatan!',
-            text: 'Masukkan IP:Port terlebih dahulu!',
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#4CAF50'
-        });
-                return;
-            }
+<script>
+    let map;
 
-            document.getElementById("loading").style.display = "block";  // Menampilkan loading
+    window.onload = function () {
+        loadStoredData();
+        initializeMap();
+    };
 
-            const response = await fetch(\`/proxy/check?ip=\${encodeURIComponent(ipPort)}\`);
+    function loadStoredData() {
+        const storedData = localStorage.getItem("proxyData");
+        if (storedData) {
+            updateTable(JSON.parse(storedData));
+        }
+    }
+
+    function initializeMap() {
+        const storedMap = localStorage.getItem("mapData");
+
+        if (storedMap) {
+            const mapData = JSON.parse(storedMap);
+            initMap(mapData.latitude, mapData.longitude, mapData.zoom);
+            loadStoredMarker();
+        } else {
+            initMap(-6.200000, 106.816666, 5);
+        }
+    }
+
+    function loadStoredMarker() {
+        const storedMarker = localStorage.getItem("markerData");
+        if (storedMarker) {
+            const markerData = JSON.parse(storedMarker);
+            addMarkerToMap(markerData.latitude, markerData.longitude, markerData.data);
+        }
+    }
+
+    async function checkProxy() {
+        const ipPort = document.getElementById("ipInput").value.trim();
+
+        if (!ipPort) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Peringatan!',
+                text: 'Masukkan IP:Port terlebih dahulu!',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#4CAF50'
+            });
+            return;
+        }
+
+        document.getElementById("loading").style.display = "block";
+
+        try {
+            const response = await fetch("/proxy/check?ip=" + encodeURIComponent(ipPort));
             const data = await response.json();
 
-            // Simpan data ke localStorage
             localStorage.setItem("proxyData", JSON.stringify(data));
-
             updateTable(data);
-            document.getElementById("loading").style.display = "none";  // Menyembunyikan loading
+            if (data.latitude && data.longitude) updateMap(data.latitude, data.longitude, data);
+        } catch (error) {
+            console.error("Error fetching proxy data:", error);
+        } finally {
+            document.getElementById("loading").style.display = "none";
         }
+    }
 
-        function updateTable(data) {
-            const table = document.getElementById("resultTable");
-            const tbody = table.querySelector("tbody");
+    function updateTable(data) {
+        const tbody = document.getElementById("resultTable").querySelector("tbody");
 
-            tbody.querySelectorAll("tr").forEach((row) => {
-                const key = row.querySelector("td").textContent;
-                const dataKey = key.toLowerCase();
+        tbody.querySelectorAll("tr").forEach(function (row) {
+            const key = row.querySelector("td").textContent.toLowerCase();
+            row.querySelectorAll("td")[1].textContent = data[key] || "-";
+        });
+    }
 
-                if (data[dataKey]) {
-                    row.querySelectorAll("td")[1].textContent = data[dataKey] || "-";
-                }
-            });
+    function initMap(lat, lon, zoom) {
+    map = L.map('map').setView([lat, lon], zoom);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">KANG CEPU</a> IP CF Checker'
+    }).addTo(map);
+}
+
+function updateMap(lat, lon, data) {
+    if (!map) {
+        initMap(lat, lon, 7);
+    } else {
+        map.setView([lat, lon], 7);
+        
+        // Hapus semua marker sebelum menambahkan yang baru
+        map.eachLayer(function (layer) {
+            if (layer instanceof L.Marker) map.removeLayer(layer);
+        });
+    }
+
+    addMarkerToMap(lat, lon, data);
+    saveMapData(lat, lon, 7, data.proxy, data.isp, data.asn);
+}
+
+function saveMapData(lat, lon, zoom, proxy = null, isp = null, asn = null) {
+    localStorage.setItem("mapData", JSON.stringify({ 
+        latitude: lat, 
+        longitude: lon, 
+        zoom: zoom 
+    }));
+
+    const markerData = { latitude: lat, longitude: lon };
+    if (proxy || isp || asn) {
+        markerData.data = { proxy, isp, asn };
+    }
+
+    localStorage.setItem("markerData", JSON.stringify(markerData));
+}
+
+function addMarkerToMap(lat, lon, data) {
+    var icon1 = L.icon({
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/252/252025.png',
+        iconSize: [35, 35],
+        iconAnchor: [15, 35],
+        popupAnchor: [0, -30]
+    });
+
+    var icon2 = L.icon({
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/252/252031.png',
+        iconSize: [35, 35],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -35]
+    });
+
+    var marker = L.marker([lat, lon], { icon: icon1 }).addTo(map)
+        .bindPopup("<b>📍 Lokasi</b><br>" +
+            "<b>Proxy:</b> " + (data.proxy || '-') + "<br>" +
+            "<b>ISP:</b> " + (data.isp || '-') + "<br>" +
+            "<b>ASN:</b> " + (data.asn || '-') + "<br>" +
+            "<b>Latitude:</b> " + lat + "<br>" +
+            "<b>Longitude:</b> " + lon)
+        .openPopup();
+
+    let isIcon1 = true;
+    let intervalId = setInterval(() => {
+        if (!map.hasLayer(marker)) {
+            clearInterval(intervalId);
+            return;
         }
-    </script>
+        marker.setIcon(isIcon1 ? icon2 : icon1);
+        isIcon1 = !isIcon1;
+    }, 500);
+}
+
+</script>
 </body>
 </html>`;
 }
