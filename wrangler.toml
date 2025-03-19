@@ -1,13 +1,8 @@
 name = "cf" # todo
 main = "js/_worker.js"
-compatibility_date = "2024-05-26"
+workers_dev = true
+compatibility_date = "2024-03-20"
 
-
-[unsafe.metadata.observability]
-enabled = true
-
-[observability.logs]
-enabled = true
 [[routes]]
 pattern = "tunneling.xhamster.biz.id"
 custom_domain = true
