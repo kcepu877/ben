@@ -1994,7 +1994,7 @@ function buildCountryFlag() {
             const spinner = document.getElementById('ping-' + data.ip + ':' + data.proxy); // Menggunakan IP dan Proxy dari respons
 
             // Ambil data status dan delay dari API response
-            const status = data.message.includes("ACTIVE ✅") ? 'ACTIVE ✅' : 'DEAD ❌';  // Cek status berdasarkan message
+            const status = data.message.includes("✅ ACTIVE") ? '✅ ACTIVE' : 'DEAD ❌';  // Cek status berdasarkan message
             let delay = data.delay !== "" ? data.delay : 'N/A';  // Gunakan delay dari respons, jika ada
 
             console.log("Status:", status);  // Debugging log
@@ -2085,7 +2085,7 @@ function buildCountryFlag() {
             const spinner = document.getElementById('ping-' + data.ip + ':' + data.proxy); // Menggunakan IP dan Proxy dari respons
 
             // Ambil data status dan delay dari API response
-            const status = data.message.includes("ACTIVE ✅") ? 'ACTIVE ✅' : 'DEAD ❌';  // Cek status berdasarkan message
+            const status = data.message.includes("✅ ACTIVE") ? '✅ ACTIVE' : 'DEAD ❌';  // Cek status berdasarkan message
             let delay = data.delay !== "" ? data.delay : 'N/A';  // Gunakan delay dari respons, jika ada
 
             console.log("Status:", status);  // Debugging log
