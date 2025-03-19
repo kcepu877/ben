@@ -74,7 +74,7 @@ export default {
   async fetch(request, env, ctx) {
     try {
       const url = new URL(request.url);
-      const myurl = "api.ndeso.xyz"; //ganti dg url api yg baru
+      const myurl = "ipcheck.ndeso.xyz"; //ganti dg url api yg baru
       const upgradeHeader = request.headers.get("Upgrade");
       const CHECK_API_BASE = `https://${myurl}`;
       const CHECK_API = `${CHECK_API_BASE}/check?ip=`; // Endpoint API check proxy di worker yang sama
@@ -250,7 +250,7 @@ case "/proxy/check":
     return new Response("Format IP:PORT tidak valid", { status: 400 });
   }
 
-  const apiUrl = `https://api.ndeso.xyz/check?ip=${ip}:${port}`;
+  const apiUrl = `https://ipcheck.ndeso.xyz/check?ip=${ip}:${port}`;
 
   try {
     const apiResponse = await fetch(apiUrl);
