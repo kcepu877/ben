@@ -74,7 +74,7 @@ export default {
   async fetch(request, env, ctx) {
     try {
       const url = new URL(request.url);
-      const myurl = "ipcheck.xyz"; //ganti dg url api yg baru
+      const myurl = "ipcheck.ndeso.xyz"; //ganti dg url api yg baru
       const upgradeHeader = request.headers.get("Upgrade");
       const CHECK_API_BASE = `https://${myurl}`;
       const CHECK_API = `${CHECK_API_BASE}/check?ip=`; // Endpoint API check proxy di worker yang sama
@@ -1994,8 +1994,8 @@ function buildCountryFlag() {
             const spinner = document.getElementById('ping-' + data.ip + ':' + data.proxy); // Menggunakan IP dan Proxy dari respons
 
             // Ambil data status dan delay dari API response
-            const status = data.message.includes("✅ ACTIVE") ? '✅ ACTIVE' : 'DEAD ❌';  // Cek status berdasarkan message
-            let delay = data.delay !== "" ? data.delay : 'N/A';  // Gunakan delay dari respons, jika ada
+            const status = data.message.includes("ACTIVE ✅") ? 'ACTIVE ✅' : 'DEAD ❌';  // Cek status berdasarkan message
+	    let delay = data.delay !== "" ? data.delay : 'N/A';  // Gunakan delay dari respons, jika ada
 
             console.log("Status:", status);  // Debugging log
             console.log("Raw delay:", delay); // Debugging log
@@ -2085,8 +2085,8 @@ function buildCountryFlag() {
             const spinner = document.getElementById('ping-' + data.ip + ':' + data.proxy); // Menggunakan IP dan Proxy dari respons
 
             // Ambil data status dan delay dari API response
-            const status = data.message.includes("✅ ACTIVE") ? '✅ ACTIVE' : 'DEAD ❌';  // Cek status berdasarkan message
-            let delay = data.delay !== "" ? data.delay : 'N/A';  // Gunakan delay dari respons, jika ada
+            const status = data.message.includes("ACTIVE ✅") ? 'ACTIVE ✅' : 'DEAD ❌';  // Cek status berdasarkan message
+	    let delay = data.delay !== "" ? data.delay : 'N/A';  // Gunakan delay dari respons, jika ada
 
             console.log("Status:", status);  // Debugging log
             console.log("Raw delay:", delay); // Debugging log
