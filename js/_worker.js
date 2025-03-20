@@ -5499,7 +5499,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },`;
     }
   }
-  return `#### BY : FREE CF PROXY #### 
+  return ` 
 
 {
   "log": {
