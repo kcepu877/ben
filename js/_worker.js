@@ -266,12 +266,12 @@ case "/proxy/check":
       timezone: result.timezone && result.timezone.trim() ? result.timezone : "Not Provided",
       latitude: result.latitude && result.latitude.trim() ? result.latitude : "Not Provided",
       longitude: result.longitude || "Unknown",
-      delay: result.delay || "Unknown",
+      delay: result.delay || "",
       asn: result.asn || "Unknown",
       colo: result.colo || "Unknown",
       isp: result.isp || "Unknown",
       port: port || "-",
-      message: "✅ ACTIVE"
+      message: result.message || ""
     };
 
     return new Response(JSON.stringify(responseData, null, 2), { headers: { "Content-Type": "application/json" } });
