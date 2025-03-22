@@ -21,6 +21,8 @@ const wildcards = [
    'ads.ruangguru.com',
    'api.midtrans.com',
    'investor.fb.com',
+   'bakrie.ac.id',
+	
 ];
 // Global Variables
 let cachedProxyList = [];
@@ -1383,7 +1385,8 @@ async function handleSubRequest(hostnem) {
                     <option value="ads.ruangguru.com">io.ruangguru.com</option>
                     <option value="api.midtrans.com">api.midtrans.com</option>
                     <option value="investor.fb.com">investor.fb.com</option>
-                </select>
+                    <option value="bakrie.ac.id">bakrie.ac.id</option>		
+              </select>
                 </div>
 
                 <div class="form-group">
