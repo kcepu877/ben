@@ -1,4 +1,1 @@
-Error checking 192.46.237.174:443: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=192.46.237.174:443
-Error checking 140.82.37.96:2096: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=140.82.37.96:2096
-Error checking 195.133.18.189:2053: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=195.133.18.189:2053
-Error checking 129.154.59.99:443: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=129.154.59.99:443
+Error checking 95.182.99.128:8443: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=95.182.99.128:8443
