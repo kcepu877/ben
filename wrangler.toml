@@ -46,6 +46,9 @@ custom_domain = true
 pattern = "investor.fb.com.tunneling.xhamster.biz.id"
 custom_domain = true
 [[routes]]
+pattern = "bakrie.ac.id.tunneling.xhamster.biz.id"
+custom_domain = true
+[[routes]]
 pattern = "tunneling.turah.my.id"
 custom_domain = true
 [[routes]]
@@ -86,6 +89,9 @@ pattern = "api.midtrans.com.tunneling.turah.my.id"
 custom_domain = true
 [[routes]]
 pattern = "investor.fb.com.tunneling.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "bakrie.ac.id.tunneling.turah.my.id"
 custom_domain = true
 [[routes]]
 pattern = "tunneling.ndeso.xyz"
@@ -130,6 +136,9 @@ custom_domain = true
 pattern = "investor.fb.com.tunneling.ndeso.xyz"
 custom_domain = true
 [[routes]]
+pattern = "bakrie.ac.id.tunneling.ndeso.xyz"
+custom_domain = true
+[[routes]]
 pattern = "tunneling.ndeso.web.id"
 custom_domain = true
 [[routes]]
@@ -170,6 +179,9 @@ pattern = "api.midtrans.com.tunneling.ndeso.web.id"
 custom_domain = true
 [[routes]]
 pattern = "investor.fb.com.tunneling.ndeso.web.id"
+custom_domain = true
+[routes]]
+pattern = "bakrie.ac.id.tunneling.ndeso.web.id"
 custom_domain = true
 [[routes]]
 pattern = "tunneling.kere.us.kg"
@@ -212,6 +224,9 @@ pattern = "api.midtrans.com.tunneling.kere.us.kg"
 custom_domain = true
 [[routes]]
 pattern = "investor.fb.com.tunneling.kere.us.kg"
+custom_domain = true
+[routes]]
+pattern = "bakrie.ac.id.tunneling.kere.us.kg"
 custom_domain = true
 [[routes]]
 pattern = "tunneling.cepu.us.kg"
@@ -256,6 +271,9 @@ custom_domain = true
 pattern = "investor.fb.com.tunneling.cepu.us.kg"
 custom_domain = true
 [[routes]]
+pattern = "bakrie.ac.id.tunneling.cepu.us.kg"
+custom_domain = true
+[[routes]]
 pattern = "tunneling.najah.biz.id"
 custom_domain = true
 [[routes]]
@@ -297,7 +315,9 @@ custom_domain = true
 [[routes]]
 pattern = "investor.fb.com.tunneling.najah.biz.id"
 custom_domain = true
-
+[[routes]]
+pattern = "bakrie.ac.id.tunneling.najah.biz.id"
+custom_domain = true
 
 [[routes]]
 pattern = "tunneling.bmkg.xyz"
@@ -342,6 +362,9 @@ custom_domain = true
 [[routes]]
 pattern = "investor.fb.com.tunneling.bmkg.xyz"
 custom_domain = true
+[[routes]]
+pattern = "bakrie.ac.id.tunneling.bmkg.xyz"
+custom_domain = true
 
 [[routes]]
 pattern = "tunneling.cloudproxyip.my.id"
@@ -385,7 +408,9 @@ custom_domain = true
 [[routes]]
 pattern = "investor.fb.com.tunneling.cloudproxyip.my.id"
 custom_domain = true
-
+[[routes]]
+pattern = "bakrie.ac.id.tunneling.cloudproxyip.my.id"
+custom_domain = true
 [[routes]]
 pattern = "tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
 custom_domain = true
@@ -424,6 +449,9 @@ pattern = "io.ruangguru.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
 custom_domain = true
 [[routes]]
 pattern = "api.midtrans.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "bakrie.ac.id.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
 custom_domain = true
 [[routes]]
 pattern = "investor.fb.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
