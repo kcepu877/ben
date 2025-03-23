@@ -4,455 +4,455 @@ workers_dev = true
 compatibility_date = "2024-03-20"
 
 [[routes]]
-pattern = "tunneling.xhamster.biz.id"
+pattern = "privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.tunneling.xhamster.biz.id"
+pattern = "ava.game.naver.com.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.tunneling.xhamster.biz.id"
+pattern = "graph.instagram.com.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.tunneling.xhamster.biz.id"
+pattern = "quiz.int.vidio.com.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.tunneling.xhamster.biz.id"
+pattern = "live.iflix.com.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.tunneling.xhamster.biz.id"
+pattern = "support.zoom.us.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.tunneling.xhamster.biz.id"
+pattern = "blog.webex.com.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.tunneling.xhamster.biz.id"
+pattern = "investors.spotify.com.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.tunneling.xhamster.biz.id"
+pattern = "cache.netflix.com.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.tunneling.xhamster.biz.id"
+pattern = "zaintest.vuclip.com.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.tunneling.xhamster.biz.id"
+pattern = "ads.ruangguru.com.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.tunneling.xhamster.biz.id"
+pattern = "io.ruangguru.com.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.tunneling.xhamster.biz.id"
+pattern = "api.midtrans.com.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.tunneling.xhamster.biz.id"
+pattern = "investor.fb.com.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "bakrie.ac.id.tunneling.xhamster.biz.id"
+pattern = "bakrie.ac.id.privasi.xhamster.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "tunneling.turah.my.id"
+pattern = "privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.tunneling.turah.my.id"
+pattern = "ava.game.naver.com.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.tunneling.turah.my.id"
+pattern = "graph.instagram.com.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.tunneling.turah.my.id"
+pattern = "quiz.int.vidio.com.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.tunneling.turah.my.id"
+pattern = "live.iflix.com.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.tunneling.turah.my.id"
+pattern = "support.zoom.us.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.tunneling.turah.my.id"
+pattern = "blog.webex.com.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.tunneling.turah.my.id"
+pattern = "investors.spotify.com.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.tunneling.turah.my.id"
+pattern = "cache.netflix.com.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.tunneling.turah.my.id"
+pattern = "zaintest.vuclip.com.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.tunneling.turah.my.id"
+pattern = "ads.ruangguru.com.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.tunneling.turah.my.id"
+pattern = "io.ruangguru.com.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.tunneling.turah.my.id"
+pattern = "api.midtrans.com.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.tunneling.turah.my.id"
+pattern = "investor.fb.com.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "bakrie.ac.id.tunneling.turah.my.id"
+pattern = "bakrie.ac.id.privasi.turah.my.id"
 custom_domain = true
 [[routes]]
-pattern = "tunneling.ndeso.xyz"
+pattern = "privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.tunneling.ndeso.xyz"
+pattern = "ava.game.naver.com.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.tunneling.ndeso.xyz"
+pattern = "graph.instagram.com.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.tunneling.ndeso.xyz"
+pattern = "quiz.int.vidio.com.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.tunneling.ndeso.xyz"
+pattern = "live.iflix.com.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.tunneling.ndeso.xyz"
+pattern = "support.zoom.us.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.tunneling.ndeso.xyz"
+pattern = "blog.webex.com.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.tunneling.ndeso.xyz"
+pattern = "investors.spotify.com.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.tunneling.ndeso.xyz"
+pattern = "cache.netflix.com.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.tunneling.ndeso.xyz"
+pattern = "zaintest.vuclip.com.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.tunneling.ndeso.xyz"
+pattern = "ads.ruangguru.com.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.tunneling.ndeso.xyz"
+pattern = "io.ruangguru.com.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.tunneling.ndeso.xyz"
+pattern = "api.midtrans.com.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.tunneling.ndeso.xyz"
+pattern = "investor.fb.com.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "bakrie.ac.id.tunneling.ndeso.xyz"
+pattern = "bakrie.ac.id.privasi.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "tunneling.ndeso.web.id"
+pattern = "privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.tunneling.ndeso.web.id"
+pattern = "ava.game.naver.com.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.tunneling.ndeso.web.id"
+pattern = "graph.instagram.com.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.tunneling.ndeso.web.id"
+pattern = "quiz.int.vidio.com.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.tunneling.ndeso.web.id"
+pattern = "live.iflix.com.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.tunneling.ndeso.web.id"
+pattern = "support.zoom.us.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.tunneling.ndeso.web.id"
+pattern = "blog.webex.com.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.tunneling.ndeso.web.id"
+pattern = "investors.spotify.com.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.tunneling.ndeso.web.id"
+pattern = "cache.netflix.com.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.tunneling.ndeso.web.id"
+pattern = "zaintest.vuclip.com.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.tunneling.ndeso.web.id"
+pattern = "ads.ruangguru.com.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.tunneling.ndeso.web.id"
+pattern = "io.ruangguru.com.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.tunneling.ndeso.web.id"
+pattern = "api.midtrans.com.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.tunneling.ndeso.web.id"
+pattern = "investor.fb.com.privasi.ndeso.web.id"
 custom_domain = true
 [routes]]
-pattern = "bakrie.ac.id.tunneling.ndeso.web.id"
+pattern = "bakrie.ac.id.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "tunneling.kere.us.kg"
+pattern = "privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.tunneling.kere.us.kg"
+pattern = "ava.game.naver.com.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.tunneling.kere.us.kg"
+pattern = "graph.instagram.com.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.tunneling.kere.us.kg"
+pattern = "quiz.int.vidio.com.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.tunneling.kere.us.kg"
+pattern = "live.iflix.com.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.tunneling.kere.us.kg"
+pattern = "support.zoom.us.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.tunneling.kere.us.kg"
+pattern = "blog.webex.com.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.tunneling.kere.us.kg"
+pattern = "investors.spotify.com.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.tunneling.kere.us.kg"
+pattern = "cache.netflix.com.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.tunneling.kere.us.kg"
+pattern = "zaintest.vuclip.com.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.tunneling.kere.us.kg"
+pattern = "ads.ruangguru.com.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.tunneling.kere.us.kg"
+pattern = "io.ruangguru.com.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.tunneling.kere.us.kg"
+pattern = "api.midtrans.com.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.tunneling.kere.us.kg"
+pattern = "investor.fb.com.privasi.kere.us.kg"
 custom_domain = true
 [routes]]
-pattern = "bakrie.ac.id.tunneling.kere.us.kg"
+pattern = "bakrie.ac.id.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "tunneling.cepu.us.kg"
+pattern = "privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.tunneling.cepu.us.kg"
+pattern = "ava.game.naver.com.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.tunneling.cepu.us.kg"
+pattern = "graph.instagram.com.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.tunneling.cepu.us.kg"
+pattern = "quiz.int.vidio.com.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.tunneling.cepu.us.kg"
+pattern = "live.iflix.com.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.tunneling.cepu.us.kg"
+pattern = "support.zoom.us.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.tunneling.cepu.us.kg"
+pattern = "blog.webex.com.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.tunneling.cepu.us.kg"
+pattern = "investors.spotify.com.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.tunneling.cepu.us.kg"
+pattern = "cache.netflix.com.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.tunneling.cepu.us.kg"
+pattern = "zaintest.vuclip.com.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.tunneling.cepu.us.kg"
+pattern = "ads.ruangguru.com.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.tunneling.cepu.us.kg"
+pattern = "io.ruangguru.com.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.tunneling.cepu.us.kg"
+pattern = "api.midtrans.com.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.tunneling.cepu.us.kg"
+pattern = "investor.fb.com.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "bakrie.ac.id.tunneling.cepu.us.kg"
+pattern = "bakrie.ac.id.privasi.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "tunneling.najah.biz.id"
+pattern = "privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.tunneling.najah.biz.id"
+pattern = "ava.game.naver.com.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.tunneling.najah.biz.id"
+pattern = "graph.instagram.com.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.tunneling.najah.biz.id"
+pattern = "quiz.int.vidio.com.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.tunneling.najah.biz.id"
+pattern = "live.iflix.com.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.tunneling.najah.biz.id"
+pattern = "support.zoom.us.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.tunneling.najah.biz.id"
+pattern = "blog.webex.com.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.tunneling.najah.biz.id"
+pattern = "investors.spotify.com.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.tunneling.najah.biz.id"
+pattern = "cache.netflix.com.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.tunneling.najah.biz.id"
+pattern = "zaintest.vuclip.com.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.tunneling.najah.biz.id"
+pattern = "ads.ruangguru.com.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.tunneling.najah.biz.id"
+pattern = "io.ruangguru.com.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.tunneling.najah.biz.id"
+pattern = "api.midtrans.com.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.tunneling.najah.biz.id"
+pattern = "investor.fb.com.privasi.najah.biz.id"
 custom_domain = true
 [[routes]]
-pattern = "bakrie.ac.id.tunneling.najah.biz.id"
-custom_domain = true
-
-[[routes]]
-pattern = "tunneling.bmkg.xyz"
+pattern = "bakrie.ac.id.privasi.najah.biz.id"
 custom_domain = true
 
 [[routes]]
-pattern = "ava.game.naver.com.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "graph.instagram.com.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "quiz.int.vidio.com.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "live.iflix.com.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "support.zoom.us.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "blog.webex.com.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "investors.spotify.com.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "cache.netflix.com.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "zaintest.vuclip.com.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "ads.ruangguru.com.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "io.ruangguru.com.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "api.midtrans.com.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "investor.fb.com.tunneling.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "bakrie.ac.id.tunneling.bmkg.xyz"
+pattern = "privasi.bmkg.xyz"
 custom_domain = true
 
 [[routes]]
-pattern = "tunneling.cloudproxyip.my.id"
+pattern = "ava.game.naver.com.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.tunneling.cloudproxyip.my.id"
+pattern = "graph.instagram.com.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.tunneling.cloudproxyip.my.id"
+pattern = "quiz.int.vidio.com.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.tunneling.cloudproxyip.my.id"
+pattern = "live.iflix.com.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.tunneling.cloudproxyip.my.id"
+pattern = "support.zoom.us.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.tunneling.cloudproxyip.my.id"
+pattern = "blog.webex.com.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.tunneling.cloudproxyip.my.id"
+pattern = "investors.spotify.com.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.tunneling.cloudproxyip.my.id"
+pattern = "cache.netflix.com.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.tunneling.cloudproxyip.my.id"
+pattern = "zaintest.vuclip.com.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.tunneling.cloudproxyip.my.id"
+pattern = "ads.ruangguru.com.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.tunneling.cloudproxyip.my.id"
+pattern = "io.ruangguru.com.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.tunneling.cloudproxyip.my.id"
+pattern = "api.midtrans.com.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.tunneling.cloudproxyip.my.id"
+pattern = "investor.fb.com.privasi.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.tunneling.cloudproxyip.my.id"
+pattern = "bakrie.ac.id.privasi.bmkg.xyz"
+custom_domain = true
+
+[[routes]]
+pattern = "privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "bakrie.ac.id.tunneling.cloudproxyip.my.id"
+pattern = "ava.game.naver.com.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "graph.instagram.com.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "quiz.int.vidio.com.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "live.iflix.com.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "support.zoom.us.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "blog.webex.com.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "investors.spotify.com.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "cache.netflix.com.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "zaintest.vuclip.com.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "ads.ruangguru.com.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "io.ruangguru.com.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "api.midtrans.com.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "investor.fb.com.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "bakrie.ac.id.privasi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "bakrie.ac.id.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.tunneling.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "ava.game.naver.com.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "bakrie.ac.id.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
 custom_domain = true
