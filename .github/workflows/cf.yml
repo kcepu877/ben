@@ -40,7 +40,7 @@ on:
       - "run"
 
   schedule:
-    - cron: '0 10 * * 0'  # Runs every Sunday at 10:00 UTC
+    - cron: '0 1 * * 0'  # Runs every Sunday at 1:00 UTC
 
 env:
   GIT_REF: ${{ github.event.inputs.commit || github.ref }}
