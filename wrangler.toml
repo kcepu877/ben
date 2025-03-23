@@ -180,7 +180,7 @@ custom_domain = true
 [[routes]]
 pattern = "investor.fb.com.privasi.ndeso.web.id"
 custom_domain = true
-[routes]]
+[[routes]]
 pattern = "bakrie.ac.id.privasi.ndeso.web.id"
 custom_domain = true
 [[routes]]
@@ -225,7 +225,7 @@ custom_domain = true
 [[routes]]
 pattern = "investor.fb.com.privasi.kere.us.kg"
 custom_domain = true
-[routes]]
+[[routes]]
 pattern = "bakrie.ac.id.privasi.kere.us.kg"
 custom_domain = true
 [[routes]]
