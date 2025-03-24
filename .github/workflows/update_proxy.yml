@@ -2,7 +2,7 @@ name: 🌍 Update Proxy IP 🌍
 
 on:
   schedule:
-    - cron: "0 */4 * * *"  # Auto run setiap 4 jam sekali
+    - cron: "0 */6 * * *"  # Auto run setiap 4 jam sekali
   workflow_dispatch:  # Bisa dijalankan manual dari GitHub UI
 
 jobs:
