@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Wrangler env to deploy to'
+        description: 'wrangler env to deploy to'
         required: true
         default: 'dev'
         type: choice
@@ -13,7 +13,7 @@ on:
         - prod
         - one
       commit:
-        description: 'Git tip commit to deploy'
+        description: 'git tip commit to deploy'
         default: 'main'
         required: true
 
@@ -48,70 +48,63 @@ env:
 
 jobs:
   deploy:
-    name: 🚀 Deploy Worker
+    name: 🚀 Deploy worker
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - name: 🛎️ Checkout Code
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3.3.0
         with:
           ref: ${{ env.GIT_REF }}
           fetch-depth: 0
 
-      - name: ⚙️ Setup Node.js 20
+      - name: Setup Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: 📦 Cek Versi Node.js
+      - name: Cek Versi Node.js
         run: node -v
 
       - name: 🏗 Install Dependencies (Tanpa Lock File)
         run: npm install --no-package-lock
 
-      - name: 🔧 Install Wrangler v4
+      - name: ⚙️ Install Wrangler v4
         run: npm install --global wrangler@4
 
       - name: 🚦 Cek Versi Wrangler
         run: npx wrangler -v
 
-      - name: 📚 Publish ke Cloudflare Workers
+      - name: 📚 Wrangler publish
         run: npx wrangler deploy --env $WORKERS_ENV
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           GIT_COMMIT_ID: ${{ env.GIT_REF }}
 
-      - name: ✅ Beri Notifikasi
-        run: echo "::notice::Deployed to $WORKERS_ENV / $GIT_REF @ $GIT_COMMIT_ID"
+      - name: 🎤 Notice
+        run: |
+          echo "::notice::Deployed to ${WORKERS_ENV} / ${GIT_REF} @ ${GIT_COMMIT_ID}"
 
   bot-action:
-    name: 🤖 Bot Deploy (Privat Repo)
+    name: 🤖 Bot Deploy
     runs-on: ubuntu-latest
-    if: github.event_name == 'schedule'
     steps:
-      - name: 🛎️ Checkout Code
-        uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3.3.0
         with:
           ref: ${{ env.GIT_REF }}
           fetch-depth: 0
 
-      - name: ⚙️ Set Git Config untuk Bot
+      - name: Set Git Config for Bot
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: 🤖 Trigger Deployment dengan PAT
+          
+      - name: Bot deploy to 'dev'
+        if: github.event_name == 'schedule'
         run: |
-          echo "🚀 Memulai Bot Deployment ke 'dev'"
-          response=$(curl -s -o /dev/null -w "%{http_code}" -X POST https://api.github.com/repos/${{ github.repository }}/dispatches \
-            -H "Authorization: Bearer ${{ secrets.PAT_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            -d '{"event_type":"deploy","client_payload":{"environment":"dev","commit":"main"}}')
-
-          if [ "$response" -eq 204 ]; then
-            echo "::notice::Bot Deployment Berhasil!"
-          else
-            echo "::error::Bot Deployment Gagal dengan kode: $response"
-            exit 1
-          fi
+          echo "Deploying via bot action"
+          curl -X POST https://api.github.com/repos/${{ github.repository }}/dispatches \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -d '{"event_type":"deploy","client_payload":{"environment":"dev","commit":"main"}}'
