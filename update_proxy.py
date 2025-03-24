@@ -12,16 +12,24 @@ def check_proxy(row, api_url_template):
         data = response.json()
 
         message = data.get("message", "").strip().upper()
-        if "ACTIVE ✅" in message:  # Perbaikan indentasi di sini
-            print(f"{ip}:{port} is ALIVE ✅")
-            return (row, None)  # Kembalikan seluruh baris jika aktif
+        if "ACTIVE ✅" in message:
+            proxy_id = data.get("country", "Unknown").split()[0]  # Ambil kode negara saja
+            isp = data.get("isp", "Unknown")
+
+            if proxy_id != "Unknown" and isp != "Unknown":
+                print(f"{ip}:{port} is ALIVE ✅ - ID: {proxy_id}, ISP: {isp}")
+                return (ip, port, proxy_id, isp), None
+            else:
+                error_message = f"{ip}:{port} has Unknown ID/ISP (ID: {proxy_id}, ISP: {isp})"
+                print(error_message)
+                return None, error_message
         else:
             print(f"{ip}:{port} is DEAD ❌")
-            return (None, None)
+            return None, None
     except requests.exceptions.RequestException as e:
         error_message = f"Error checking {ip}:{port}: {e}"
         print(error_message)
-        return (None, error_message)
+        return None, error_message
 
 def main():
     input_file = os.getenv('IP_FILE', 'proxyip.txt')
@@ -46,11 +54,11 @@ def main():
         for future in as_completed(futures):
             alive, error = future.result()
             if alive:
-                alive_proxies.append(alive)  # Simpan seluruh data proxy yang aktif
+                alive_proxies.append(alive)
             if error:
                 error_logs.append(error)
 
-    # Menyimpan proxy yang ALIVE dengan format lengkap
+    # Simpan hasil proxy yang aktif
     try:
         with open(update_file, "w", newline="") as f:
             writer = csv.writer(f)
@@ -60,7 +68,7 @@ def main():
         print(f"Error menulis ke {update_file}: {e}")
         return
 
-    # Menulis log error ke error.txt jika ada
+    # Simpan log error jika ada
     if error_logs:
         try:
             with open(error_file, "w") as f:
