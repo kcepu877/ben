@@ -1,13 +1,3 @@
-Error checking 8.219.237.57:31523: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=8.219.237.57:31523
-Error checking 129.151.128.105:16731: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=129.151.128.105:16731
-Error checking 51.89.23.7:8443: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=51.89.23.7:8443
-Error checking 185.114.73.166:8443: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=185.114.73.166:8443
-Error checking 191.96.153.230:8443: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=191.96.153.230:8443
-Error checking 125.176.156.67:30059: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=125.176.156.67:30059
-Error checking 118.46.29.202:50003: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=118.46.29.202:50003
-Error checking 119.193.178.234:30068: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=119.193.178.234:30068
-Error checking 218.146.90.232:30053: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=218.146.90.232:30053
-Error checking 49.167.61.27:13623: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=49.167.61.27:13623
-Error checking 103.231.75.238:2053: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=103.231.75.238:2053
-Error checking 195.135.255.199:443: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=195.135.255.199:443
-Error checking 89.110.127.179:443: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=89.110.127.179:443
+Error checking 218.188.151.102:31564: 502 Server Error: Bad Gateway for url: https://proxy.ndeso.xyz/check?ip=218.188.151.102:31564
+Error checking 121.152.182.241:50000: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Error checking 172.96.209.184:53849: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
