@@ -8,8 +8,8 @@ const telegrambot = 'https://t.me/kcepu_bot'
 const waku = 'https://wa.me/6287861167414'
 const waku1 = 'https://wa.me/6281335135082'
 const wildcards = [
-  'ava.game.naver.com',
-  'business.blibli.com',
+   'ava.game.naver.com',
+   'business.blibli.com',
    'graph.instagram.com',
    'quiz.int.vidio.com',
    'live.iflix.com',
