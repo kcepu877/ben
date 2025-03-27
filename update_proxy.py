@@ -58,6 +58,9 @@ def main():
             if error:
                 error_logs.append(error)
 
+    # Urutkan hasil berdasarkan proxy_id (kolom ketiga)
+    alive_proxies.sort(key=lambda x: x[2])  # Urutkan berdasarkan proxy_id (ID negara)
+
     # Simpan hasil proxy yang aktif
     try:
         with open(update_file, "w", newline="") as f:
