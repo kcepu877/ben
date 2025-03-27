@@ -1825,12 +1825,11 @@ function uuidv4() {
       }
     })
     .catch(error => {
-      console.error("Fetch error:", error); // Debugging jika terjadi error
-      statusElement.innerHTML = `
-        <strong><i class="fas fa-exclamation-triangle"></i> Error</strong>
-      `;
-      statusElement.style.color = 'cyan';
-    });
+  alert("Fetch error: " + error.message); // Menampilkan error dalam pop-up
+  statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>`;
+  statusElement.style.color = 'cyan';
+});
+
 }
 
 
