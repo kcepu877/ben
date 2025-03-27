@@ -1793,28 +1793,26 @@ function uuidv4() {
 
   console.log("Checking proxy:", StatusURL); // Debugging
 
-  fetch(StatusURL, {
-    method: "GET",
-    mode: "cors", // Pastikan CORS diaktifkan
-    cache: "no-cache",
-    headers: { "User-Agent": "Mozilla/5.0" }
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
+  // Mengambil data dari API untuk memeriksa status proxy
+  fetch(StatusURL)
+    .then(response => response.json())
     .then(data => {
-      const endTime = performance.now();
-      const latency = Math.floor(endTime - startTime);
+      console.log("Response:", data); // Debugging
 
-      if (data.proxyip) {
+      const endTime = performance.now(); // Mencatat waktu akhir
+      const latency = Math.floor(endTime - startTime); // Menghitung latency dalam ms (dibulatkan)
+
+      // Memeriksa apakah API mengembalikan status proxy dengan benar
+      if (data.proxyip === true) {
+        // Proxy status aktif
         statusElement.innerHTML = `
-          <strong><i class="fas fa-bolt"></i> <span style="color: gold;">${latency}ms</span></strong>
+          <strong>
+            <i class="fas fa-bolt"></i> <span style="color: gold;">${latency}ms</span>
+          </strong>
         `;
         statusElement.style.color = 'green';
       } else {
+        // Proxy status mati
         statusElement.innerHTML = `
           <strong><i class="fas fa-times-circle"></i> DEAD</strong>
         `;
@@ -1822,11 +1820,12 @@ function uuidv4() {
       }
     })
     .catch(error => {
-      console.error("Fetch error:", error);
-      statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error: ${error.message}</strong>`;
+      alert("Fetch error: " + error.message); // Menampilkan error dalam pop-up
+      statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>`;
       statusElement.style.color = 'cyan';
     });
 }
+
 
 
 
