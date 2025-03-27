@@ -3378,9 +3378,7 @@ function buildCountryFlag() {
   <div class="table-container"><br>
     <span class="menu" style="color: #000; text-decoration: none; display: block; text-align: center;"><center><strong>LIST SERVER DOMAIN
   </strong></center></span>
-    <span class="menu">
-                    <a href="https://privasi.kere.us.kg" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">privasi.kere.us.kg</a>
-                </span> 
+    
                 <span class="menu">
                     <a href="https://privasi.ndeso.xyz" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">privasi.ndeso.xyz</a>
                 </span> 
@@ -3400,14 +3398,9 @@ function buildCountryFlag() {
                     <a href="https://privasi.cloudproxyip.my.id" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">privasi.cloudproxyip.my.id</a>
                 </span> 
                 <span class="menu">
-                    <a href="https://privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">privasi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg</a>
-                </span> 
-                <span class="menu">
                     <a href="https://privasi.bmkg.xyz" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">privasi.bmkg.xyz</a>
                 </span> 
-                <span class="menu">
-                    <a href="https://privasi.cepu.us.kg" rel="noopener noreferrer" style="color: #fff; text-decoration: none; display: block; text-align: center;">privasi.cepu.us.kg</a>
-                </span> <br>
+                <br>
    </div>
    <button class="button7" id="close" onclick="hidePopup('list-domain')">Close</button>
     </div>
