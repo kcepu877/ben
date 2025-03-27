@@ -252,7 +252,7 @@ case "/proxy/check":
     return new Response("Format IP:PORT tidak valid", { status: 400 });
   }
 
-  const apiUrl = `https://ipcheck.ndeso.xyz/check?ip=${ip}:${port}`;
+  const apiUrl = `https://api.ndeso.xyz/check?ip=${ip}:${port}`;
 
   try {
     const apiResponse = await fetch(apiUrl);
