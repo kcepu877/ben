@@ -1820,7 +1820,7 @@ function uuidv4() {
       }
     })
     .catch(error => {
-      alert("Fetch error: " + error.message); // Menampilkan error dalam pop-up
+       // Menampilkan error dalam pop-up
       statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>`;
       statusElement.style.color = 'cyan';
     });
