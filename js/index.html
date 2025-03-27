@@ -1783,7 +1783,7 @@ function uuidv4() {
   .catch(error => console.error("Error fetching proxy data:", error));
 
   // Fungsi untuk mengecek status proxy
-  async function checkProxyStatus(ip, port, statusElement) {
+  function checkProxyStatus(ip, port, statusElement) {
   // Menampilkan indikator loading saat memeriksa status
   statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i></strong><div class="warna-text">Loading...</div>';
   statusElement.style.color = 'green';
@@ -1793,41 +1793,41 @@ function uuidv4() {
 
   console.log("Checking proxy:", StatusURL); // Debugging
 
-  try {
-    const response = await fetch(StatusURL, {
-      method: "GET",
-      mode: "cors", // Pastikan CORS diaktifkan
-      cache: "no-cache",
-      headers: { "User-Agent": "Mozilla/5.0" }
+  fetch(StatusURL, {
+    method: "GET",
+    mode: "cors", // Pastikan CORS diaktifkan
+    cache: "no-cache",
+    headers: { "User-Agent": "Mozilla/5.0" }
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      const endTime = performance.now();
+      const latency = Math.floor(endTime - startTime);
+
+      if (data.proxyip) {
+        statusElement.innerHTML = `
+          <strong><i class="fas fa-bolt"></i> <span style="color: gold;">${latency}ms</span></strong>
+        `;
+        statusElement.style.color = 'green';
+      } else {
+        statusElement.innerHTML = `
+          <strong><i class="fas fa-times-circle"></i> DEAD</strong>
+        `;
+        statusElement.style.color = 'red';
+      }
+    })
+    .catch(error => {
+      console.error("Fetch error:", error);
+      statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error: ${error.message}</strong>`;
+      statusElement.style.color = 'cyan';
     });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log("Response:", data); // Debugging
-
-    const endTime = performance.now();
-    const latency = Math.floor(endTime - startTime);
-
-    if (data.proxyip) {
-      statusElement.innerHTML = `
-        <strong><i class="fas fa-bolt"></i> <span style="color: gold;">${latency}ms</span></strong>
-      `;
-      statusElement.style.color = 'green';
-    } else {
-      statusElement.innerHTML = `
-        <strong><i class="fas fa-times-circle"></i> DEAD</strong>
-      `;
-      statusElement.style.color = 'red';
-    }
-  } catch (error) {
-    console.error("Fetch error:", error);
-    statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>`;
-    statusElement.style.color = 'cyan';
-  }
 }
+
 
 
   // Fungsi untuk render proxies dengan pagination
