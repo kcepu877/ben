@@ -1787,7 +1787,7 @@ function uuidv4() {
   // Menampilkan indikator loading saat memeriksa status
   statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i></strong><div class="warna-text">Loading...</div>';
   statusElement.style.color = 'green';
-    
+
   const startTime = performance.now(); // Mencatat waktu awal
   const StatusURL = `https://privasi.bmkg.xyz/check-proxy?ip=${ip}:${port}`;
 
@@ -1796,19 +1796,15 @@ function uuidv4() {
     .then(response => response.json())
     .then(data => {
       const endTime = performance.now(); // Mencatat waktu akhir
-      let latency = endTime - startTime; // Menghitung latency dalam ms
+      const latency = Math.floor(endTime - startTime); // Menghitung latency dalam ms (dibulatkan)
 
-      // Memperkecil nilai latency, misalnya dibagi dengan 10
-      latency = latency / 100; // Faktor pembagi untuk memperkecil nilai latency
-
-      // Membuang bagian setelah desimal, hanya menyisakan nilai integer
-      const latencyString = Math.floor(latency); // Hanya ambil angka bulat (membuang bagian desimal)
-
-      // Memeriksa status proxy dan menampilkannya sesuai dengan status
+      // Memeriksa status proxy berdasarkan data dari API
       if (data.proxyip) {
         // Proxy status aktif
         statusElement.innerHTML = `
-          <strong><i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">${latencyString}ms</span></strong>
+          <strong>
+            <i class="fas fa-bolt"></i> <span style="color: gold;">${latency}ms</span>
+          </strong>
         `;
         statusElement.style.color = 'green';
       } else {
@@ -1820,7 +1816,7 @@ function uuidv4() {
       }
     })
     .catch(() => {
-      // Menangani kesalahan jika API tidak merespon atau terjadi masalah jaringan
+      // Menangani kesalahan jika API tidak merespons atau terjadi masalah jaringan
       statusElement.innerHTML = `
         <strong><i class="fas fa-exclamation-triangle"></i> Error</strong>
       `;
