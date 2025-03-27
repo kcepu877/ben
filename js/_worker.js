@@ -67,7 +67,7 @@ async function reverseProxy(request, target) {
 
   const response = await fetch(modifiedRequest);
   const newResponse = new Response(response.body, response);
-  newResponse.headers.set("X-Proxied-By", "Cloudflare Worker","Access-Control-Allow-Origin": "*" );
+  newResponse.headers.set("X-Proxied-By", "Cloudflare Worker", "Access-Control-Allow-Origin", "*" );
 
   return newResponse;
 }
