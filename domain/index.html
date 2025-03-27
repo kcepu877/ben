@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Proxy</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .pagination, .filter-container {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .pagination button, .filter-container button {
+            padding: 5px 10px;
+            cursor: pointer;
+            border: 1px solid #000;
+            background-color: #f0f0f0;
+            margin: 2px;
+        }
+        .pagination button.active, .filter-container button.active {
+            background-color: #007bff;
+            color: white;
+        }
+        #search {
+            display: block;
+            margin: 10px auto;
+            padding: 5px;
+            width: 200px;
+        }
+        .loading {
+            font-size: 12px;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Daftar Proxy</h1>
+
+    <input type="text" id="search" placeholder="Cari IP atau ISP..." oninput="searchProxy()">
+
+    <div class="filter-container" id="filterButtons"></div>
+
+    <select id="itemsPerPage" onchange="changeItemsPerPage()">
+        <option value="10">10 per halaman</option>
+        <option value="25">25 per halaman</option>
+        <option value="50">50 per halaman</option>
+        <option value="75">75 per halaman</option>
+        <option value="100">100 per halaman</option>
+    </select>
+
+    <table id="proxyTable">
+        <thead>
+            <tr>
+                <th>IP:Port</th>
+                <th>Status</th>
+                <th>ISP || ID</th>                
+                
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div class="pagination" id="pagination"></div>
+    <script>
+        let proxyData = [];
+        let filteredData = [];
+        let currentPage = 1;
+        let itemsPerPage = 10;
+        let currentFilter = null;
+        let searchQuery = "";
+
+        fetch('https://bmkg.xyz/update_proxyip.txt')
+            .then(response => response.text())
+            .then(data => {
+                const lines = data.split('\n');
+                proxyData = lines.map(line => {
+                    const cols = line.split(',').map(col => col.trim());
+                    return { ip: cols[0], port: cols[1], id: cols[2], isp: cols[3], status: "Checking..." };
+                });
+
+                const ids = [...new Set(proxyData.map(item => item.id).filter(id => id))];
+                createFilterButtons(ids);
+                if (ids.length > 0) filterByID(ids[0]);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+
+        function createFilterButtons(ids) {
+            const filterContainer = document.getElementById('filterButtons');
+            filterContainer.innerHTML = '';
+
+            ids.forEach((id, index) => {
+                const button = document.createElement('button');
+                button.textContent = id;
+                button.onclick = () => filterByID(id);
+                if (index === 0) button.classList.add('active');
+                filterContainer.appendChild(button);
+            });
+        }
+
+        function filterByID(id) {
+            currentFilter = id;
+            filteredData = proxyData.filter(item => item.id === id);
+            searchProxy();
+            updateActiveFilter(id);
+            checkProxies();
+        }
+
+        function updateActiveFilter(id) {
+            document.querySelectorAll('.filter-container button').forEach(button => {
+                button.classList.toggle('active', button.textContent === id);
+            });
+        }
+
+        function searchProxy() {
+            searchQuery = document.getElementById('search').value.toLowerCase();
+            let tempData = filteredData.filter(item =>
+                item.ip.includes(searchQuery) || item.isp.toLowerCase().includes(searchQuery)
+            );
+            displayPage(1, tempData);
+        }
+        function displayPage(page, data = filteredData) {
+            currentPage = page;
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const tableBody = document.querySelector('#proxyTable tbody');
+            tableBody.innerHTML = '';
+
+            data.slice(startIndex, endIndex).forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.ip}:${item.port}</td>
+                    <td class="status">${item.status}</td>      
+                    <td>${item.isp} || ${item.id}</td>
+                    
+                     `;
+                tableBody.appendChild(row);
+            });
+
+            createPagination(data.length);
+        }
+
+        function createPagination(totalItems) {
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            const paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = '';
+
+            if (totalPages <= 1) return;
+
+            addPaginationButton('<<<', () => changePage(1));
+            if (currentPage > 1) addPaginationButton('<<', () => changePage(currentPage - 1));
+
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, currentPage + 2);
+            if (startPage === 1) endPage = Math.min(5, totalPages);
+            if (endPage === totalPages) startPage = Math.max(1, totalPages - 4);
+
+            for (let i = startPage; i <= endPage; i++) {
+                addPaginationButton(i, () => changePage(i), i === currentPage);
+            }
+
+            if (currentPage < totalPages) addPaginationButton('>>', () => changePage(currentPage + 1));
+            addPaginationButton('>>>', () => changePage(totalPages));
+        }
+
+        function addPaginationButton(label, onClick, isActive = false) {
+            const button = document.createElement('button');
+            button.textContent = label;
+            button.onclick = onClick;
+            if (isActive) button.classList.add('active');
+            document.getElementById('pagination').appendChild(button);
+        }
+
+        function changePage(page) {
+            displayPage(page);
+        }
+
+    function checkProxiesSequentially(index = 0) {
+        if (index >= filteredData.length) return; // Jika sudah selesai, hentikan proses
+
+        let item = filteredData[index];
+        let row = document.querySelector(`#row-${index} .status`);
+
+        if (!row) {
+            checkProxiesSequentially(index + 1); // Lanjut ke proxy berikutnya jika tidak ditemukan
+            return;
+        }
+
+        row.textContent = "⏳ Checking...";
+
+        fetch(`https://api.ndeso.xyz/check?ip=${item.ip}:${item.port}`)
+            .then(response => response.json())
+            .then(data => {
+                item.status = (data.message && data.message.includes("ACTIVE ✅")) ? "✅ ACTIVE" : "❌ DEAD";
+                row.textContent = item.status;
+            })
+            .catch(() => {
+                item.status = "❌ DEAD";
+                row.textContent = item.status;
+            })
+            .finally(() => {
+                setTimeout(() => checkProxiesSequentially(index + 1), 300); // Lanjut ke proxy berikutnya dengan delay 300ms
+            });
+    }
+
+    </script>
+</body>
+</html>
