@@ -1795,7 +1795,11 @@ function uuidv4() {
 
   // Mengambil data dari API untuk memeriksa status proxy
   fetch(StatusURL)
-    .then(response => response.json())
+	
+  .then(response => response.text())
+
+    
+    
     .then(data => {
       console.log("Response:", data); // Debugging
 
@@ -1819,6 +1823,7 @@ function uuidv4() {
         statusElement.style.color = 'red';
       }
     })
+	
     .catch(error => {
        // Menampilkan error dalam pop-up
       statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>`;
