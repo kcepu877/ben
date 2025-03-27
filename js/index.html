@@ -1789,13 +1789,15 @@ function uuidv4() {
   statusElement.style.color = 'green';
 
   const startTime = performance.now(); // Mencatat waktu awal
-  const StatusURL = `https://privasi.bmkg.xyz/check-proxy?ip=${ip}:${port}`; // Menggunakan format API yang benar
+  const StatusURL = `https://privasi.bmkg.xyz/check-proxy?ip=${ip}:${port}`;
 
   console.log("Checking proxy:", StatusURL); // Debugging
 
-  // Mengambil data dari API untuk memeriksa status proxy
   fetch(StatusURL, {
-    headers: { "User-Agent": "Mozilla/5.0" } // Tambahkan header User-Agent
+    method: "GET",
+    mode: "cors", // Pastikan CORS diaktifkan
+    cache: "no-cache",
+    headers: { "User-Agent": "Mozilla/5.0" }
   })
     .then(response => {
       if (!response.ok) {
@@ -1806,15 +1808,12 @@ function uuidv4() {
     .then(data => {
       console.log("Response:", data); // Debugging
 
-      const endTime = performance.now(); // Mencatat waktu akhir
-      const latency = Math.floor(endTime - startTime); // Menghitung latency dalam ms (dibulatkan)
+      const endTime = performance.now();
+      const latency = Math.floor(endTime - startTime);
 
-      // Memeriksa apakah API mengembalikan status proxy dengan benar
       if (data.proxyip === true) {
         statusElement.innerHTML = `
-          <strong>
-            <i class="fas fa-bolt"></i> <span style="color: gold;">${latency}ms</span>
-          </strong>
+          <strong><i class="fas fa-bolt"></i> <span style="color: gold;">${latency}ms</span></strong>
         `;
         statusElement.style.color = 'green';
       } else {
@@ -1826,7 +1825,7 @@ function uuidv4() {
     })
     .catch(error => {
       console.error("Fetch error:", error); // Log error di console
-      alert("Fetch error: " + error.message); // Tampilkan pop-up error
+      alert("Fetch error: " + error.message);
       statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>`;
       statusElement.style.color = 'cyan';
     });
