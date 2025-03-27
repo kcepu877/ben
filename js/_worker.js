@@ -67,7 +67,7 @@ async function reverseProxy(request, target) {
 
   const response = await fetch(modifiedRequest);
   const newResponse = new Response(response.body, response);
-  newResponse.headers.set("X-Proxied-By", "Cloudflare Worker");
+  newResponse.headers.set("X-Proxied-By", "Cloudflare Worker","Access-Control-Allow-Origin": "*" );
 
   return newResponse;
 }
@@ -1826,7 +1826,10 @@ async function handleWebRequest(request) {
 
     const fetchConfigs = async () => {
         try {
-            const response = await fetch(apiUrl);
+            const response = await fetch(apiUrl, {
+    method: "GET",
+    headers: { "User-Agent": "Mozilla/5.0" }
+  });
             const text = await response.text();
 
             let pathCounters = {}; // Menyimpan jumlah path per countryCode
@@ -1953,8 +1956,8 @@ function buildCountryFlag() {
         const wildcard = selectedWildcard || hostName;
         const modifiedHostName = selectedWildcard ? `${selectedWildcard}.${hostName}` : hostName;
         const url = new URL(request.url);
-       const BASE_URL = `https://${url.hostname}`; 
-       const CHECK_API = `${BASE_URL}/check-proxy?ip=`; 
+        const BASE_URL = `https://${url.hostname}`; 
+        const CHECK_API = `${BASE_URL}/check-proxy?ip=`; 
         const ipPort = `${config.ip}:${config.port}`;
         const healthCheckUrl = `${CHECK_API}${ipPort}`;
 
