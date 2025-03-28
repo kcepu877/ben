@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Generator Angka Togel</title>
+  <title>Prediksi Togel dari Result</title>
   <meta charset="UTF-8">
 </head>
 <body>
-  <h1>Generator Angka Togel Berdasarkan Tanggal Lahir</h1>
+  <h1>Prediksi Angka Togel</h1>
 
-  <label for="birthDate">Masukkan Tanggal Lahir:</label>
-  <input type="date" id="birthDate">
+  <label for="resultSebelumnya">Result Sebelumnya (4D):</label>
+  <input type="text" id="resultSebelumnya" placeholder="Contoh: 7284" maxlength="4"><br><br>
+
+  <label for="pasaran">Pilih Pasaran:</label>
+  <select id="pasaran">
+    <option value="sydney">Sydney</option>
+    <option value="singapore">Singapore</option>
+    <option value="hongkong">Hongkong</option>
+  </select><br><br>
+
   <button onclick="generate()">Generate</button>
 
-  <h2>Hasil:</h2>
+  <h2>Hasil Prediksi:</h2>
   <p id="hasil"></p>
 
   <script>
-    function generateFromBirthDate(birthDateStr) {
-      let birthDate = new Date(birthDateStr);
-      if (isNaN(birthDate)) return null;
+    function generateFromResult(result, pasaran) {
+      if (!/^\d{4}$/.test(result)) return null;
 
-      let day = birthDate.getDate();
-      let month = birthDate.getMonth() + 1;
-      let year = birthDate.getFullYear();
+      let d1 = parseInt(result[0]);
+      let d2 = parseInt(result[1]);
+      let d3 = parseInt(result[2]);
+      let d4 = parseInt(result[3]);
 
-      let twoD = (day + month) % 100;
-      let threeD = (day * month + year % 1000) % 1000;
-      let fourD = (year * month + day) % 10000;
+      let twoD, threeD, fourD;
+
+      if (pasaran === "sydney") {
+        twoD = (d4 + d2 * 3) % 100;
+        threeD = (d1 * 100 + d3 * 10 + d2) % 1000;
+        fourD = (d1 + d2 + d3 + d4) * 3 % 10000;
+      } else if (pasaran === "singapore") {
+        twoD = (d1 + d3 * 2) % 100;
+        threeD = (d4 * 10 + d2 * 2 + d1) % 1000;
+        fourD = (d4 * d3 + d2 * d1) % 10000;
+      } else if (pasaran === "hongkong") {
+        twoD = (d2 + d4 * 2) % 100;
+        threeD = (d3 * 2 + d1 * 10 + d4) % 1000;
+        fourD = ((d1 + d2) * (d3 + d4)) % 10000;
+      }
 
       return {
         "2D": twoD.toString().padStart(2, '0'),
@@ -35,18 +55,20 @@
     }
 
     function generate() {
-      const input = document.getElementById('birthDate').value;
-      const result = generateFromBirthDate(input);
+      const resultInput = document.getElementById('resultSebelumnya').value.trim();
+      const pasaran = document.getElementById('pasaran').value;
+      const result = generateFromResult(resultInput, pasaran);
       const output = document.getElementById('hasil');
 
       if (result) {
         output.innerHTML = `
+          Pasaran: <strong>${pasaran.toUpperCase()}</strong><br>
           2D: ${result["2D"]} <br>
           3D: ${result["3D"]} <br>
           4D: ${result["4D"]}
         `;
       } else {
-        output.textContent = "Tanggal tidak valid!";
+        output.textContent = "Input result tidak valid! Harus 4 digit angka.";
       }
     }
   </script>
