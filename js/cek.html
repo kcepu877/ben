@@ -1,161 +1,144 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-<title>Sidompul Cek Kuota XL & AXIS - BMKG-STORE</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="format-detection" content="telephone=no" />
-<meta name="robots" content="noindex, nofollow">
-<meta name="author" content="EEEE">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="https://my.kmsp-store.com/css/jquery.ccpicker.css">
-<link rel="stylesheet" href="https://my.kmsp-store.com/assets/css/spinner.css">
-<link href="https://my.kmsp-store.com/assets/build/toastr.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sidompul Cek Kuota XL & AXIS - BMKG-STORE</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://my.kmsp-store.com/assets/build/toastr.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f4f6f8;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    .atur1 {
+      margin: 150px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    @media (min-width: 200px)  { .atur1 { width: 90%; } }
+    @media (min-width: 600px)  { .atur1 { width: 80%; } }
+    @media (min-width: 1000px) { .atur1 { width: 50%; } }
+    @media (min-width: 1300px) { .atur1 { width: 30%; } }
+
+    #cover-spin {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      left: 0; top: 0;
+      background-color: rgba(255, 255, 255, 0.7);
+      z-index: 9999;
+      display: none;
+    }
+
+    #cover-spin::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      border: 4px solid #0072ff;
+      border-top: 4px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.7s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cover-spin"></div>
+
+<div class="container atur1 text-center">
+  <h3 style="font-weight: bold;">SIDOMPUL CEK KUOTA XL & AXIS</h3>
+  <p><strong>By BMKG-STORE</strong><br>v3.0.0</p>
+  <div class="alert alert-success text-left">
+    <strong><i class="fa fa-bullhorn"></i> INFO</strong><br>
+    Mohon jangan melakukan SPAM. Gunakan fitur ini dengan bijak!
+  </div>
+
+  <div id="formnya" class="text-left">
+    <div class="form-group">
+      <label for="msisdn">MSISDN/Nomor XL/AXIS Kamu:</label>
+      <input type="number" class="form-control" id="msisdn" placeholder="Ex: 08xxx/628xxx" maxlength="16" required>
+    </div>
+    <button type="button" id="submitCekKuota" class="btn btn-primary">
+      <i class="fa fa-sign-in"></i> Cek
+    </button>
+    <div id="hasilnya" style="margin-top: 15px;"></div>
+  </div>
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144237878-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-144237878-1');
-</script>
-<body>
-<style>
-@media only screen and (min-width: 200px) {
-.atur1{width: 90%;}
-}
-
-@media only screen and (min-width: 600px) {
-.atur1{width: 80%;}
-}
-
-@media only screen and (min-width: 600px) {
-.atur1{width: 80%;}
-}
-
-@media only screen and (min-width: 1000px) {
-.atur1{width: 50%;}
-}
-
-@media only screen and (min-width: 1300px) {
-.atur1{width: 30%;}
-}
-</style>
-<div id="cover-spin"></div>
-<div class="container atur1" style="margin-top: 150px; margin-bottom: 150px;">
-<center><h3 style="font-weight: bold;">SIDOMPUL CEK KUOTA XL & AXIS</h3><b>By BMKG-STORE<br>v3.0.0</b></center>
-<br>
-<div class="alert alert-success" style="text-align: justify;">
-  <strong><i class="fa fa-bullhorn" aria-hidden="true"></i> INFO</strong><br>Mohon jangan melakukan SPAM. Gunakan fitur ini dengan bijak!</a>
-</div>
-<div id="formnya">
-  <div class="form-group">
-    <label for="msisdn">MSISDN/Nomor XL/AXIS Kamu:</label>
-    <input type="number" class="form-control" id="msisdn" placeholder="Ex: 08xxx/628xxx" value="" maxlength="16" required>
-  </div>
-  <button type="button" id="submitCekKuota" class="btn btn-primary"><i class="fa fa-sign-in" aria-hidden="true"></i> Cek</button>
-  <div id="hasilnya" style="text-align: justify;"></div>
-</div><br>
-</div>
-<script type="text/javascript">
-$(document).ready(function(){
-  $('#submitCekKuota').click(function(){
-    $.ajax({
-        type:'GET',
-        crossDomain: true,
-        url: "https://apigw.kmsp-store.com/sidompul/v3/cek_kuota?msisdn=" + $('#msisdn').val() + "&isJSON=true",
-        data:{},
-        dataType:'JSON',
-        'contentType': 'application/x-www-form-urlencoded',
-        error:function(xhr, ajaxOptions, thrownError){
-        //error
-        $('#cover-spin').hide();
-        toastr.error('Terjadi kesalahan. Silakan coba lagi!');
-        },
-        cache:false,
-        beforeSend:function(request){
-          request.setRequestHeader('Authorization', 'Basic c2lkb21wdWxhcGk6YXBpZ3drbXNw');
-          request.setRequestHeader('X-API-Key', '4352ff7d-f4e6-48c6-89dd-21c811621b1c');
-          request.setRequestHeader('X-App-Version', '3.0.0');
-        //sebelum kirim
-        $('#cover-spin').show(0);
-        },
-        success:function(s){
-          //console.log(s);
-
-          $('#cover-spin').hide();
-
-          if(s['status'] == false)
-          {
-            toastr.error(s['message']);
-            $('#hasilnya').html('');
-            $('#hasilnya').html("<br>" + '<font style="color: red;"><b>' + s['data']['keteranganError'] + '</b></font>');
-          }
-
-          if(s['status'] == true)
-          {
-            toastr.success(s['message']);
-            $('#hasilnya').html('');
-            $('#hasilnya').html("<br>" + s['data']['hasil']);
-          }
-        }
-      });
-  });
-});
-
-$(document).on('keypress',function(e) {
-  if(e.which == 13 && $("#msisdn").is(":focus"))
-  {
-    $.ajax({
-        type:'GET',
-        crossDomain: true,
-        url: "https://apigw.kmsp-store.com/sidompul/v3/cek_kuota?msisdn=" + $('#msisdn').val() + "&isJSON=true",
-        data:{},
-        dataType:'JSON',
-        'contentType': 'application/x-www-form-urlencoded',
-        error:function(xhr, ajaxOptions, thrownError){
-        //error
-        $('#cover-spin').hide();
-        toastr.error('Terjadi kesalahan. Silakan coba lagi!');
-        },
-        cache:false,
-        beforeSend:function(request){
-          request.setRequestHeader('Authorization', 'Basic c2lkb21wdWxhcGk6YXBpZ3drbXNw');
-          request.setRequestHeader('X-API-Key', '4352ff7d-f4e6-48c6-89dd-21c811621b1c');
-          request.setRequestHeader('X-App-Version', '3.0.0');
-        //sebelum kirim
-        $('#cover-spin').show(0);
-        },
-        success:function(s){
-          //console.log(s);
-
-          $('#cover-spin').hide();
-
-          if(s['status'] == false)
-          {
-            toastr.error(s['message']);
-            $('#hasilnya').html('');
-            $('#hasilnya').html("<br>" + '<font style="color: red;"><b>' + s['data']['keteranganError'] + '</b></font>');
-          }
-
-          if(s['status'] == true)
-          {
-            toastr.success(s['message']);
-            $('#hasilnya').html('');
-            $('#hasilnya').html("<br>" + s['data']['hasil']);
-          }
-        }
-      });
-  }
-});
-</script>
 <script src="https://my.kmsp-store.com/assets/toastr.js"></script>
+<script>
+  function cekKuota() {
+    const nomor = $('#msisdn').val().trim();
+    if (!nomor) {
+      toastr.warning("Nomor tidak boleh kosong!");
+      return;
+    }
+
+    $.ajax({
+      type: 'GET',
+      url: `https://apigw.kmsp-store.com/sidompul/v3/cek_kuota?msisdn=${nomor}&isJSON=true`,
+      crossDomain: true,
+      dataType: 'json',
+      contentType: 'application/x-www-form-urlencoded',
+      cache: false,
+      beforeSend: function(request) {
+        request.setRequestHeader('Authorization', 'Basic c2lkb21wdWxhcGk6YXBpZ3drbXNw');
+        request.setRequestHeader('X-API-Key', '4352ff7d-f4e6-48c6-89dd-21c811621b1c');
+        request.setRequestHeader('X-App-Version', '3.0.0');
+        $('#cover-spin').show();
+      },
+      success: function(s) {
+        $('#cover-spin').hide();
+        $('#hasilnya').removeClass().html('');
+
+        if (s.status === false) {
+          toastr.error(s.message);
+          $('#hasilnya').html(`<div class="fade-in text-danger"><b>${s.data.keteranganError}</b></div>`);
+        } else if (s.status === true) {
+          toastr.success(s.message);
+          $('#hasilnya').html(`<div class="fade-in">${s.data.hasil}</div>`);
+        }
+      },
+      error: function() {
+        $('#cover-spin').hide();
+        toastr.error('Terjadi kesalahan. Silakan coba lagi!');
+      }
+    });
+  }
+
+  $(document).ready(function() {
+    $('#submitCekKuota').click(cekKuota);
+    $('#msisdn').keypress(function(e) {
+      if (e.which === 13) cekKuota();
+    });
+  });
+</script>
 </body>
 </html>
