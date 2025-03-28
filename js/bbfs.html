@@ -1,0 +1,137 @@
+<h3 class='post-title entry-title' itemprop='name'>
+BBFS GENERATOR
+</h3>
+<div class='post-header'>
+<div class='post-header-line-1'></div>
+</div>
+<div class='post-body entry-content' id='post-body-6465272015763126689' itemprop='articleBody'>
+<br />
+<br />
+<br />
+<h2>
+<span style="color: blue;"><b>BBFS Generator</b></span></h2>
+<script language="javascript" src="https://dl.dropboxusercontent.com/s/6gweb74ofrken3m/BBFS%20Generator.js"></script>
+
+
+<style media="all" type="text/css">
+table.askop {
+    margin: 0 auto;
+}
+.ack {
+    width: 100px;
+}
+
+a:hover {
+   color: #FF0000;
+   text-decoration: none;
+}
+pre.js {
+   font-family: "Courier New", Courier, mono;
+   text-align: left;
+   font-size: 12px;
+   border: outset;
+   background-color: #EEE;
+   margin: 0 auto;
+   padding: 4px;
+   width: 55em;
+   overflow: auto;
+}
+pre.js .comment {
+   color: #008000;
+   font-style: italic;
+}
+pre.js .keyword {
+   color: #00F;
+   font-weight: bold;
+}
+pre.js .var {
+   color: #900;
+}
+pre.js .str {
+   color: #366;
+}
+pre.js .func {
+   color: #099;
+}
+pre.js .op {
+   color: #009;
+}
+pre.js .literal {
+   color: #F00;
+}
+</style>
+
+<form name="interfaceform" style="color: black;">
+<div style="text-align: center;">
+<input checked="checked" name="chkbx_display" type="checkbox" value="ON" /></div>
+<div style="text-align: center;">
+Tampilkan hasil. <input name="maxoutput" size="10" type="hidden" /> <input checked="checked" name="chkbx_allow" type="hidden" value="ON" /> <input name="chkbx_circular" type="hidden" value="ON" /> <input name="chkbx_derange" type="hidden" value="ON" /> <input checked="checked" name="chkbx_wrap" type="hidden" value="ON" /> <input name="chkbx_shuffle" type="hidden" value="ON" /></div>
+
+<div style="text-align: center;">
+<span style="font-size: large;"><b>Angka tarung dalam:</b></span>
+</div>
+<div style="text-align: center;">
+<input name="inputstring" maxlength="10" type="number" value="123456" />
+<select name="maxwidth">
+  <option value="2">2D</option>
+  <option value="3">3D</option>
+  <option value="4">4D</option>
+</select>
+
+<select id="select1">
+  <option value="*">*</option>
+  <option value="#">#</option>
+</select>
+
+
+ </div>
+<div style="text-align: center;">
+<input onclick="javascript:GeneratePermutations()" type="button" value="Generate" /> <input onclick="javascript:ClearReset()" type="button" value="Bersihkan" />
+</div>
+<center>
+<input disabled="disabled" name="chkbx_comma" type="hidden" value="ON" />
+<input name="feedback" readonly/>
+<textarea cols="70" name="permlist" rows="5" style="font-size: 13px; width: 95%;" wrap="virtual"></textarea></form>
+<center>
+<br>
+<h3>Pola As Kop Kepala Ekor </h3>
+</br>
+
+<form action="" autocomplete="off" method="get" onsubmit="return combineApp.calcCombinations({src:this.str,dest:this.txt,msgID:'count'});" style="color: black; return false" oninput="str.value = AS.value +','+ COP.value +','+ KEP.value +','+ EKOR.value">
+
+<center>
+ <input class="ack" type="number" placeholder="as" maxlength="10" type="number" name="AS" />
+ <input class="ack" type="number" placeholder="kop" maxlength="10" type="number" name="COP" />
+ <input class="ack" type="number" placeholder="kepala" maxlength="10" name="KEP" />
+ <input class="ack" type="number" placeholder="ekor" maxlength="10" name="EKOR" /> 
+
+
+<br><br>
+<select id="select2">
+  <option value="*">*</option>
+  <option value="#">#</option>
+</select>
+
+<input id="str" type="hidden" name="str"  ><input type="submit" value="Generate" /><input type="button" onclick="trimSpaces();" value="Hilangkan spasi">
+</center>
+
+<center>
+<b><i id="count"></i></b>
+<textarea id="textString" cols="30" name="txt" rows="5" style="font-size: 13px; width: 95%;">
+</textarea>
+
+
+<div style='clear: both;'></div>
+</div>
+<div class='post-footer'>
+<div class='post-footer-line post-footer-line-1'>
+<span class='post-author vcard'>
+</span>
+<span class='post-timestamp'>
+</span>
+<span class='post-comment-link'>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-2'>
+</div>
+</div>
