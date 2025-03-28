@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Prediksi Togel dari Result</title>
   <meta charset="UTF-8">
+  <title>Prediksi Togel Berdasarkan Data Simulasi</title>
 </head>
 <body>
-  <h1>Prediksi Angka Togel</h1>
-
-  <label for="resultSebelumnya">Result Sebelumnya (4D):</label>
-  <input type="text" id="resultSebelumnya" placeholder="Contoh: 7284" maxlength="4"><br><br>
+  <h1>Prediksi Togel</h1>
 
   <label for="pasaran">Pilih Pasaran:</label>
   <select id="pasaran">
+    <option value="hongkong">Hongkong</option>
     <option value="sydney">Sydney</option>
     <option value="singapore">Singapore</option>
-    <option value="hongkong">Hongkong</option>
   </select><br><br>
 
-  <button onclick="generate()">Generate</button>
+  <button onclick="generate()">Generate Prediksi</button>
 
   <h2>Hasil Prediksi:</h2>
   <p id="hasil"></p>
 
   <script>
-    function generateFromResult(result, pasaran) {
-      if (!/^\d{4}$/.test(result)) return null;
+    // Fungsi untuk menghasilkan data hasil togel secara acak
+    function getSimulatedResult() {
+      const result = [];
+      for (let i = 0; i < 4; i++) {
+        result.push(Math.floor(Math.random() * 10));
+      }
+      return result.join('');
+    }
 
+    // Fungsi untuk menghasilkan prediksi berdasarkan hasil simulasi
+    function generatePrediction(result, pasaran) {
       let d1 = parseInt(result[0]);
       let d2 = parseInt(result[1]);
       let d3 = parseInt(result[2]);
@@ -54,22 +59,20 @@
       };
     }
 
+    // Fungsi utama untuk menghasilkan prediksi
     function generate() {
-      const resultInput = document.getElementById('resultSebelumnya').value.trim();
       const pasaran = document.getElementById('pasaran').value;
-      const result = generateFromResult(resultInput, pasaran);
+      const simulatedResult = getSimulatedResult();
+      const prediction = generatePrediction(simulatedResult, pasaran);
       const output = document.getElementById('hasil');
 
-      if (result) {
-        output.innerHTML = `
-          Pasaran: <strong>${pasaran.toUpperCase()}</strong><br>
-          2D: ${result["2D"]} <br>
-          3D: ${result["3D"]} <br>
-          4D: ${result["4D"]}
-        `;
-      } else {
-        output.textContent = "Input result tidak valid! Harus 4 digit angka.";
-      }
+      output.innerHTML = `
+        Hasil Simulasi: ${simulatedResult} <br>
+        Pasaran: <strong>${pasaran.toUpperCase()}</strong><br>
+        2D: ${prediction["2D"]} <br>
+        3D: ${prediction["3D"]} <br>
+        4D: ${prediction["4D"]}
+      `;
     }
   </script>
 </body>
