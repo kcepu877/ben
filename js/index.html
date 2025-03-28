@@ -1800,7 +1800,9 @@ function uuidv4() {
       console.log("Response:", data); // Debugging
 
       const endTime = performance.now(); // Mencatat waktu akhir
-      const latency = Math.floor(endTime - startTime); // Menghitung latency dalam ms (dibulatkan)
+      let latency = Math.floor(endTime - startTime); // Menghitung latency dalam ms (dibulatkan)
+
+      latency = Math.floor(latency / 100); // Membagi latency dengan 100
 
       // Memeriksa apakah API mengembalikan status proxy dengan benar
       if (data.proxyip === true) {
@@ -1820,9 +1822,10 @@ function uuidv4() {
       }
     })
     .catch(error => {
-      alert("Fetch error: " + error.message); // Menampilkan error dalam pop-up
+      // Menghapus alert dan menampilkan error di status element
       statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>`;
       statusElement.style.color = 'cyan';
+      console.error("Fetch error:", error); // Log error ke console
     });
 }
 
