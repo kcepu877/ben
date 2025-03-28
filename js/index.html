@@ -1789,17 +1789,13 @@ function uuidv4() {
   statusElement.style.color = 'green';
 
   const startTime = performance.now(); // Mencatat waktu awal
-  const StatusURL = `https://privasi.bmkg.xyz/check-proxy?ip=${ip}:${port}`;
+  const StatusURL = `https://floral-frog-4f60.mrxcepu.workers.dev/?ip=${ip}&port=${port}`;
 
   console.log("Checking proxy:", StatusURL); // Debugging
 
   // Mengambil data dari API untuk memeriksa status proxy
   fetch(StatusURL)
-	
-  .then(response => response.text())
-
-    
-    
+    .then(response => response.json())
     .then(data => {
       console.log("Response:", data); // Debugging
 
@@ -1823,13 +1819,13 @@ function uuidv4() {
         statusElement.style.color = 'red';
       }
     })
-	
     .catch(error => {
-       // Menampilkan error dalam pop-up
+      alert("Fetch error: " + error.message); // Menampilkan error dalam pop-up
       statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>`;
       statusElement.style.color = 'cyan';
     });
 }
+
 
 
 
