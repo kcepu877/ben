@@ -1,3 +1,88 @@
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h2, h3 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.post-header-line-1 {
+    height: 2px;
+    background-color: #3498db;
+    margin: 10px auto;
+    width: 50%;
+    border-radius: 5px;
+}
+
+form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+input[type="number"], select, textarea {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: calc(100% - 24px);
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border 0.3s ease;
+}
+
+input[type="number"]:focus, select:focus, textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+input[type="button"], input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    width: 100%;
+}
+
+#count {
+    color: #e74c3c;
+    font-size: 18px;
+}
+
+::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.center {
+    text-align: center;
+}
+
+</style>
+
 <h3 class='post-title entry-title' itemprop='name'>
 BBFS GENERATOR
 </h3>
