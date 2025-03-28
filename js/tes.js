@@ -15,7 +15,7 @@ async function handleRequest(request) {
     });
   }
 
-  const apiURL = `https://proxy.ndeso.xyz/check?ip=${ip}:${port}`;
+  const apiURL = `https://api.ndeso.xyz/check?ip=${ip}:${port}`;
 
   try {
     const response = await fetch(apiURL, {
