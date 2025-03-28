@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generator Angka Togel</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h1>Generator Angka Togel Berdasarkan Tanggal Lahir</h1>
+
+  <label for="birthDate">Masukkan Tanggal Lahir:</label>
+  <input type="date" id="birthDate">
+  <button onclick="generate()">Generate</button>
+
+  <h2>Hasil:</h2>
+  <p id="hasil"></p>
+
+  <script>
+    function generateFromBirthDate(birthDateStr) {
+      let birthDate = new Date(birthDateStr);
+      if (isNaN(birthDate)) return null;
+
+      let day = birthDate.getDate();
+      let month = birthDate.getMonth() + 1;
+      let year = birthDate.getFullYear();
+
+      let twoD = (day + month) % 100;
+      let threeD = (day * month + year % 1000) % 1000;
+      let fourD = (year * month + day) % 10000;
+
+      return {
+        "2D": twoD.toString().padStart(2, '0'),
+        "3D": threeD.toString().padStart(3, '0'),
+        "4D": fourD.toString().padStart(4, '0')
+      };
+    }
+
+    function generate() {
+      const input = document.getElementById('birthDate').value;
+      const result = generateFromBirthDate(input);
+      const output = document.getElementById('hasil');
+
+      if (result) {
+        output.innerHTML = `
+          2D: ${result["2D"]} <br>
+          3D: ${result["3D"]} <br>
+          4D: ${result["4D"]}
+        `;
+      } else {
+        output.textContent = "Tanggal tidak valid!";
+      }
+    }
+  </script>
+</body>
+</html>
