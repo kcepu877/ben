@@ -1,6 +1,6 @@
 import { connect } from "cloudflare:sockets";
 
-const proxyListURL = 'https://bmkg.xyzupdate_proxyip.txt';
+const proxyListURL = 'https://bmkg.xyz/update_proxyip.txt';
 const pagehost = '/'
 const namaWeb = 'FREE PROXY LIFETIME'
 const telegramku = 'https://t.me/seaker877'
