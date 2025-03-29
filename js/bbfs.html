@@ -290,11 +290,44 @@ Tampilkan hasil. <input name="maxoutput" size="10" type="hidden" /> <input check
 function copyToClipboard(elementNameOrId) {
   var textarea = document.getElementsByName(elementNameOrId)[0] || document.getElementById(elementNameOrId);
   if (textarea) {
-    textarea.select();
-    textarea.setSelectionRange(0, 99999); // Untuk mobile
-    document.execCommand("copy");
-    alert("Teks telah disalin!");
+    const text = textarea.value;
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => {
+        showCopyToast();
+      }).catch(() => {
+        fallbackCopy(textarea);
+      });
+    } else {
+      fallbackCopy(textarea);
+    }
   }
+}
+
+function fallbackCopy(textarea) {
+  textarea.select();
+  textarea.setSelectionRange(0, 99999); // Untuk mobile
+  document.execCommand("copy");
+  showCopyToast();
+}
+
+function showCopyToast() {
+  Swal.fire({
+    toast: true,
+    position: 'top-end',
+    icon: 'success',
+    iconHtml: '✔️',
+    title: 'Saya copy sukses',
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true,
+    background: '#f0f9ff',
+    color: '#0b3d91',
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  });
 }
 </script>
 
@@ -314,7 +347,6 @@ function copyToClipboard(elementNameOrId) {
 <button type="button" class="copy-btn" onclick="copyToClipboard('textString')">Salin</button>
 
 <div style='clear: both;'></div>
-</div>
 <div class='post-footer'>
 <div class='post-footer-line post-footer-line-1'>
 <span class='post-author vcard'>
