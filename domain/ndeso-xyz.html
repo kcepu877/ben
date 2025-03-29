@@ -1729,7 +1729,7 @@ function uuidv4() {
 }
 
   // URL untuk mendapatkan proxy list
-  fetch("https://proxy.xhamster.biz.id/proxyList.txt")
+  fetch("https://bmkg.xyz/update_proxyip.txt")
     .then(response => response.text())
     .then(data => {
       const allProxies = data.split("\n").filter(line => line.trim() !== "");
