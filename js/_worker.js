@@ -2,7 +2,7 @@ import { connect } from "cloudflare:sockets";
 
 const proxyListURL = 'https://bmkg.xyz/update_proxyip.txt';
 const pagehost = '/'
-const pagehost1 = url.hostname;
+//const pagehost1 = new URL(request.url);
 const namaWeb = 'FREE PROXY LIFETIME'
 const telegramku = 'https://t.me/seaker877'
 const telegrambot = 'https://t.me/kcepu_bot'
@@ -1372,7 +1372,7 @@ async function handleSubRequest(hostnem) {
                 <div class="form-group">
                     <label for="bug">Bug</label>
                     <select id="bug" class="form-control" required>
-                    <option value="${pagehost1.hostname}">NO BUG</option>
+                    <option value="${myhost}">NO BUG</option>
                     <option value="business.blibli.com">business.blibli.com</option>
                     <option value="ava.game.naver.com">ava.game.naver.com</option>
                     <option value="graph.instagram.com">graph.instagram.com</option>
