@@ -1720,6 +1720,7 @@ async function handleSubRequest(hostnem) {
             const errorMessageEl = document.getElementById('error-message');
             const appSelect = document.getElementById('app');
             const configTypeSelect = document.getElementById('configType');
+            const bugSelect = document.getElementById('bug');
 
             // Cached selectors to minimize DOM lookups
             const elements = {
@@ -1732,6 +1733,12 @@ async function handleSubRequest(hostnem) {
                 limit: document.getElementById('limit')
             };
 
+          bugSelect.addEventListener('change', () => {
+        if (bugSelect.value === '') {
+            bugSelect.value = window.location.hostname;
+        }
+    });
+    
             // App and config type interaction
             appSelect.addEventListener('change', () => {
                 const selectedApp = appSelect.value;
@@ -1783,14 +1790,13 @@ async function handleSubRequest(hostnem) {
                     // Update UI
                     loadingEl.style.display = 'none';
                     resultEl.style.display = 'block';
-                    const selectedDomain = document.getElementById('domain').value;
-		    generatedLinkEl.textContent = \`https://\${selectedDomain}\${generatedLink}\`;
+                    generatedLinkEl.textContent = \`https://\${window.location.hostname}\${generatedLink}\`;
 
                     // Copy link functionality
                     copyLinkBtn.onclick = async () => {
     try {
-        const link = 'https://' + selectedDomain + generatedLink;
-        await navigator.clipboard.writeText(link);
+        const link = 'https://' + window.location.hostname + generatedLink;
+	await navigator.clipboard.writeText(link);
 
         Swal.fire({
             icon: 'success',
