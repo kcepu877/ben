@@ -1723,21 +1723,7 @@ async function handleSubRequest(hostnem) {
 
           bugSelect.addEventListener('change', () => {
         if (bugSelect.value === '') {
-            // Cek apakah hostname sudah ada dalam opsi
-            let existingOption = [...bugSelect.options].find(opt => opt.value === window.location.hostname);
-
-            if (!existingOption) {
-                // Buat opsi baru dengan hostname
-                const hostnameOption = document.createElement('option');
-                hostnameOption.value = window.location.hostname;
-                hostnameOption.textContent = window.location.hostname;
-                hostnameOption.selected = true;
-
-                // Tambahkan ke dropdown
-                bugSelect.appendChild(hostnameOption);
-            } else {
-                existingOption.selected = true;
-            }
+            bugSelect.value = window.location.hostname;
         }
     });
 });
