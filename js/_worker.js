@@ -1371,7 +1371,7 @@ async function handleSubRequest(hostnem) {
                 <div class="form-group">
                     <label for="bug">Bug</label>
                     <select id="bug" class="form-control" required>
-                    <option value="">NO BUG</option>
+                    <option value="default">NO BUG</option>
                     <option value="business.blibli.com">business.blibli.com</option>
                     <option value="ava.game.naver.com">ava.game.naver.com</option>
                     <option value="graph.instagram.com">graph.instagram.com</option>
@@ -1722,7 +1722,7 @@ async function handleSubRequest(hostnem) {
             };
 
           bugSelect.addEventListener('change', () => {
-        if (bugSelect.value === '') {
+        if (bugSelect.value === 'default') {
             bugSelect.value = window.location.hostname;
         }
     });
