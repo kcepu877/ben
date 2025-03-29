@@ -1367,7 +1367,19 @@ async function handleSubRequest(hostnem) {
                         <option value="husi">HUSI</option>
                     </select>
                 </div>
+          <div class="form-group">
+                <label for="domain">Pilih Domain</label>
+<select id="domain" class="form-control" required>
+  <option value="privasi.ndeso.xyz">privasi.ndeso.xyz</option>
+  <option value="privasi.ndeso.web.id">privasi.ndeso.web.id</option>
+<option value="privasi.xhamster.biz.id">privasi.xhamster.biz.id</option>
+  <option value="privasi.turah.my.id">privasi.turah.my.id</option>
+<option value="privasi.najah.biz.id">privasi.najah.biz.id</option>
+  <option value="privasi.cloudproxyip.my.id">privasi.cloudproxyip.my.id</option>
+<option value="privasi.bmkg.xyz">privasi.bmkg.xyz</option>
 
+</select>
+            </div>
                 <div class="form-group">
                     <label for="bug">Bug</label>
                     <select id="bug" class="form-control" required>
@@ -1771,12 +1783,13 @@ async function handleSubRequest(hostnem) {
                     // Update UI
                     loadingEl.style.display = 'none';
                     resultEl.style.display = 'block';
-                    generatedLinkEl.textContent = \`https://\${window.location.hostname}\${generatedLink}\`;
+                    const selectedDomain = document.getElementById('domain').value;
+		    generatedLinkEl.textContent = \`https://\${selectedDomain}\${generatedLink}\`;
 
                     // Copy link functionality
                     copyLinkBtn.onclick = async () => {
     try {
-        const link = 'https://' + window.location.hostname + generatedLink;
+        const link = 'https://' + selectedDomain + generatedLink;
         await navigator.clipboard.writeText(link);
 
         Swal.fire({
