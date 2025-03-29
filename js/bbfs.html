@@ -218,6 +218,17 @@ Tampilkan hasil. <input name="maxoutput" size="10" type="hidden" /> <input check
  <input type="number" placeholder="KEPALA" maxlength="10" name="KEP"  />
  <input type="number" placeholder="EKOR" maxlength="10" name="EKOR"  />
 </div>
+<script>
+function copyToClipboard(elementNameOrId) {
+  var textarea = document.getElementsByName(elementNameOrId)[0] || document.getElementById(elementNameOrId);
+  if (textarea) {
+    textarea.select();
+    textarea.setSelectionRange(0, 99999); // Untuk mobile
+    document.execCommand("copy");
+    alert("Teks telah disalin!");
+  }
+}
+</script>
 
 
 <br><br>
