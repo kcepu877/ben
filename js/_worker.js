@@ -72,10 +72,14 @@ async function reverseProxy(request, target) {
 
   return newResponse;
 }
+export function getHostname(request) {
+    return new URL(request.url).hostname;
+}
+
 export default {
     async fetch(request) {
-        const myhost877 = new URL(request.url).hostname;
-        return new Response(`Hostname: ${myhost}`, { status: 200 });
+        const myhost877 = getHostname(request);
+        return new Response(`Hostname: ${myhost877}`, { status: 200 });
     }
 };
 
