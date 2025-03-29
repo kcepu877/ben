@@ -135,6 +135,11 @@
   </script>
 </head>
 
+
+
+
+<!-- ... kode HEAD tetap sama ... -->
+
 <body>
   <h3 class="post-title">BBFS GENERATOR</h3>
   <div class="post-header">
@@ -142,10 +147,10 @@
   </div>
 
   <form name="interfaceform">
-    <div class="center">
+    <div style="text-align: center;">
       <input checked name="chkbx_display" type="checkbox" value="ON" /> Tampilkan hasil
     </div>
-    <div class="center">
+    <div class="center input-grid">
       <input name="inputstring" maxlength="10" type="number" value="123456" />
       <select name="maxwidth">
         <option value="2">2D</option>
@@ -157,7 +162,7 @@
         <option value="#">#</option>
       </select>
     </div>
-    <div class="center">
+    <div style="text-align: center;">
       <input onclick="GeneratePermutations()" type="button" value="Generate" />
       <input onclick="ClearReset()" type="button" value="Bersihkan" />
     </div>
@@ -165,7 +170,7 @@
     <button type="button" class="copy-btn" onclick="copyToClipboard('permlist')">Salin</button>
   </form>
 
-  <form oninput="str.value = AS.value +','+ COP.value +','+ KEP.value +','+ EKOR.value" onsubmit="return false;">
+  <form oninput="strInput.value = AS.value +','+ COP.value +','+ KEP.value +','+ EKOR.value" onsubmit="return false;">
     <h3 style="text-align: center;">Pola As Kop Kepala Ekor</h3>
     <div class="input-grid">
       <input type="number" placeholder="AS" name="AS" />
@@ -173,28 +178,23 @@
       <input type="number" placeholder="KEPALA" name="KEP" />
       <input type="number" placeholder="EKOR" name="EKOR" />
     </div>
-    
 
-
-<br><br>
-<select id="select2">
-  <option value="*">*</option>
-  <option value="#">#</option>
-</select>
-
-<input id="str" type="hidden" name="str"  ><input type="submit" value="Generate" /><input type="button" onclick="trimSpaces();" value="Hilangkan spasi">
-</center>
-
-
-<b><i id="count"></i></b>
-<textarea id="textString" cols="30" name="txt" rows="5" style="font-size: 13px; width: 95%;"></textarea>
-<button type="button" class="copy-btn" onclick="copyToClipboard('textString')">Salin</button>
-
-    <input type="hidden" name="str" />
-    <input type="hidden" name="txt" />
-    <div class="center">
-      <span id="count"></span>
+    <div style="text-align: center; margin: 10px 0;">
+      <select id="select2">
+        <option value="*">*</option>
+        <option value="#">#</option>
+      </select>
+      <input id="strInput" type="hidden" name="str" />
+      <input type="submit" value="Generate" />
+      <input type="button" onclick="trimSpaces();" value="Hilangkan spasi" />
     </div>
+
+    <div style="text-align: center;">
+      <b><i id="resultCount"></i></b>
+    </div>
+    <textarea id="textString" name="txt" rows="5" style="font-size: 13px; width: 95%;"></textarea>
+    <button type="button" class="copy-btn" onclick="copyToClipboard('textString')">Salin</button>
   </form>
 </body>
+
 </html>
