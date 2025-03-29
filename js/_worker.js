@@ -1383,7 +1383,7 @@ async function handleSubRequest(hostnem) {
                 <div class="form-group">
                     <label for="bug">Bug</label>
                     <select id="bug" class="form-control" required>
-                    <option value="server">NO BUG</option>
+                    <option value="MASUKAN-BUG-COM">NO BUG</option>
                     <option value="business.blibli.com">business.blibli.com</option>
                     <option value="ava.game.naver.com">ava.game.naver.com</option>
                     <option value="graph.instagram.com">graph.instagram.com</option>
@@ -1720,18 +1720,6 @@ async function handleSubRequest(hostnem) {
             const errorMessageEl = document.getElementById('error-message');
             const appSelect = document.getElementById('app');
             const configTypeSelect = document.getElementById('configType');
-            const bugSelect = document.getElementById('bug');
-
-const domainGroup = document.getElementById('domainGroup');
-const domainSelect = document.getElementById('domain'); // supaya tidak error saat submit
-
-bugSelect.addEventListener('change', () => {
-    if (bugSelect.value === 'server') {
-        domainGroup.style.display = 'block';
-    } else {
-        domainGroup.style.display = 'none';
-    }
-});
 
             // Cached selectors to minimize DOM lookups
             const elements = {
@@ -1777,18 +1765,14 @@ bugSelect.addEventListener('change', () => {
                     }
 
                     // Construct query parameters
-                    const selectedDomain = domainSelect.value;
-const selectedBug = elements.bug.value.trim() === "server" ? selectedDomain : elements.bug.value.trim();
-
-const params = new URLSearchParams({
-    type: elements.configType.value,
-    bug: selectedBug,
-    tls: elements.tls.value,
-    wildcard: elements.wildcard.value,
-    limit: elements.limit.value,
-    ...(elements.country.value !== 'all' && { country: elements.country.value })
-});
-
+                    const params = new URLSearchParams({
+                        type: elements.configType.value,
+                        bug: elements.bug.value.trim(),
+                        tls: elements.tls.value,
+                        wildcard: elements.wildcard.value,
+                        limit: elements.limit.value,
+                        ...(elements.country.value !== 'all' && { country: elements.country.value })
+                    });
 
                     // Generate full link (replace with your actual domain)
                     const generatedLink = \`/api/\${elements.app.value}?\${params.toString()}\`;
@@ -1799,10 +1783,8 @@ const params = new URLSearchParams({
                     // Update UI
                     loadingEl.style.display = 'none';
                     resultEl.style.display = 'block';
-                    const selectedDomain = bugSelect.value === 'server'
-    ? domainSelect.value
-    : bugSelect.value;
-                    generatedLinkEl.textContent = \`https://\${selectedDomain}\${generatedLink}\`;
+                    const selectedDomain = document.getElementById('domain').value;
+		    generatedLinkEl.textContent = \`https://\${selectedDomain}\${generatedLink}\`;
 
                     // Copy link functionality
                     copyLinkBtn.onclick = async () => {
