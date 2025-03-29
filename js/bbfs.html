@@ -134,12 +134,22 @@ function copyToClipboard(elementNameOrId) {
     document.execCommand("copy");
 
     Swal.fire({
-      icon: 'success',
-      title: 'Disalin!',
-      text: 'Teks berhasil disalin ke clipboard.',
-      timer: 1500,
-      showConfirmButton: false
-    });
+  toast: true,
+  position: 'top-end',
+  icon: 'success',
+  iconHtml: '✅',
+  title: 'Saya copy sukses',
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true,
+  background: '#f0f9ff',
+  color: '#0b3d91',
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+});
+
   }
 }
 </script>
