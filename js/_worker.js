@@ -1367,11 +1367,23 @@ async function handleSubRequest(hostnem) {
                         <option value="husi">HUSI</option>
                     </select>
                 </div>
-          
+          <div class="form-group">
+                <label for="domain">Pilih Domain</label>
+<select id="domain" class="form-control" required>
+  <option value="privasi.ndeso.xyz">privasi.ndeso.xyz</option>
+  <option value="privasi.ndeso.web.id">privasi.ndeso.web.id</option>
+<option value="privasi.xhamster.biz.id">privasi.xhamster.biz.id</option>
+  <option value="privasi.turah.my.id">privasi.turah.my.id</option>
+<option value="privasi.najah.biz.id">privasi.najah.biz.id</option>
+  <option value="privasi.cloudproxyip.my.id">privasi.cloudproxyip.my.id</option>
+<option value="privasi.bmkg.xyz">privasi.bmkg.xyz</option>
+
+</select>
+            </div>
                 <div class="form-group">
                     <label for="bug">Bug</label>
                     <select id="bug" class="form-control" required>
-                    <option value="default">NO BUG</option>
+                    <option value="server">NO BUG</option>
                     <option value="business.blibli.com">business.blibli.com</option>
                     <option value="ava.game.naver.com">ava.game.naver.com</option>
                     <option value="graph.instagram.com">graph.instagram.com</option>
@@ -1709,6 +1721,16 @@ async function handleSubRequest(hostnem) {
             const appSelect = document.getElementById('app');
             const configTypeSelect = document.getElementById('configType');
             const bugSelect = document.getElementById('bug');
+const domainGroup = document.getElementById('domainGroup');
+const domainSelect = document.getElementById('domain'); // supaya tidak error saat submit
+
+bugSelect.addEventListener('change', () => {
+    if (bugSelect.value === 'server') {
+        domainGroup.style.display = 'block';
+    } else {
+        domainGroup.style.display = 'none';
+    }
+});
 
             // Cached selectors to minimize DOM lookups
             const elements = {
@@ -1721,13 +1743,6 @@ async function handleSubRequest(hostnem) {
                 limit: document.getElementById('limit')
             };
 
-          bugSelect.addEventListener('change', () => {
-        if (bugSelect.value === 'default') {
-            bugSelect.value = window.location.hostname;
-        }
-    });
-});
-    
             // App and config type interaction
             appSelect.addEventListener('change', () => {
                 const selectedApp = appSelect.value;
@@ -1779,13 +1794,16 @@ async function handleSubRequest(hostnem) {
                     // Update UI
                     loadingEl.style.display = 'none';
                     resultEl.style.display = 'block';
-                    generatedLinkEl.textContent = \`https://\${window.location.hostname}\${generatedLink}\`;
+                    const selectedDomain = bugSelect.value === 'server'
+    ? domainSelect.value
+    : bugSelect.value;
+                    generatedLinkEl.textContent = \`https://\${selectedDomain}\${generatedLink}\`;
 
                     // Copy link functionality
                     copyLinkBtn.onclick = async () => {
     try {
-        const link = 'https://' + window.location.hostname + generatedLink;
-	await navigator.clipboard.writeText(link);
+        const link = 'https://' + selectedDomain + generatedLink;
+        await navigator.clipboard.writeText(link);
 
         Swal.fire({
             icon: 'success',
