@@ -202,7 +202,9 @@ Tampilkan hasil. <input name="maxoutput" size="10" type="hidden" /> <input check
 <input disabled="disabled" name="chkbx_comma" type="hidden" value="ON" />
 <input name="feedback" readonly/>
 <textarea cols="70" name="permlist" rows="5" style="font-size: 13px; width: 95%;" wrap="virtual"></textarea></form>
-<center>
+<button type="button" onclick="copyToClipboard('permlist')">Salin</button>
+
+  <center>
 <br>
 <h3>Pola As Kop Kepala Ekor </h3>
 </br>
@@ -229,9 +231,8 @@ Tampilkan hasil. <input name="maxoutput" size="10" type="hidden" /> <input check
 
 <center>
 <b><i id="count"></i></b>
-<textarea id="textString" cols="30" name="txt" rows="5" style="font-size: 13px; width: 95%;">
-</textarea>
-
+<textarea id="textString" cols="30" name="txt" rows="5" style="font-size: 13px; width: 95%;"></textarea>
+<button type="button" onclick="copyToClipboard('textString')">Salin</button>
 
 <div style='clear: both;'></div>
 </div>
