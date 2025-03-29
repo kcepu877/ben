@@ -105,7 +105,44 @@ textarea {
     gap: 10px;
     margin-bottom: 10px;
 }
+  .copy-btn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.copy-btn:hover {
+    background-color: #27ae60;
+}
+
 </style>
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+function copyToClipboard(elementNameOrId) {
+  var textarea = document.getElementsByName(elementNameOrId)[0] || document.getElementById(elementNameOrId);
+  if (textarea) {
+    textarea.select();
+    textarea.setSelectionRange(0, 99999); // untuk mobile
+    document.execCommand("copy");
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Disalin!',
+      text: 'Teks berhasil disalin ke clipboard.',
+      timer: 1500,
+      showConfirmButton: false
+    });
+  }
+}
+</script>
 
 
 <h3 class='post-title entry-title' itemprop='name'>
@@ -201,8 +238,8 @@ Tampilkan hasil. <input name="maxoutput" size="10" type="hidden" /> <input check
 <center>
 <input disabled="disabled" name="chkbx_comma" type="hidden" value="ON" />
 <input name="feedback" readonly/>
-<textarea cols="70" name="permlist" rows="5" style="font-size: 13px; width: 95%;" wrap="virtual"></textarea></form>
-<button type="button" onclick="copyToClipboard('permlist')">Salin</button>
+<textarea cols="70" name="permlist" rows="5" style="font-size: 13px; width: 95%;" wrap="virtual"></textarea>
+<button type="button" class="copy-btn" onclick="copyToClipboard('permlist')">Salin</button>
 
   <center>
 <br>
@@ -243,7 +280,7 @@ function copyToClipboard(elementNameOrId) {
 <center>
 <b><i id="count"></i></b>
 <textarea id="textString" cols="30" name="txt" rows="5" style="font-size: 13px; width: 95%;"></textarea>
-<button type="button" onclick="copyToClipboard('textString')">Salin</button>
+<button type="button" class="copy-btn" onclick="copyToClipboard('textString')">Salin</button>
 
 <div style='clear: both;'></div>
 </div>
