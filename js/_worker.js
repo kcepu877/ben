@@ -72,6 +72,12 @@ async function reverseProxy(request, target) {
 
   return newResponse;
 }
+export default {
+    async fetch(request) {
+        const myhost877 = new URL(request.url).hostname;
+        return new Response(`Hostname: ${myhost}`, { status: 200 });
+    }
+};
 
 export default {
   async fetch(request, env, ctx) {
@@ -1372,7 +1378,7 @@ async function handleSubRequest(hostnem) {
                 <div class="form-group">
                     <label for="bug">Bug</label>
                     <select id="bug" class="form-control" required>
-                    <option value="${pagehost}">NO BUG</option>
+                    <option value="${myhost877}">NO BUG</option>
                     <option value="business.blibli.com">business.blibli.com</option>
                     <option value="ava.game.naver.com">ava.game.naver.com</option>
                     <option value="graph.instagram.com">graph.instagram.com</option>
