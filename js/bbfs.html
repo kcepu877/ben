@@ -271,11 +271,10 @@ Tampilkan hasil. <input name="maxoutput" size="10" type="hidden" /> <input check
 <input name="feedback" readonly/>
 <textarea cols="70" name="permlist" rows="5" style="font-size: 13px; width: 95%;" wrap="virtual"></textarea></form>
 <button type="button" class="copy-btn" onclick="copyToClipboard('permlist')">Salin</button>
+</div></div>
 
-  <center>
 <br>
 <h3>Pola As Kop Kepala Ekor </h3>
-</br>
 
 <form action="" autocomplete="off" method="get" onsubmit="return combineApp.calcCombinations({src:this.str,dest:this.txt,msgID:'count'});" style="color: black; return false" oninput="str.value = AS.value +','+ COP.value +','+ KEP.value +','+ EKOR.value">
 
@@ -341,7 +340,7 @@ function showCopyToast() {
 <input id="str" type="hidden" name="str"  ><input type="submit" value="Generate" /><input type="button" onclick="trimSpaces();" value="Hilangkan spasi">
 </center>
 
-<center>
+
 <b><i id="count"></i></b>
 <textarea id="textString" cols="30" name="txt" rows="5" style="font-size: 13px; width: 95%;"></textarea>
 <button type="button" class="copy-btn" onclick="copyToClipboard('textString')">Salin</button>
