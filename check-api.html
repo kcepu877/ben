@@ -523,26 +523,34 @@ input[type="text"] { padding: 10px; width: 150px; margin-bottom: 15px; }
   }
 
   function updateTable(data) {
-    const keyMap = {
-      isp: data.isp,
-      ip: data.ip,
-      port: data.port,
-      asn: data.asn,
-      country: data.country,
-      city: data.city,
-      timezone: data.timezone,
-      latitude: data.latitude,
-      longitude: data.longitude,
-      delay: data.delay,
-      message: data.message
+    const tbody = document.getElementById("resultTable").querySelector("tbody");
+
+    const mapping = {
+        "ip": data.ip,
+        "proxyip": data.proxyip ? "Yes" : "No",
+        "proxy": data.proxy,
+        "port": data.port,
+        "asn": data.asn,
+        "isp": data.isp,
+        "country": data.country,
+        "city": data.city,
+        "timezone": data.timezone,
+        "latitude": data.latitude,
+        "longitude": data.longitude,
+        "delay": data.delay,
+        "message": data.message
     };
 
-    const tbody = document.querySelector("#resultTable tbody");
-    tbody.querySelectorAll("tr").forEach(tr => {
-      const key = tr.children[0].textContent.toLowerCase();
-      tr.children[1].textContent = keyMap[key] ?? "-";
+    tbody.querySelectorAll("tr").forEach(function (row) {
+        const key = row.querySelector("td").textContent.toLowerCase();
+        if (mapping[key] !== undefined) {
+            row.querySelectorAll("td")[1].textContent = mapping[key];
+        } else {
+            row.querySelectorAll("td")[1].textContent = "-";
+        }
     });
-  }
+}
+
 
   function initMap(lat, lon, zoom) {
     map = L.map('map').setView([lat, lon], zoom);
