@@ -1367,23 +1367,11 @@ async function handleSubRequest(hostnem) {
                         <option value="husi">HUSI</option>
                     </select>
                 </div>
-          <div class="form-group">
-                <label for="domain">Pilih Domain</label>
-<select id="domain" class="form-control" required>
-  <option value="privasi.ndeso.xyz">privasi.ndeso.xyz</option>
-  <option value="privasi.ndeso.web.id">privasi.ndeso.web.id</option>
-<option value="privasi.xhamster.biz.id">privasi.xhamster.biz.id</option>
-  <option value="privasi.turah.my.id">privasi.turah.my.id</option>
-<option value="privasi.najah.biz.id">privasi.najah.biz.id</option>
-  <option value="privasi.cloudproxyip.my.id">privasi.cloudproxyip.my.id</option>
-<option value="privasi.bmkg.xyz">privasi.bmkg.xyz</option>
-
-</select>
-            </div>
+          
                 <div class="form-group">
                     <label for="bug">Bug</label>
                     <select id="bug" class="form-control" required>
-                    <option value="MASUKAN-BUG-COM">NO BUG</option>
+                    <option value="">NO BUG</option>
                     <option value="business.blibli.com">business.blibli.com</option>
                     <option value="ava.game.naver.com">ava.game.naver.com</option>
                     <option value="graph.instagram.com">graph.instagram.com</option>
