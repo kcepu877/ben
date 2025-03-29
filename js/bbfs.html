@@ -173,17 +173,7 @@
       <input type="number" placeholder="KEPALA" name="KEP" />
       <input type="number" placeholder="EKOR" name="EKOR" />
     </div>
-    <script>
-function copyToClipboard(elementNameOrId) {
-  var textarea = document.getElementsByName(elementNameOrId)[0] || document.getElementById(elementNameOrId);
-  if (textarea) {
-    textarea.select();
-    textarea.setSelectionRange(0, 99999); // Untuk mobile
-    document.execCommand("copy");
-    alert("Teks telah disalin!");
-  }
-}
-</script>
+    
 
 
 <br><br>
@@ -195,7 +185,7 @@ function copyToClipboard(elementNameOrId) {
 <input id="str" type="hidden" name="str"  ><input type="submit" value="Generate" /><input type="button" onclick="trimSpaces();" value="Hilangkan spasi">
 </center>
 
-<center>
+
 <b><i id="count"></i></b>
 <textarea id="textString" cols="30" name="txt" rows="5" style="font-size: 13px; width: 95%;"></textarea>
 <button type="button" class="copy-btn" onclick="copyToClipboard('textString')">Salin</button>
