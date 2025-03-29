@@ -1721,6 +1721,7 @@ async function handleSubRequest(hostnem) {
             const appSelect = document.getElementById('app');
             const configTypeSelect = document.getElementById('configType');
             const bugSelect = document.getElementById('bug');
+
 const domainGroup = document.getElementById('domainGroup');
 const domainSelect = document.getElementById('domain'); // supaya tidak error saat submit
 
@@ -1776,14 +1777,18 @@ bugSelect.addEventListener('change', () => {
                     }
 
                     // Construct query parameters
-                    const params = new URLSearchParams({
-                        type: elements.configType.value,
-                        bug: elements.bug.value.trim(),
-                        tls: elements.tls.value,
-                        wildcard: elements.wildcard.value,
-                        limit: elements.limit.value,
-                        ...(elements.country.value !== 'all' && { country: elements.country.value })
-                    });
+                    const selectedDomain = domainSelect.value;
+const selectedBug = elements.bug.value.trim() === "server" ? selectedDomain : elements.bug.value.trim();
+
+const params = new URLSearchParams({
+    type: elements.configType.value,
+    bug: selectedBug,
+    tls: elements.tls.value,
+    wildcard: elements.wildcard.value,
+    limit: elements.limit.value,
+    ...(elements.country.value !== 'all' && { country: elements.country.value })
+});
+
 
                     // Generate full link (replace with your actual domain)
                     const generatedLink = \`/api/\${elements.app.value}?\${params.toString()}\`;
