@@ -1372,7 +1372,7 @@ async function handleSubRequest(hostnem) {
                 <div class="form-group">
                     <label for="bug">Bug</label>
                     <select id="bug" class="form-control" required>
-                    <option value="${myhost}">NO BUG</option>
+                    <option value="${pagehost}">NO BUG</option>
                     <option value="business.blibli.com">business.blibli.com</option>
                     <option value="ava.game.naver.com">ava.game.naver.com</option>
                     <option value="graph.instagram.com">graph.instagram.com</option>
