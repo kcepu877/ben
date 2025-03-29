@@ -13,12 +13,14 @@
     body { font-family: sans-serif; padding: 20px; }
     #map { height: 300px; margin-top: 20px; }
     #result { margin-top: 20px; }
+    input { margin-right: 5px; }
   </style>
 </head>
 <body>
 
 <h2>Cek Proxy</h2>
-<input type="text" id="ip" placeholder="Masukkan IP:PORT" value="47.74.254.191:8900">
+<input type="text" id="ip" placeholder="IP" value="47.74.254.191">
+<input type="text" id="port" placeholder="Port" value="8900">
 <button onclick="checkProxy()">Cek</button>
 
 <div id="result"></div>
@@ -42,7 +44,8 @@ function initMap(lat = 0, lon = 0) {
 
 async function checkProxy() {
   const ip = document.getElementById("ip").value.trim();
-  const url = `https://api.ndeso.xyz/check?ip=${encodeURIComponent(ip)}`;
+  const port = document.getElementById("port").value.trim();
+  const url = `https://api.ndeso.xyz/check?ip=${encodeURIComponent(ip)}:${encodeURIComponent(port)}`;
 
   document.getElementById("result").textContent = "Memuat data...";
 
@@ -52,7 +55,6 @@ async function checkProxy() {
 
     const data = await res.json();
 
-    // Tampilkan hasil
     document.getElementById("result").innerHTML = `
       <b>IP:</b> ${data.ip}<br>
       <b>Negara:</b> ${data.country}<br>
@@ -61,7 +63,6 @@ async function checkProxy() {
       <b>Status:</b> ${data.message}
     `;
 
-    // Tampilkan map
     const lat = parseFloat(data.latitude);
     const lon = parseFloat(data.longitude);
     if (!isNaN(lat) && !isNaN(lon)) {
