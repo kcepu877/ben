@@ -82,8 +82,7 @@ export default {
   async fetch(request, env, ctx) {
     try {
 	    const myhost877 = getHostname(request);
-        return new Response(`Hostname: ${myhost877}`, { status: 200 });
-    
+        
       const url = new URL(request.url);
       const myurl = "api.ndeso.xyz"; //ganti dg url api yg baru
       const upgradeHeader = request.headers.get("Upgrade");
