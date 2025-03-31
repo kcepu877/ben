@@ -1788,11 +1788,11 @@ function uuidv4() {
   statusElement.style.color = 'green';
 
   const startTime = performance.now(); // Mencatat waktu awal
-  const StatusURL = `https://api.ndeso.xyz/?ip=${ip}&port=${port}`;
+  const StatusURL = `https://api.ndeso.xyz/proxy?ip=${ip}&port=${port}`;
 
   console.log("Checking proxy:", StatusURL); // Debugging
 
-  // Mengambil data dari API untuk memeriksa status proxy
+  // Mengambil data dari API untuk memeriksa status proxya
   fetch(StatusURL)
     .then(response => response.json())
     .then(data => {
