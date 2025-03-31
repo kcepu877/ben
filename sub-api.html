@@ -881,8 +881,14 @@
 
                     // Open link functionality
                     openLinkBtn.onclick = () => {
-                        window.open(generatedLink, '_self');
-                    };
+    const link = generatedLinkEl.textContent.trim();
+    if (link) {
+        window.open(link, '_self');
+    } else {
+        alert('Link tidak ditemukan.');
+    }
+};
+
 
                 } catch (error) {
                     // Error handling
