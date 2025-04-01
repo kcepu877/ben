@@ -21,6 +21,76 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
     /* Global styling */
+     .navbartedjo {
+    position: fixed;
+    top: 0;
+    left: -80px;
+    width: 80px;
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    padding: 0;
+    transition: left 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0);
+    z-index: 999;
+    display: flex;
+    flex-direction: column; /* Menyusun item secara vertikal */
+    justify-content: center; /* Menempatkan item di tengah secara vertikal */
+    align-items: center; /* Menempatkan item di tengah secara horizontal */
+    height: 100vh; /* Membuat navbar setinggi 100% viewport */
+}
+
+
+
+
+      .navbarconten {
+    width: 100%;
+    overflow-x: auto; /* Mengaktifkan scroll horizontal */
+    margin-bottom: 0px;
+    border: 1px solid #000; /* Border dengan warna abu-abu */
+    border-radius: 10px; /* Membuat sudut melengkung */
+    padding: 0px; /* Memberi jarak antara border dan konten */
+    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+
+    }
+
+        .navbartedjo a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        .navbartedjo a:hover {
+            background: #575757;
+        }
+        .toggle-btn {
+            position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0);
+    color: red;
+    border: none;
+    padding: 0px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: left 0.3s;
+    z-index: 1000; /* Pastikan tombol menu di atas navbar */
+        }
+        
+        p {
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+            text-align: justify;
+        }
+	    .toggle-btn img {
+            width: 20px; /* Ukuran gambar lebih kecil */
+            height: 150px; /* Ukuran gambar lebih kecil */
+        }
+     
     /* Global styling */
 body {
     font-family: 'Poppins', sans-serif;
@@ -202,9 +272,59 @@ body.light-mode .theme-toggle {
         });
     </script>
 
+<script>
+        let navbartedjoOpen = false;
 
+        function toggleNavbar() {
+            const navbartedjo = document.getElementById("navbartedjo");
+            const menuBtn = document.getElementById("menu-btn");
+            const img = menuBtn.querySelector('img');
+
+		
+            if (navbartedjoOpen) {
+                navbartedjo.style.left = "-80px";
+                img.src = "https://bmkg.xyz/img/buka.png"; 
+            } else {
+                navbartedjo.style.left = "0";
+                img.src = "https://bmkg.xyz/img/tutup.png"; 
+            }
+
+            navbartedjoOpen = !navbartedjoOpen;
+        }
+    </script>
+    
 </head>
-
+<div class="navbartedjo" id="navbartedjo">
+        <div class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></div>
+       <div class="navbarconten">
+	  <div style="display: flex; flex-direction: column; align-items: center;">
+  <span>
+    <a href="https://wa.me/6281335135082" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+      <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="40">
+    </a>
+  </span>
+  <span>	
+   <a href="/sub-api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="40" style="margin-top: 5px;"></a>
+  </span>          
+  <span>
+    <a href="https://t.me/seaker877" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+      <img src="https://bmkg.xyz/img/tele.png" alt="menu" width="40">
+    </a>
+  </span>
+  <span>
+    <a href="https://t.me/kcepu_bot" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+      <img src="https://bmkg.xyz/img/bot.png" alt="menu" width="40">
+    </a>
+  </span>
+  <span>
+    <a href="/" target="_self" rel="noopener noreferrer">
+      <img src="https://bmkg.xyz/img/home.png" alt="menu" width="40">
+    </a>
+  </span>
+</div>
+</div>
+	  </div>
     <header class="bg-transparent text-white py-4">
     <div class="max-w-4xl mx-auto flex items-center">
          <h1 class="text-3xl font-semibold text-center w-full"><i class="fas fa-shield-alt text-white text-2xl mr-2"></i>Proxy Checker</h1>
