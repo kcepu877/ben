@@ -21,28 +21,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
     /* Global styling */
-     .navbartedjo {
-    position: fixed;
-    top: 0;
-    left: -80px;
-    width: 80px;
-    background: rgba(0, 0, 0, 0);
-    color: white;
-    padding: 0;
-    transition: left 0.3s;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0);
-    z-index: 999;
-    display: flex;
-    flex-direction: column; /* Menyusun item secara vertikal */
-    justify-content: center; /* Menempatkan item di tengah secara vertikal */
-    align-items: center; /* Menempatkan item di tengah secara horizontal */
-    height: 100vh; /* Membuat navbar setinggi 100% viewport */
-}
-
-
-
-
-      .navbarconten {
+     
+    
+       .navbarconten {
     width: 100%;
     overflow-x: auto; /* Mengaktifkan scroll horizontal */
     margin-bottom: 0px;
@@ -54,43 +35,79 @@
               0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
 
     }
+      .navbar {
+            position: fixed;
+            top: 50%;
+            left: -80px; /* Awalnya disembunyikan */
+            transform: translateY(-50%);
+            width: 80px;
+            background: ;
+            color: white;
+            padding: 10px 0;
+            transition: left 0.3s ease-in-out;
+            z-index: 1000;
+            border-radius: 0 10px 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
 
-        .navbartedjo a {
+        /* Saat navbar terbuka */
+        .navbar.show {
+            left: 0;
+        }
+
+        .navbar a img {
+            width: 40px;
+        }
+        
+        .navbar a {
             display: block;
             color: white;
             text-decoration: none;
             padding: 10px 20px;
         }
-        .navbartedjo a:hover {
-            background: #575757;
-        }
-        .toggle-btn {
-            position: absolute;
-    top: 50%;
-    left: 100%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0);
-    color: red;
-    border: none;
-    padding: 0px 0px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 20px;
-    transition: left 0.3s;
-    z-index: 1000; /* Pastikan tombol menu di atas navbar */
+        .navbar a:hover {
+            background: ;
         }
         
-        p {
-            max-width: 800px;
-            margin: 20px auto;
-            line-height: 1.6;
-            text-align: justify;
+        /* Tombol Toggle */
+        .toggle-btn {
+            position: absolute;
+            top: 50%;
+            right: -30px; /* Posisi tombol di tengah kanan navbar */
+            transform: translateY(-50%);
+            background: ;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 10px;
+            border-radius: 0 10px 10px 0;
+            transition: right 0.3s ease-in-out;
         }
-	    .toggle-btn img {
+
+        .toggle-btn img {
             width: 20px; /* Ukuran gambar lebih kecil */
             height: 150px; /* Ukuran gambar lebih kecil */
         }
-     
+
+        /* Saat navbar terbuka, tombol ikut bergeser */
+        .navbar.show .toggle-btn {
+            right: -29px;
+        }
+        @keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0.3; }
+  }
+        #map {
+  height: 350px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
     /* Global styling */
 body {
     font-family: 'Poppins', sans-serif;
@@ -252,7 +269,7 @@ body.light-mode .theme-toggle {
 
     <!-- Content here -->
 
-    <script>
+        <script>
         // Dark & Light Mode Toggle
         const themeToggle = document.getElementById("theme-toggle");
         const body = document.body;
@@ -272,29 +289,23 @@ body.light-mode .theme-toggle {
         });
     </script>
 
+
 <script>
-        let navbartedjoOpen = false;
+    function toggleNavbar() {
+        const navbar = document.getElementById("navbar");
+        const menuBtn = document.getElementById("menu-btn").querySelector('img');
 
-        function toggleNavbar() {
-            const navbartedjo = document.getElementById("navbartedjo");
-            const menuBtn = document.getElementById("menu-btn");
-            const img = menuBtn.querySelector('img');
-
-		
-            if (navbartedjoOpen) {
-                navbartedjo.style.left = "-80px";
-                img.src = "https://bmkg.xyz/img/buka.png"; 
-            } else {
-                navbartedjo.style.left = "0";
-                img.src = "https://bmkg.xyz/img/tutup.png"; 
-            }
-
-            navbartedjoOpen = !navbartedjoOpen;
+        if (navbar.classList.contains("show")) {
+            navbar.classList.remove("show");
+            menuBtn.src = "https://bmkg.xyz/img/buka.png";
+        } else {
+            navbar.classList.add("show");
+            menuBtn.src = "https://bmkg.xyz/img/tutup.png";
         }
-    </script>
-    
+    }
+</script>
 </head>
-<div class="navbartedjo" id="navbartedjo">
+<div class="navbar" id="navbar">
         <div class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></div>
        <div class="navbarconten">
 	  <div style="display: flex; flex-direction: column; align-items: center;">
