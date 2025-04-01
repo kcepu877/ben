@@ -150,147 +150,171 @@
     </footer>
 
     <script>
-        // Hitung jumlah proxy yang dimasukkan
-        document.getElementById("proxy-input").addEventListener("input", function () {
-            const proxies = this.value.trim().split("\n").filter(line => line);
-            document.getElementById("proxy-count").textContent = `${proxies.length}/20`;
-        });
+// Hitung jumlah proxy yang dimasukkan
+document.getElementById("proxy-input").addEventListener("input", function () {
+    const proxies = this.value.trim().split("\n").filter(line => line);
+    document.getElementById("proxy-count").textContent = `${proxies.length}/20`;
+});
 
-        // Tombol Clear
-        document.getElementById("clear-btn").addEventListener("click", function () {
-            document.getElementById("proxy-input").value = "";
-            document.getElementById("proxy-count").textContent = "0/20";
-        });
+// Tombol Clear
+document.getElementById("clear-btn").addEventListener("click", function () {
+    document.getElementById("proxy-input").value = "";
+    document.getElementById("proxy-count").textContent = "0/20";
+});
 
-        // Tombol Example
-        document.getElementById("example-btn").addEventListener("click", function () {
-            document.getElementById("proxy-input").value = "36.95.152.58:12137\n37.202.222.182:8443\n91.187.93.166:443\n190.183.61.62:8443\n43.218.77.16:1443\n202.91.32.252:15377\n85.208.110.52:8443";
-            document.getElementById("proxy-count").textContent = "7/20";
-        });
+// Tombol Example
+document.getElementById("example-btn").addEventListener("click", function () {
+    document.getElementById("proxy-input").value = "36.95.152.58:12137\n37.202.222.182:8443\n91.187.93.166:443\n190.183.61.62:8443\n43.218.77.16:1443\n202.91.32.252:15377\n85.208.110.52:8443";
+    document.getElementById("proxy-count").textContent = "7/20";
+});
 
-        // Pengecekan Proxy menggunakan API FastAPI
-        document.getElementById("check-proxies").addEventListener("click", async function () {
-            const input = document.getElementById("proxy-input").value.trim();
-            if (!input) return;
+// Pengecekan Proxy menggunakan API FastAPI
+document.getElementById("check-proxies").addEventListener("click", async function () {
+    const input = document.getElementById("proxy-input").value.trim();
+    if (!input) return;
 
-            // Tampilkan loading indicator dan sembunyikan hasil
-            document.getElementById("loading").classList.remove("hidden");
-            document.getElementById("result-container").classList.add("hidden");
+    // Tampilkan loading indicator dan sembunyikan hasil
+    document.getElementById("loading").classList.remove("hidden");
+    document.getElementById("result-container").classList.add("hidden");
 
-            // Ambil maksimal 20 proxy
-            const proxies = input.split("\n").slice(0, 20);
-            let results = [];
+    // Ambil maksimal 20 proxy
+    const proxies = input.split("\n").slice(0, 20);
+    let results = [];
 
-            // Loop tiap proxy dan panggil API FastAPI
-            for (const proxy of proxies) {
-                const [ip, port] = proxy.split(":");
-                if (!ip) continue;
-                let actualPort = port || "443";
-                try {
-                    const apiUrl = `https://api.ndeso.xyz/proxy?ip=${ip}&port=${actualPort}`;
-                    const res = await fetch(apiUrl);
-                    const data = await res.json();
-                    results.push(data);
-                } catch (e) {
-                    console.error("Error fetching:", e);
-                    results.push({ ip: ip, port: actualPort, error: true });
-                }
-            }
+    // Loop tiap proxy dan panggil API FastAPI
+    for (const proxy of proxies) {
+        const [ip, port] = proxy.split(":");
+        if (!ip) continue;
+        let actualPort = port || "443";
+        try {
+            const apiUrl = `https://api.ndeso.xyz/proxy?ip=${ip}&port=${actualPort}`;
+            const res = await fetch(apiUrl);
+            const data = await res.json();
 
-            // Render hasil pengecekan
-            const resultBody = document.getElementById("result-body");
-            resultBody.innerHTML = "";
-            results.forEach(data => {
-                const isActive = data.proxyip && !data.error;
-                const statusText = isActive ? 'ACTIVE' : 'INACTIVE';
-                const fullPort = data.port || 'N/A';
-                const flagHtml = data.countryFlag ? `<span class="text-2xl">${data.countryFlag}</span>` : '';
-                resultBody.innerHTML += `
-          <div class="glassmorphism overflow-hidden">
-            <div class="relative">
-              <div class="absolute top-0 left-0 w-1 h-full ${isActive ? 'bg-green-500' : 'bg-red-500'}"></div>
-              <div class="p-5 space-y-3">
-                <!-- Top Block: IP, Status, Port & ASN; Flag & Country -->
-                <div class="flex justify-between items-center">
-                  <!-- Kiri: IP, Status, Port & ASN -->
-                  <div class="flex flex-col">
-                    <div class="flex items-center">
-                      <h2 class="text-xl font-bold text-white">${data.ip}${data.port ? ':' + data.port : ''}</h2>
-                      <span class="ml-3 px-2 py-1 text-xs font-medium rounded-full ${isActive ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200'}">
-                        ${statusText}
-                      </span>
-                    </div>
-                    <div class="flex items-center text-gray-400 text-sm gap-x-1">
-                        <i class="fas fa-plug"></i>
-                        <span>Port:</span>
-                     <span class="font-medium dark:text-white">${fullPort}</span>
-                     ${data.asn ? `
-                      <span>•</span>
-                        <i class="fas fa-network-wired"></i>
-                        <span>ASN:</span>
-                    <span class="font-medium dark:text-white">${data.asn}</span>
-                         ` : ''}
-                    </div>
+            // Tentukan status aktif
+            const isActive = data.message === " ACTIVE ✅";
+            const statusText = isActive ? 'ACTIVE' : 'INACTIVE';
 
-                  </div>
-                  <!-- Kanan: Flag & Country -->
-                  <div class="flex items-center border-l border-gray-700 pl-3">
-                    ${flagHtml}
-                    <span class="ml-2 text-gray-200 font-medium">${data.country || 'N/A'}</span>
-                  </div>
-                </div>
-                
-                <!-- Middle Block: Country dan Organization -->
-                <div class="flex justify-between items-center">
-                  <div class="flex items-center">
-                    <span class="inline-flex items-center justify-center p-1.5 bg-green-500 rounded-full mr-2 text-white">
-                      <i class="fas fa-globe-americas"></i>
-                    </span>
-                    <span class="text-base dark:text-gray-300">Country: <span class="font-medium dark:text-white">${data.country || 'N/A'}</span></span>
-                  </div>
-                  <div class="flex items-center">
-                    <span class="inline-flex items-center justify-center p-1.5 bg-green-500 rounded-full mr-2 text-white">
-                      <i class="fas fa-building"></i>
-                    </span>
-                    <span class="text-base dark:text-gray-300">Organization: <span class="font-medium dark:text-white">${data.isp || 'N/A'}</span></span>
-                  </div>
-                </div>
-                <!-- Separator -->
-                <div class="mt-1 pt-1 border-t border-gray-700/50"></div>
-                <!-- Bottom Block: Coordinates dan Delay (hanya tampil jika aktif) -->
-                
-                ${isActive ? `
-                  <div class="flex items-center">
-                    <div class="w-8 h-8 rounded-full bg-green-900/60 flex items-center justify-center mr-3">
-                                            <i class="fas fa-map-pin text-green-400"></i>
-                                        </div>
-                    <div class="flex-1">
-                      <div class="text-base dark:text-gray-300">Coordinates</div>
-                      <div>
-                        <span class="font-medium dark:text-white">
-                          ${data.latitude && data.longitude ? data.latitude + ', ' + data.longitude : '-'}
-                        </span>
-                        <a href="https://www.google.com/maps?q=${data.latitude},${data.longitude}" target="_blank" class="ml-2 text-base dark:text-indigo-300 hover:underline">
-                          View on Map
-                        </a>
-                      </div>
-                    </div>
-                    <div class="flex-1 text-right">
-                      <span class="inline-flex items-center justify-center p-1.5 bg-purple-500 rounded-full mr-2 text-white">
-                        <i class="fas fa-clock"></i>
-                      </span>
-                      <span class="text-base dark:text-gray-300">Delay: <span class="font-medium dark:text-white">${data.delay || '-'}</span></span>
-                    </div>
-                  </div>
-                ` : ''}
-              </div>
-            </div>
-          </div>
-        `;
+            // Flag negara
+            const flagHtml = data.country ? `<span class="text-2xl">${data.country}</span>` : '';
+
+            // Masukkan hasil pengecekan ke array
+            results.push({
+                ip: data.ip,
+                port: data.port || actualPort,
+                status: statusText,
+                country: data.country || 'N/A',
+                countryFlag: flagHtml,
+                delay: data.delay || 'N/A',
+                asn: data.asn || 'N/A',
+                isp: data.isp || 'N/A',
+                city: data.city || 'N/A',
+                latitude: data.latitude,
+                longitude: data.longitude,
+                proxyip: data.proxyip || false,
+                error: data.error || false
             });
-            document.getElementById("loading").classList.add("hidden");
-            document.getElementById("result-container").classList.remove("hidden");
-        });
+        } catch (e) {
+            console.error("Error fetching:", e);
+            results.push({ ip: ip, port: actualPort, error: true });
+        }
+    }
+
+    // Render hasil pengecekan
+    const resultBody = document.getElementById("result-body");
+    resultBody.innerHTML = "";
+    results.forEach(data => {
+        const isActive = data.status === 'ACTIVE';
+        const statusText = isActive ? 'ACTIVE' : 'INACTIVE';
+        const fullPort = data.port || 'N/A';
+
+        resultBody.innerHTML += `
+            <div class="glassmorphism overflow-hidden">
+                <div class="relative">
+                    <div class="absolute top-0 left-0 w-1 h-full ${isActive ? 'bg-green-500' : 'bg-red-500'}"></div>
+                    <div class="p-5 space-y-3">
+                        <!-- Top Block: IP, Status, Port & ASN; Flag & Country -->
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-col">
+                                <div class="flex items-center">
+                                    <h2 class="text-xl font-bold text-white">${data.ip}${data.port ? ':' + data.port : ''}</h2>
+                                    <span class="ml-3 px-2 py-1 text-xs font-medium rounded-full ${isActive ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200'}">
+                                        ${statusText}
+                                    </span>
+                                </div>
+                                <div class="flex items-center text-gray-400 text-sm gap-x-1">
+                                    <i class="fas fa-plug"></i>
+                                    <span>Port:</span>
+                                    <span class="font-medium dark:text-white">${fullPort}</span>
+                                    ${data.asn ? `
+                                        <span>•</span>
+                                        <i class="fas fa-network-wired"></i>
+                                        <span>ASN:</span>
+                                        <span class="font-medium dark:text-white">${data.asn}</span>
+                                    ` : ''}
+                                </div>
+                            </div>
+                            <div class="flex items-center border-l border-gray-700 pl-3">
+                                ${data.countryFlag}
+                                <span class="ml-2 text-gray-200 font-medium">${data.country || 'N/A'}</span>
+                            </div>
+                        </div>
+
+                        <!-- Middle Block: Country dan Organization -->
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <span class="inline-flex items-center justify-center p-1.5 bg-green-500 rounded-full mr-2 text-white">
+                                    <i class="fas fa-globe-americas"></i>
+                                </span>
+                                <span class="text-base dark:text-gray-300">Country: <span class="font-medium dark:text-white">${data.country || 'N/A'}</span></span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="inline-flex items-center justify-center p-1.5 bg-green-500 rounded-full mr-2 text-white">
+                                    <i class="fas fa-building"></i>
+                                </span>
+                                <span class="text-base dark:text-gray-300">Organization: <span class="font-medium dark:text-white">${data.isp || 'N/A'}</span></span>
+                            </div>
+                        </div>
+
+                        <!-- Separator -->
+                        <div class="mt-1 pt-1 border-t border-gray-700/50"></div>
+
+                        <!-- Bottom Block: Coordinates dan Delay -->
+                        ${isActive ? `
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 rounded-full bg-green-900/60 flex items-center justify-center mr-3">
+                                    <i class="fas fa-map-pin text-green-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-base dark:text-gray-300">Coordinates</div>
+                                    <div>
+                                        <span class="font-medium dark:text-white">
+                                            ${data.latitude && data.longitude ? `${data.latitude}, ${data.longitude}` : '-'}
+                                        </span>
+                                        <a href="https://www.google.com/maps?q=${data.latitude},${data.longitude}" target="_blank" class="ml-2 text-base dark:text-indigo-300 hover:underline">
+                                            View on Map
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="flex-1 text-right">
+                                    <span class="inline-flex items-center justify-center p-1.5 bg-purple-500 rounded-full mr-2 text-white">
+                                        <i class="fas fa-clock"></i>
+                                    </span>
+                                    <span class="text-base dark:text-gray-300">Delay: <span class="font-medium dark:text-white">${data.delay || '-'}</span></span>
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    // Sembunyikan loading indicator dan tampilkan hasil
+    document.getElementById("loading").classList.add("hidden");
+    document.getElementById("result-container").classList.remove("hidden");
+});
+
     </script>
 </body>
 
