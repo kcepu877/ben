@@ -18,47 +18,107 @@
     <link rel="icon" type="image/x-icon"
         href="https://bmkg.xyz/img/botvpn.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-        /* Global styling */
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+    /* Global styling */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #1e2a47; /* Dark Blue */
+        background-image: radial-gradient(at 47% 33%, rgba(0, 71, 124, 0.75) 0%, transparent 60%), 
+                          radial-gradient(at 82% 65%, rgba(0, 33, 61, 0.75) 0%, transparent 55%);
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+    }
+
+    .glassmorphism {
+        background: rgba(17, 25, 40, 0.75); /* Dark Blue with transparency */
+        backdrop-filter: blur(12px);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.125);
+        padding: 20px;
+    }
+
+    /* Neon Blue shine effect */
+    .shine {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .shine::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(0, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+        transform: rotate(45deg);
+        transition: 0.6s;
+        opacity: 0;
+    }
+
+    .shine:hover::after {
+        opacity: 1;
+        transition: 0s;
+    }
+
+    /* Button style */
+    .btn {
+        background-color: #00d0ff;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #00b5cc;
+    }
+
+    .btn:active {
+        background-color: #009999;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #0f172a;
-            background-image: radial-gradient(at 47% 33%, hsl(262.35, 83%, 7%) 0, transparent 59%),
-                radial-gradient(at 82% 65%, hsl(218.18, 39%, 11%) 0, transparent 55%);
+            background-color: #1c2541; /* Slightly darker */
+            background-image: radial-gradient(at 47% 33%, rgba(0, 60, 110, 0.75) 0%, transparent 60%);
         }
 
         .glassmorphism {
-            background: rgba(17, 25, 40, 0.75);
-            backdrop-filter: blur(12px);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.125);
+            border-radius: 10px;
+            padding: 15px;
         }
 
-        .shine {
-            position: relative;
-            overflow: hidden;
+        .btn {
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        body {
+            background-color: #0f172a; /* Darker base color */
         }
 
-        .shine::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100%);
-            transform: rotate(30deg);
-            transition: 0.6s;
-            opacity: 0;
+        .glassmorphism {
+            padding: 10px;
         }
 
-        .shine:hover::after {
-            opacity: 1;
-            transition: 0s;
+        .btn {
+            font-size: 0.9rem;
+            padding: 8px 14px;
         }
-    </style>
+    }
+</style>
+
     <script>
         // Aktifkan mode dark sesuai preferensi pengguna
         document.addEventListener("DOMContentLoaded", function () {
