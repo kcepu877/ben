@@ -331,7 +331,7 @@ document.getElementById("check-proxies").addEventListener("click", async functio
 
             // Tentukan status aktif
             const isActive = data.message === " ACTIVE ✅";
-            const statusText = isActive ? 'ACTIVE' : 'INACTIVE';
+            const statusText = isActive ? '🟢ACTIVE' : '🔴INACTIVE';
 
             // Flag negara
             const flagHtml = data.country ? `<span class="text-2xl">${data.country}</span>` : '';
@@ -362,8 +362,8 @@ document.getElementById("check-proxies").addEventListener("click", async functio
     const resultBody = document.getElementById("result-body");
     resultBody.innerHTML = "";
     results.forEach(data => {
-        const isActive = data.status === 'ACTIVE';
-        const statusText = isActive ? 'ACTIVE' : 'INACTIVE';
+        const isActive = data.status === '🟢ACTIVE';
+        const statusText = isActive ? '🟢ACTIVE' : '🔴INACTIVE';
         const fullPort = data.port || 'N/A';
 
         resultBody.innerHTML += `
