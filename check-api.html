@@ -23,150 +23,157 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
     /* Global styling */
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #1e2a47; /* Dark Blue by default */
-        background-image: radial-gradient(at 47% 33%, rgba(0, 71, 124, 0.75) 0%, transparent 60%), 
-                          radial-gradient(at 82% 65%, rgba(0, 33, 61, 0.75) 0%, transparent 55%);
-        background-size: cover;
-        background-position: center;
-        color: #ffffff;
-        transition: background-color 0.3s, color 0.3s; /* Smooth transition */
-    }
+    /* Global styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0f1e; /* Deep Dark Blue */
+    background-image: radial-gradient(at 47% 33%, rgba(50, 10, 70, 0.75) 0%, transparent 60%), 
+                      radial-gradient(at 82% 65%, rgba(0, 10, 40, 0.75) 0%, transparent 55%);
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    transition: background-color 0.5s, color 0.5s;
+}
 
-    /* Light mode */
-    body.light-mode {
-        background-color: #f7fafc; /* Light background */
-        background-image: none;
-        color: #333333;
+/* Light mode */
+body.light-mode {
+    background-color: #eef1f7; /* Soft Light Blue */
+    background-image: none;
+    color: #1e1e2e;
+}
+
+.glassmorphism {
+    background: rgba(20, 30, 60, 0.8); /* Deep Blue */
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    border: 2px solid rgba(0, 170, 255, 0.3);
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Light mode for glassmorphism */
+body.light-mode .glassmorphism {
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Neon Blue shine effect */
+.shine {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(0, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: rotate(45deg);
+    transition: 0.6s;
+    opacity: 0;
+}
+
+.shine:hover::after {
+    opacity: 1;
+    transition: 0s;
+}
+
+/* Button style */
+.btn {
+    background: linear-gradient(90deg, #00d0ff, #4d00ff);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0px 4px 15px rgba(0, 208, 255, 0.5);
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #0088ff, #3200a3);
+    box-shadow: 0px 4px 20px rgba(0, 208, 255, 0.7);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Light mode button styles */
+body.light-mode .btn {
+    background: linear-gradient(90deg, #4CAF50, #00C853);
+    box-shadow: 0px 4px 15px rgba(0, 200, 100, 0.5);
+}
+
+/* Button to switch themes */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(90deg, #ff6b00, #ff00ff);
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 2px 15px rgba(255, 0, 255, 0.4);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+.theme-toggle:hover {
+    background: linear-gradient(90deg, #ff9100, #d400ff);
+    box-shadow: 0 2px 20px rgba(255, 0, 255, 0.6);
+}
+
+.theme-toggle i {
+    font-size: 22px;
+    color: #fff;
+}
+
+/* Light mode theme button */
+body.light-mode .theme-toggle {
+    background: linear-gradient(90deg, #00ff99, #00c3ff);
+    box-shadow: 0 2px 15px rgba(0, 255, 150, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        background-color: #121936;
     }
 
     .glassmorphism {
-        background: rgba(17, 25, 40, 0.75); /* Dark Blue with transparency */
-        backdrop-filter: blur(12px);
-        border-radius: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.125);
-        padding: 20px;
-        transition: all 0.3s; /* Smooth transition */
-    }
-
-    /* Light mode for glassmorphism */
-    body.light-mode .glassmorphism {
-        background: rgba(255, 255, 255, 0.75); /* Light glassmorphism */
-        border: 1px solid rgba(0, 0, 0, 0.125);
-    }
-
-    /* Neon Blue shine effect */
-    .shine {
-        position: relative;
-        overflow: hidden;
         border-radius: 10px;
+        padding: 15px;
     }
 
-    .shine::after {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(0, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
-        transform: rotate(45deg);
-        transition: 0.6s;
-        opacity: 0;
-    }
-
-    .shine:hover::after {
-        opacity: 1;
-        transition: 0s;
-    }
-
-    /* Button style */
     .btn {
-        background-color: #00d0ff;
-        color: #ffffff;
-        border: none;
+        font-size: 1rem;
         padding: 10px 20px;
-        font-size: 1.2rem;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background-color: #0b0d1a;
     }
 
-    .btn:hover {
-        background-color: #00b5cc;
-    }
-
-    .btn:active {
-        background-color: #009999;
-    }
-
-    /* Light mode button styles */
-    body.light-mode .btn {
-        background-color: #4CAF50;
-        color: #ffffff;
-    }
-
-    /* Button to switch themes */
-    .theme-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background-color: #fff;
-        border: none;
+    .glassmorphism {
         padding: 10px;
-        border-radius: 50%;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        cursor: pointer;
-        z-index: 10;
-        transition: background-color 0.3s;
     }
 
-    .theme-toggle.light-mode {
-        background-color: #333;
-        color: #fff;
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 14px;
     }
+}
 
-    .theme-toggle:hover {
-        background-color: #ddd;
-    }
-
-    .theme-toggle i {
-        font-size: 20px;
-    }
-
-    /* Responsive design */
-    @media (max-width: 768px) {
-        body {
-            background-color: #1c2541; /* Slightly darker */
-            background-image: radial-gradient(at 47% 33%, rgba(0, 60, 110, 0.75) 0%, transparent 60%);
-        }
-
-        .glassmorphism {
-            border-radius: 10px;
-            padding: 15px;
-        }
-
-        .btn {
-            font-size: 1rem;
-            padding: 8px 16px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        body {
-            background-color: #0f172a; /* Darker base color */
-        }
-
-        .glassmorphism {
-            padding: 10px;
-        }
-
-        .btn {
-            font-size: 0.9rem;
-            padding: 8px 14px;
-        }
-    }
 </style>
 
 <body>
