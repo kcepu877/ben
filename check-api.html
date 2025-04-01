@@ -249,10 +249,7 @@ document.getElementById("check-proxies").addEventListener("click", async functio
                             <i class="fas fa-network-wired"></i> ASN: <span class="font-medium dark:text-white">${data.asn}</span>
                         </div>
                     ` : ''}
-                    ${data.countryFlag ? `
-                        <div class="text-gray-200 font-medium mt-1">
-                            ${data.countryFlag} ${data.country || 'N/A'}
-                        </div>
+                    </div>
                     ` : ''}
                 </div>
 
