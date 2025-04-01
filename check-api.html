@@ -198,98 +198,99 @@
             }
 
             // Render hasil pengecekan
-            // Render hasil pengecekan
-const resultBody = document.getElementById("result-body");
-resultBody.innerHTML = "";
-results.forEach(data => {
-    const isActive = data.proxyip && !data.error;
-    const statusText = isActive ? 'ACTIVE' : 'INACTIVE';
-    const fullPort = data.port || 'N/A';
-    const flagHtml = data.country ? `<span class="text-2xl">${data.country}</span>` : '';
-    resultBody.innerHTML += `
-        <div class="glassmorphism overflow-hidden">
+            const resultBody = document.getElementById("result-body");
+            resultBody.innerHTML = "";
+            results.forEach(data => {
+                const isActive = data.proxyip && !data.error;
+                const statusText = isActive ? 'ACTIVE' : 'INACTIVE';
+                const fullPort = data.port || 'N/A';
+                const flagHtml = data.countryFlag ? `<span class="text-2xl">${data.countryFlag}</span>` : '';
+                resultBody.innerHTML += `
+          <div class="glassmorphism overflow-hidden">
             <div class="relative">
-                <div class="absolute top-0 left-0 w-1 h-full ${isActive ? 'bg-green-500' : 'bg-red-500'}"></div>
-                <div class="p-5 space-y-3">
-                    <!-- Top Block: IP, Status, Port & ASN; Flag & Country -->
-                    <div class="flex justify-between items-center">
-                        <!-- Kiri: IP, Status, Port & ASN -->
-                        <div class="flex flex-col">
-                            <div class="flex items-center">
-                                <h2 class="text-xl font-bold text-white">${data.ip}${data.port ? ':' + data.port : ''}</h2>
-                                <span class="ml-3 px-2 py-1 text-xs font-medium rounded-full ${isActive ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200'}">
-                                    ${statusText}
-                                </span>
-                            </div>
-                            <div class="flex items-center text-gray-400 text-sm gap-x-1">
-                                <i class="fas fa-plug"></i>
-                                <span>Port:</span>
-                                <span class="font-medium dark:text-white">${fullPort}</span>
-                                ${data.asn ? `
-                                    <span>•</span>
-                                    <i class="fas fa-network-wired"></i>
-                                    <span>ASN:</span>
-                                    <span class="font-medium dark:text-white">${data.asn}</span>
-                                ` : ''}
-                            </div>
-                        </div>
-                        <!-- Kanan: Flag & Country -->
-                        <div class="flex items-center border-l border-gray-700 pl-3">
-                            ${flagHtml}
-                            <span class="ml-2 text-gray-200 font-medium">${data.city || 'N/A'}</span>
-                        </div>
+              <div class="absolute top-0 left-0 w-1 h-full ${isActive ? 'bg-green-500' : 'bg-red-500'}"></div>
+              <div class="p-5 space-y-3">
+                <!-- Top Block: IP, Status, Port & ASN; Flag & Country -->
+                <div class="flex justify-between items-center">
+                  <!-- Kiri: IP, Status, Port & ASN -->
+                  <div class="flex flex-col">
+                    <div class="flex items-center">
+                      <h2 class="text-xl font-bold text-white">${data.ip}${data.port ? ':' + data.port : ''}</h2>
+                      <span class="ml-3 px-2 py-1 text-xs font-medium rounded-full ${isActive ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200'}">
+                        ${statusText}
+                      </span>
                     </div>
-                    
-                    <!-- Middle Block: Country dan Organization -->
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center">
-                            <span class="inline-flex items-center justify-center p-1.5 bg-green-500 rounded-full mr-2 text-white">
-                                <i class="fas fa-globe-americas"></i>
-                            </span>
-                            <span class="text-base dark:text-gray-300">Country: <span class="font-medium dark:text-white">${data.country || 'N/A'}</span></span>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="inline-flex items-center justify-center p-1.5 bg-green-500 rounded-full mr-2 text-white">
-                                <i class="fas fa-building"></i>
-                            </span>
-                            <span class="text-base dark:text-gray-300">ISP: <span class="font-medium dark:text-white">${data.isp || 'N/A'}</span></span>
-                        </div>
+                    <div class="flex items-center text-gray-400 text-sm gap-x-1">
+                        <i class="fas fa-plug"></i>
+                        <span>Port:</span>
+                     <span class="font-medium dark:text-white">${fullPort}</span>
+                     ${data.asn ? `
+                      <span>•</span>
+                        <i class="fas fa-network-wired"></i>
+                        <span>ASN:</span>
+                    <span class="font-medium dark:text-white">${data.asn}</span>
+                         ` : ''}
                     </div>
-                    <!-- Separator -->
-                    <div class="mt-1 pt-1 border-t border-gray-700/50"></div>
-                    <!-- Bottom Block: Coordinates dan Delay (hanya tampil jika aktif) -->
-                    ${isActive ? `
-                        <div class="flex items-center">
-                            <div class="w-8 h-8 rounded-full bg-green-900/60 flex items-center justify-center mr-3">
-                                <i class="fas fa-map-pin text-green-400"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="text-base dark:text-gray-300">Coordinates</div>
-                                <div>
-                                    <span class="font-medium dark:text-white">
-                                        ${data.latitude && data.longitude ? data.latitude + ', ' + data.longitude : '-'}
-                                    </span>
-                                    <a href="https://www.google.com/maps?q=${data.latitude},${data.longitude}" target="_blank" class="ml-2 text-base dark:text-indigo-300 hover:underline">
-                                        View on Map
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="flex-1 text-right">
-                                <span class="inline-flex items-center justify-center p-1.5 bg-purple-500 rounded-full mr-2 text-white">
-                                    <i class="fas fa-clock"></i>
-                                </span>
-                                <span class="text-base dark:text-gray-300">Delay: <span class="font-medium dark:text-white">${data.delay || '-'}</span></span>
-                            </div>
-                        </div>
-                    ` : ''}
-                </div>
-            </div>
-        </div>
-    `;
-});
-document.getElementById("loading").classList.add("hidden");
-document.getElementById("result-container").classList.remove("hidden");
 
+                  </div>
+                  <!-- Kanan: Flag & Country -->
+                  <div class="flex items-center border-l border-gray-700 pl-3">
+                    ${flagHtml}
+                    <span class="ml-2 text-gray-200 font-medium">${data.countryName || 'N/A'}</span>
+                  </div>
+                </div>
+                
+                <!-- Middle Block: Country dan Organization -->
+                <div class="flex justify-between items-center">
+                  <div class="flex items-center">
+                    <span class="inline-flex items-center justify-center p-1.5 bg-green-500 rounded-full mr-2 text-white">
+                      <i class="fas fa-globe-americas"></i>
+                    </span>
+                    <span class="text-base dark:text-gray-300">Country: <span class="font-medium dark:text-white">${data.countryName || 'N/A'}</span></span>
+                  </div>
+                  <div class="flex items-center">
+                    <span class="inline-flex items-center justify-center p-1.5 bg-green-500 rounded-full mr-2 text-white">
+                      <i class="fas fa-building"></i>
+                    </span>
+                    <span class="text-base dark:text-gray-300">Organization: <span class="font-medium dark:text-white">${data.asOrganization || 'N/A'}</span></span>
+                  </div>
+                </div>
+                <!-- Separator -->
+                <div class="mt-1 pt-1 border-t border-gray-700/50"></div>
+                <!-- Bottom Block: Coordinates dan Delay (hanya tampil jika aktif) -->
+                
+                ${isActive ? `
+                  <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-green-900/60 flex items-center justify-center mr-3">
+                                            <i class="fas fa-map-pin text-green-400"></i>
+                                        </div>
+                    <div class="flex-1">
+                      <div class="text-base dark:text-gray-300">Coordinates</div>
+                      <div>
+                        <span class="font-medium dark:text-white">
+                          ${data.latitude && data.longitude ? data.latitude + ', ' + data.longitude : '-'}
+                        </span>
+                        <a href="https://www.google.com/maps?q=${data.latitude},${data.longitude}" target="_blank" class="ml-2 text-base dark:text-indigo-300 hover:underline">
+                          View on Map
+                        </a>
+                      </div>
+                    </div>
+                    <div class="flex-1 text-right">
+                      <span class="inline-flex items-center justify-center p-1.5 bg-purple-500 rounded-full mr-2 text-white">
+                        <i class="fas fa-clock"></i>
+                      </span>
+                      <span class="text-base dark:text-gray-300">Delay: <span class="font-medium dark:text-white">${data.delay || '-'}</span></span>
+                    </div>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+            });
+            document.getElementById("loading").classList.add("hidden");
+            document.getElementById("result-container").classList.remove("hidden");
+        });
     </script>
 </body>
 
