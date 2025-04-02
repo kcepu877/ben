@@ -1778,13 +1778,12 @@ async function handleSubRequest(hostnem) {
                     // Update UI
                     loadingEl.style.display = 'none';
                     resultEl.style.display = 'block';
-                    const selectedDomain = document.getElementById('domain').value;
-		    generatedLinkEl.textContent = \`https://\${selectedDomain}\${generatedLink}\`;
+                    generatedLinkEl.textContent = \`https://\${window.location.hostname}\${generatedLink}\`;
 
                     // Copy link functionality
                     copyLinkBtn.onclick = async () => {
     try {
-        const link = 'https://' + selectedDomain + generatedLink;
+        const link = 'https://' + window.location.hostname + generatedLink;
         await navigator.clipboard.writeText(link);
 
         Swal.fire({
