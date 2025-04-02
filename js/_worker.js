@@ -5577,7 +5577,7 @@ ${bmkg}        "direct"
       "type": "urltest",
       "tag": "Best Latency",
       "outbounds": [
-${bmkg}        
+${bmkg}        "direct"
       ],
       "url": "https://ping.wildcrd.us.kg",
       "interval": "30s"
