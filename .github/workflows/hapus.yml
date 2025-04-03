@@ -31,6 +31,9 @@ jobs:
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
             -H "Content-Type: application/json")
           
+          # Debug the project response for verification
+          echo "API Response: $project_response"
+          
           # Extract the ID of the "bot" project
           CLOUDFLARE_PROJECT_ID=$(echo "$project_response" | jq -r '.result[] | select(.name=="bot") | .id')
           
@@ -46,6 +49,12 @@ jobs:
 
       - name: List and Delete Old Pages Deployments for "bot"
         run: |
+          # Make sure project ID is set
+          if [ -z "$CLOUDFLARE_PROJECT_ID" ]; then
+            echo "CLOUDFLARE_PROJECT_ID is empty, exiting!"
+            exit 1
+          fi
+
           # Get the list of deployments for the "bot" project using the provided project ID
           deployments=$(curl -s -X GET "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects/$CLOUDFLARE_PROJECT_ID/deployments" \
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
