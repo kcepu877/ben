@@ -14,6 +14,21 @@ jobs:
       - name: Install jq
         run: sudo apt-get install jq -y
 
+      - name: Debug Output JSON
+        run: |
+          API_TOKEN="${{ secrets.CF_API_TOKEN }}"
+          ACCOUNT_ID="${{ secrets.CF_ACCOUNT_ID }}"
+          CLOUDFLARE_API="https://api.cloudflare.com/client/v4"
+          HEADER_AUTH="Authorization: Bearer $API_TOKEN"
+          HEADER_CT="Content-Type: application/json"
+
+          echo "📌 Mengecek daftar Pages Projects..."
+          RESPONSE=$(curl -s -X GET "$CLOUDFLARE_API/accounts/$ACCOUNT_ID/pages/projects" \
+            -H "$HEADER_AUTH" -H "$HEADER_CT")
+
+          echo "📌 Output JSON dari API:"
+          echo "$RESPONSE"
+
       - name: Hapus Log Deployments Cloudflare Pages
         run: |
           # === Konfigurasi ===
