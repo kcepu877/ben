@@ -33,3 +33,54 @@ jobs:
           echo "$RESPONSE" | jq .
 
           # Cek apakah proyek target ada
+          PAGES_FOUND=$(echo "$RESPONSE" | jq -r '.result[].name' | grep -w "$TARGET_PAGES" || true)
+          if [ -z "$PAGES_FOUND" ]; then
+            echo "⚠️ ERROR: Proyek '$TARGET_PAGES' tidak ditemukan di akun Cloudflare!"
+            exit 1
+          fi
+
+      - name: Hapus Log Deployments Cloudflare Pages (Spesifik)
+        run: |
+          # === Konfigurasi ===
+          API_TOKEN="${{ secrets.CF_API_TOKEN }}"
+          ACCOUNT_ID="${{ secrets.CF_ACCOUNT_ID }}"
+          CLOUDFLARE_API="https://api.cloudflare.com/client/v4"
+          HEADER_AUTH="Authorization: Bearer $API_TOKEN"
+          HEADER_CT="Content-Type: application/json"
+
+          echo "🔍 Memproses Project: $TARGET_PAGES"
+
+          # === Hapus Semua Deployments ===
+          echo "📌 Mengambil daftar Deployments untuk Project: $TARGET_PAGES..."
+          RESPONSE=$(curl -s -X GET "$CLOUDFLARE_API/accounts/$ACCOUNT_ID/pages/projects/$TARGET_PAGES/deployments" \
+            -H "$HEADER_AUTH" -H "$HEADER_CT")
+
+          echo "📌 Debug Response API untuk Project: $TARGET_PAGES"
+          echo "$RESPONSE" | jq .
+
+          # Cek apakah ada deployments
+          if echo "$RESPONSE" | jq -e '.result' >/dev/null; then
+            DEPLOYMENTS=$(echo "$RESPONSE" | jq -r '.result[].id')
+          else
+            echo "✅ Tidak ada Deployment yang ditemukan untuk Project: $TARGET_PAGES."
+            exit 0
+          fi
+
+          # Hapus setiap deployment
+          for deployment in $DEPLOYMENTS; do
+            echo "🗑️ Menghapus Deployment: $deployment"
+            DELETE_RESPONSE=$(curl -s -X DELETE "$CLOUDFLARE_API/accounts/$ACCOUNT_ID/pages/projects/$TARGET_PAGES/deployments/$deployment" \
+              -H "$HEADER_AUTH" -H "$HEADER_CT")
+
+            # Debug Response setelah delete
+            echo "📌 Response API setelah delete Deployment: $deployment"
+            echo "$DELETE_RESPONSE" | jq .
+
+            if echo "$DELETE_RESPONSE" | jq -e '.success' | grep -q 'true'; then
+              echo "✅ Deployment '$deployment' berhasil dihapus."
+            else
+              echo "⚠️ Gagal menghapus Deployment '$deployment'."
+            fi
+          done
+
+          echo "🎉 Semua log deployments untuk proyek '$TARGET_PAGES' telah dihapus!"
