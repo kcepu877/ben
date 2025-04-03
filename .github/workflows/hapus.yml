@@ -24,12 +24,25 @@ jobs:
       - name: Configure Cloudflare API Token
         run: echo "CLOUDFLARE_API_TOKEN=${{ secrets.CLOUDFLARE_API_TOKEN }}" >> $GITHUB_ENV
 
-      - name: Use Direct Cloudflare Project ID
+      - name: Fetch the list of projects and find the "bot" project
         run: |
-          # Set the Cloudflare Project ID directly (using the ID you provided)
-          CLOUDFLARE_PROJECT_ID="ffd70e62-5e4e-469b-a651-9a6af968a670"
+          # Fetch the list of projects and filter to find the "bot" project
+          project_response=$(curl -s -X GET "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json")
+          
+          # Extract the ID of the "bot" project
+          CLOUDFLARE_PROJECT_ID=$(echo "$project_response" | jq -r '.result[] | select(.name=="bot") | .id')
+          
+          if [ -z "$CLOUDFLARE_PROJECT_ID" ]; then
+            echo "Project 'bot' not found!"
+            exit 1
+          else
+            echo "Project ID for 'bot': $CLOUDFLARE_PROJECT_ID"
+          fi
+          
+          # Set the project ID as an environment variable for use in subsequent steps
           echo "CLOUDFLARE_PROJECT_ID=$CLOUDFLARE_PROJECT_ID" >> $GITHUB_ENV
-          echo "Using Project ID: $CLOUDFLARE_PROJECT_ID"
 
       - name: List and Delete Old Pages Deployments for "bot"
         run: |
