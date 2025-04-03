@@ -49,7 +49,7 @@ jobs:
 
       - name: List and Delete Old Pages Deployments for "bot"
         run: |
-          # Make sure project ID is set
+          # Check if project ID is set
           if [ -z "$CLOUDFLARE_PROJECT_ID" ]; then
             echo "CLOUDFLARE_PROJECT_ID is empty, exiting!"
             exit 1
@@ -61,7 +61,7 @@ jobs:
             -H "Content-Type: application/json")
 
           # Print the raw API response for debugging
-          echo "API Response: $deployments"
+          echo "Deployments API Response: $deployments"
 
           # Check if the deployments are empty or null
           if [ "$deployments" == "null" ] || [ -z "$deployments" ]; then
