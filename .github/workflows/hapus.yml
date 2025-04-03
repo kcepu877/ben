@@ -29,48 +29,7 @@ jobs:
           RESPONSE=$(curl -s -X GET "$CLOUDFLARE_API/accounts/$ACCOUNT_ID/pages/projects" \
             -H "$HEADER_AUTH" -H "$HEADER_CT")
 
-          echo "📌 Output JSON dari API:"
-          echo "$RESPONSE"
+          echo "📌 Output JSON dari API (formatted):"
+          echo "$RESPONSE" | jq .
 
-      - name: Hapus Log Deployments Cloudflare Pages (Spesifik)
-        run: |
-          # === Konfigurasi ===
-          API_TOKEN="${{ secrets.CF_API_TOKEN }}"
-          ACCOUNT_ID="${{ secrets.CF_ACCOUNT_ID }}"
-          CLOUDFLARE_API="https://api.cloudflare.com/client/v4"
-          HEADER_AUTH="Authorization: Bearer $API_TOKEN"
-          HEADER_CT="Content-Type: application/json"
-
-          echo "Mulai proses penghapusan log deployments untuk proyek spesifik..."
-          echo
-
-          # === Ambil daftar proyek Pages yang sesuai ===
-          IFS=',' read -ra PROJECTS <<< "$TARGET_PAGES"
-
-          for project in "${PROJECTS[@]}"; do
-            echo "🔍 Memproses Project: $project"
-
-            # === Hapus Semua Deployments ===
-            echo "📌 Mengambil daftar Deployments untuk Project: $project..."
-            RESPONSE=$(curl -s -X GET "$CLOUDFLARE_API/accounts/$ACCOUNT_ID/pages/projects/$project/deployments" \
-  -H "$HEADER_AUTH" -H "$HEADER_CT")
-
-echo "📌 Debug Response API untuk Project: $project"
-echo "$RESPONSE"
-
-DEPLOYMENTS=$(echo "$RESPONSE" | jq -r '.result | select(. != null) | .[].id')
-
-            if [ -z "$DEPLOYMENTS" ]; then
-              echo "✅ Tidak ada Deployment yang ditemukan untuk Project: $project."
-            else
-              echo "🚨 Menghapus Semua Deployments untuk Project: $project..."
-              for deployment in $DEPLOYMENTS; do
-                curl -s -X DELETE "$CLOUDFLARE_API/accounts/$ACCOUNT_ID/pages/projects/$project/deployments/$deployment" \
-                  -H "$HEADER_AUTH" -H "$HEADER_CT"
-                echo "🗑️ Deployment '$deployment' dihapus dari Project: $project."
-              done
-            fi
-          done
-
-          echo
-          echo "🎉 Log deployments untuk proyek spesifik telah dihapus!"
+          # Cek apakah proyek target ada
