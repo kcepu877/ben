@@ -1,0 +1,60 @@
+name: Hapus Log Deployments Cloudflare Pages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  hapus-log-cloudflare:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install jq
+        run: sudo apt-get install jq -y
+
+      - name: Hapus Log Deployments Cloudflare Pages
+        run: |
+          # === Konfigurasi ===
+          API_TOKEN="${{ secrets.CF_API_TOKEN }}"
+          ACCOUNT_ID="${{ secrets.CF_ACCOUNT_ID }}"
+          CLOUDFLARE_API="https://api.cloudflare.com/client/v4"
+          HEADER_AUTH="Authorization: Bearer $API_TOKEN"
+          HEADER_CT="Content-Type: application/json"
+
+          echo "Mulai proses penghapusan log deployments di Cloudflare Pages..."
+          echo
+
+          # === Hapus Log Deployments ===
+          echo "📌 Mengambil daftar Pages Projects..."
+          PAGES=$(curl -s -X GET "$CLOUDFLARE_API/accounts/$ACCOUNT_ID/pages/projects" \
+            -H "$HEADER_AUTH" -H "$HEADER_CT" | jq -r '.result[].name')
+
+          if [ -z "$PAGES" ]; then
+            echo "✅ Tidak ada Pages Projects yang ditemukan."
+          else
+            echo "🚨 Menghapus Log Deployments..."
+            for project in $PAGES; do
+              echo "🔍 Memproses Project: $project"
+
+              # === Hapus Semua Deployments ===
+              echo "📌 Mengambil daftar Deployments untuk Project: $project..."
+              DEPLOYMENTS=$(curl -s -X GET "$CLOUDFLARE_API/accounts/$ACCOUNT_ID/pages/projects/$project/deployments" \
+                -H "$HEADER_AUTH" -H "$HEADER_CT" | jq -r '.result[].id')
+
+              if [ -z "$DEPLOYMENTS" ]; then
+                echo "✅ Tidak ada Deployment yang ditemukan untuk Project: $project."
+              else
+                echo "🚨 Menghapus Semua Deployments untuk Project: $project..."
+                for deployment in $DEPLOYMENTS; do
+                  curl -s -X DELETE "$CLOUDFLARE_API/accounts/$ACCOUNT_ID/pages/projects/$project/deployments/$deployment" \
+                    -H "$HEADER_AUTH" -H "$HEADER_CT"
+                  echo "🗑️ Deployment '$deployment' dihapus dari Project: $project."
+                done
+              fi
+            done
+          fi
+
+          echo
+          echo "🎉 Semua log deployments berhasil dihapus tanpa menghapus Pages atau Workers!"
