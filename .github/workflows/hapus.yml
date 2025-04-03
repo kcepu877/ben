@@ -24,57 +24,53 @@ jobs:
       - name: Configure Cloudflare API Token
         run: echo "CLOUDFLARE_API_TOKEN=${{ secrets.CLOUDFLARE_API_TOKEN }}" >> $GITHUB_ENV
 
-      - name: Fetch the list of projects and find the "bot" project
+      - name: Fetch and Verify Account & Project Information
         run: |
-          # Fetch the list of projects and filter to find the "bot" project
+          echo "Fetching list of projects under the Cloudflare account..."
+
+          # Fetch all projects in the account
           project_response=$(curl -s -X GET "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects" \
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
             -H "Content-Type: application/json")
-          
-          # Debug the project response for verification
-          echo "API Response: $project_response"
-          
-          # Extract the ID of the "bot" project
+
+          echo "Project List Response: $project_response"
+
+          # Extract Project ID for "bot"
           CLOUDFLARE_PROJECT_ID=$(echo "$project_response" | jq -r '.result[] | select(.name=="bot") | .id')
-          
-          if [ -z "$CLOUDFLARE_PROJECT_ID" ]; then
-            echo "Project 'bot' not found!"
+
+          if [ -z "$CLOUDFLARE_PROJECT_ID" ] || [ "$CLOUDFLARE_PROJECT_ID" == "null" ]; then
+            echo "Error: Project 'bot' not found in account ID '${{ secrets.CLOUDFLARE_ACCOUNT_ID }}'!"
             exit 1
-          else
-            echo "Project ID for 'bot': $CLOUDFLARE_PROJECT_ID"
           fi
-          
-          # Set the project ID as an environment variable for use in subsequent steps
+
+          echo "Project 'bot' found! Project ID: $CLOUDFLARE_PROJECT_ID"
           echo "CLOUDFLARE_PROJECT_ID=$CLOUDFLARE_PROJECT_ID" >> $GITHUB_ENV
 
-      - name: List and Delete Old Pages Deployments for "bot"
+      - name: Fetch and Delete Old Deployments
         run: |
-          # Check if project ID is set
           if [ -z "$CLOUDFLARE_PROJECT_ID" ]; then
-            echo "CLOUDFLARE_PROJECT_ID is empty, exiting!"
+            echo "Error: CLOUDFLARE_PROJECT_ID is empty, aborting!"
             exit 1
           fi
 
-          # Get the list of deployments for the "bot" project using the provided project ID
+          echo "Fetching deployments for project ID: $CLOUDFLARE_PROJECT_ID"
+
+          # Fetch deployments
           deployments=$(curl -s -X GET "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects/$CLOUDFLARE_PROJECT_ID/deployments" \
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
             -H "Content-Type: application/json")
 
-          # Print the raw API response for debugging
           echo "Deployments API Response: $deployments"
 
-          # Check if the deployments are empty or null
-          if [ "$deployments" == "null" ] || [ -z "$deployments" ]; then
-            echo "No deployments found for project 'bot'."
-            exit 0
+          if [[ "$deployments" == *'"result":null'* ]]; then
+            echo "Error: No deployments found. The project ID might be incorrect."
+            exit 1
           fi
 
-          # Get the current date in Unix timestamp
           current_date=$(date +%s)
 
-          # Filter deployments older than 30 days (2592000 seconds)
           echo "$deployments" | jq -r '.result[] | select(.created_on | tonumber < ('$current_date' - 2592000)) | .id' | while read deployment_id; do
-            echo "Deleting old deployment $deployment_id for 'bot' project"
+            echo "Deleting deployment $deployment_id for project 'bot'"
             curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects/$CLOUDFLARE_PROJECT_ID/deployments/$deployment_id" \
               -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
               -H "Content-Type: application/json"
