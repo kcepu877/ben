@@ -448,31 +448,8 @@ body.light-mode .theme-toggle {
         </div>
     </footer>
 
-   <script>
-document.getElementById("proxy-input").addEventListener("input", function () {
-    const proxies = this.value.trim().split("\n").filter(line => line);
-    document.getElementById("proxy-count").textContent = `${proxies.length}/20`;
-});
 
-document.getElementById("clear-btn").addEventListener("click", function () {
-    document.getElementById("proxy-input").value = "";
-    document.getElementById("proxy-count").textContent = "0/20";
-});
-
-document.getElementById("example-btn").addEventListener("click", function () {
-    const exampleProxies = [
-        "36.95.152.58:12137",
-        "37.202.222.182:8443",
-        "91.187.93.166:443",
-        "190.183.61.62:8443",
-        "43.218.77.16:1443",
-        "202.91.32.252:15377",
-        "85.208.110.52:8443"
-    ];
-    document.getElementById("proxy-input").value = exampleProxies.join("\n");
-    document.getElementById("proxy-count").textContent = `${exampleProxies.length}/20`;
-});
-
+    <script>
 document.getElementById("check-proxies").addEventListener("click", async function () {
     const input = document.getElementById("proxy-input").value.trim();
     if (!input) return;
@@ -499,7 +476,6 @@ document.getElementById("check-proxies").addEventListener("click", async functio
 
             const isActive = data.message === " ACTIVE ✅";
             const statusText = isActive ? '🟢ACTIVE' : '🔴INACTIVE';
-
             const html = `
                 <div class="glassmorphism overflow-hidden">
                     <div class="relative">
@@ -559,7 +535,6 @@ document.getElementById("check-proxies").addEventListener("click", async functio
             const wrapper = document.createElement("div");
             wrapper.innerHTML = html.trim();
             resultBody.appendChild(wrapper.firstChild);
-
         } catch (e) {
             const errorDiv = document.createElement("div");
             errorDiv.className = "glassmorphism p-4 text-red-400 font-bold";
@@ -567,15 +542,19 @@ document.getElementById("check-proxies").addEventListener("click", async functio
             resultBody.appendChild(errorDiv);
         }
 
-        // Progress bar update
+        // Update progress bar
         const percent = ((i + 1) / proxies.length) * 100;
         progressBar.style.width = `${percent}%`;
+
+        // Force repaint between each iteration
+        await new Promise(resolve => setTimeout(resolve, 100)); // opsional agar animasi terlihat
     }
 
     loading.classList.add("hidden");
     resultContainer.classList.remove("hidden");
 });
 </script>
+
 
 
 </body>
