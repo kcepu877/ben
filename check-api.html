@@ -51,11 +51,40 @@
       
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-        body {
+
+	    body {
+  background: url('https://raw.githubusercontent.com/bitzblack/ip/refs/heads/main/shubham-dhage-5LQ_h5cXB6U-unsplash.jpg') no-repeat center center fixed;
+        background-size: cover;
+        justify-content: center;
+        align-items: center;
+  background-size: 300% 300%; /* Untuk animasi gradient */
+  color: #fff; /* Teks putih agar kontras */
+  margin: 0;
+  font-family: Arial, sans-serif; /* Font sederhana dan bersih */
+  animation: rainbowBackground 10s infinite; /* Animasi bergerak */
+}
+
+/* Animasi untuk background */
+@keyframes rainbowBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes moveColors {
+  100% {
+    background-position: -200%; /* Mulai dari luar kiri */
+  }
+  0% {
+    background-position: 200%; /* Bergerak ke kanan */
+  }
+}
+
+	    
+        body1 {
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background: url('') no-repeat center center fixed;
+            background: url('https://raw.githubusercontent.com/bitzblack/ip/refs/heads/main/shubham-dhage-5LQ_h5cXB6U-unsplash.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #f5f5f5;
             display: flex;
@@ -816,7 +845,7 @@ body.light-mode .theme-toggle {
             `https://api.ndeso.xyz/check?ip=${ipPart}:${portPart}` : 
             `https://api.ndeso.xyz/check?ip=${ipPart}`;
         
-        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
+        const proxyUrl = `https://api-get.c-bnn.workers.dev/get?url=${encodeURIComponent(apiUrl)}`;
         
         const response = await fetch(proxyUrl);
         const data = await response.json();
@@ -829,7 +858,7 @@ body.light-mode .theme-toggle {
             <div class="flex items-center">
 
                 <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
-                    <span class="text-xl"><i class="fa-solid fa-globe"></i></span>
+                    <span class="text-xl">${ipInfo.flag || '🏳️'}</span>
                 </div>
                 <span class="text-lg font-bold text-[17px] text-blue-200">${ipInfo.ip}</span>
             </div>
@@ -890,7 +919,7 @@ body.light-mode .theme-toggle {
                 </div>
                 <div>
                     <div class="text-xs text-gray-400">Country</div>
-                    <div class="text-[10px] font-medium">${ipInfo.country || 'N/A'}</div>
+                    <div class="text-[10px] font-medium">${ipInfo.country || 'N/A'} ${ipInfo.flag || '🏳️'}</div>
                 </div>
             </div>
 
