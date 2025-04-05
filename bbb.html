@@ -813,10 +813,9 @@ body.light-mode .theme-toggle {
         }
 
         apiUrl = portPart ? 
-            `https://api.ndeso.xyz/check?ip=${ipPart}:${portPart}` : 
-            `https://api.ndeso.xyz/check?ip=${ipPart}`;
-        
-        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
+            `https://api.ndeso.xyz/check?ip=${ipPart}:${portPart}`: 
+            
+        const proxyUrl = `${apiUrl}`;
         
         const response = await fetch(proxyUrl);
         const data = await response.json();
