@@ -13,6 +13,29 @@
     <script src="https://unpkg.com/tippy.js@6"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.8/countUp.min.js"></script>
     <style>
+   @keyframes moveColors {
+  0% {
+    background-position: 200%;
+  }
+  100% {
+    background-position: -200%;
+  }
+}
+
+.animated-text {
+  font-weight: bold;
+  font-size: 18px;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
+  background-size: 200%;
+  color: transparent;
+  -webkit-background-clip: text;
+  animation: moveColors 5s linear infinite;
+}
+
+	
+    
+
+	    
     	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
     
     	:root {
@@ -32,7 +55,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background: url('https://telegra.ph/file/0b9a4c97f231c8bc33aa9.jpg') no-repeat center center fixed;
+            background: url('') no-repeat center center fixed;
             background-size: cover;
             color: #f5f5f5;
             display: flex;
@@ -326,7 +349,7 @@
     }
       .navbar {
             position: fixed;
-            top: 60%;
+            top: 50%;
             left: -80px; /* Awalnya disembunyikan */
             transform: translateY(-50%);
             width: 80px;
@@ -364,7 +387,7 @@
         /* Tombol Toggle */
         .toggle-btn {
             position: absolute;
-            top: 60%;
+            top: 50%;
             right: -30px; /* Posisi tombol di tengah kanan navbar */
             transform: translateY(-50%);
             background: ;
@@ -385,16 +408,254 @@
         .navbar.show .toggle-btn {
             right: -29px;
         }
-        
+        @keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0.3; }
+  }
+        #map {
+  height: 350px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+    /* Global styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0f1e; /* Deep Dark Blue */
+    background-image: radial-gradient(at 47% 33%, rgba(50, 10, 70, 0.75) 0%, transparent 60%), 
+                      radial-gradient(at 82% 65%, rgba(0, 10, 40, 0.75) 0%, transparent 55%);
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+/* Light mode */
+body.light-mode {
+    background-color: #eef1f7; /* Soft Light Blue */
+    background-image: none;
+    color: #1e1e2e;
+}
+
+.glassmorphism {
+    background: rgba(20, 30, 60, 0.8); /* Deep Blue */
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    border: 2px solid rgba(0, 170, 255, 0.3);
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Light mode for glassmorphism */
+body.light-mode .glassmorphism {
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Neon Blue shine effect */
+.shine {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(0, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: rotate(45deg);
+    transition: 0.6s;
+    opacity: 0;
+}
+
+.shine:hover::after {
+    opacity: 1;
+    transition: 0s;
+}
+
+/* Button style */
+.btn {
+    background: linear-gradient(90deg, #00d0ff, #4d00ff);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0px 4px 15px rgba(0, 208, 255, 0.5);
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #0088ff, #3200a3);
+    box-shadow: 0px 4px 20px rgba(0, 208, 255, 0.7);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Light mode button styles */
+body.light-mode .btn {
+    background: linear-gradient(90deg, #4CAF50, #00C853);
+    box-shadow: 0px 4px 15px rgba(0, 200, 100, 0.5);
+}
+
+/* Button to switch themes */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(90deg, #ff6b00, #ff00ff);
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 2px 15px rgba(255, 0, 255, 0.4);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+.theme-toggle:hover {
+    background: linear-gradient(90deg, #ff9100, #d400ff);
+    box-shadow: 0 2px 20px rgba(255, 0, 255, 0.6);
+}
+
+.theme-toggle i {
+    font-size: 22px;
+    color: #fff;
+}
+
+/* Light mode theme button */
+body.light-mode .theme-toggle {
+    background: linear-gradient(90deg, #00ff99, #00c3ff);
+    box-shadow: 0 2px 15px rgba(0, 255, 150, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        background-color: #121936;
+    }
+
+    .glassmorphism {
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background-color: #0b0d1a;
+    }
+
+    .glassmorphism {
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 14px;
+    }
+}
+
+	    
 </style>
     
 </head>
+	<button id="theme-toggle" class="theme-toggle shine">
+        <i id="theme-icon" class="fas fa-sun"></i>
+    </button>
+	<script>
+        // Dark & Light Mode Toggle
+        const themeToggle = document.getElementById("theme-toggle");
+        const body = document.body;
+        const themeIcon = document.getElementById("theme-icon");
+
+        themeToggle.addEventListener("click", () => {
+            body.classList.toggle("light-mode");
+
+            // Change icon based on the mode
+            if (body.classList.contains("light-mode")) {
+                themeIcon.classList.remove("fa-sun");
+                themeIcon.classList.add("fa-moon");
+            } else {
+                themeIcon.classList.remove("fa-moon");
+                themeIcon.classList.add("fa-sun");
+            }
+        });
+    </script>
+
+
+<script>
+    function toggleNavbar() {
+        const navbar = document.getElementById("navbar");
+        const menuBtn = document.getElementById("menu-btn").querySelector('img');
+
+        if (navbar.classList.contains("show")) {
+            navbar.classList.remove("show");
+            menuBtn.src = "https://bmkg.xyz/img/buka.png";
+        } else {
+            navbar.classList.add("show");
+            menuBtn.src = "https://bmkg.xyz/img/tutup.png";
+        }
+    }
+</script>
+	</head>
+<div class="navbar" id="navbar">
+        <div class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></div>
+       <div class="navbarconten">
+	  <div style="display: flex; flex-direction: column; align-items: center;">
+  <span>
+    <a href="https://wa.me/6281335135082" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+      <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="40">
+    </a>
+  </span>
+  <span>	
+   <a href="/sub-api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="40" style="margin-top: 5px;"></a>
+  </span> 
+		  <span><a href="/check-api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="40" style="margin-top: 5px;"></a></span>
+       
+  <span>
+    <a href="https://t.me/seaker877" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+      <img src="https://bmkg.xyz/img/tele.png" alt="menu" width="40">
+    </a>
+  </span>
+  <span>
+    <a href="https://t.me/kcepu_bot" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+      <img src="https://bmkg.xyz/img/bot.png" alt="menu" width="40">
+    </a>
+  </span>
+  <span>
+    <a href="/" target="_self" rel="noopener noreferrer">
+      <img src="https://bmkg.xyz/img/home.png" alt="menu" width="40">
+    </a>
+  </span>
+</div>
+</div>
+	  </div>
+    <header class="bg-transparent text-white py-4">
+    <div class="max-w-4xl mx-auto flex items-center">
+         <h1 class="text-3xl font-semibold text-center w-full"><i class="fas fa-shield-alt text-white text-2xl mr-2"></i>Proxy Checker</h1>
+    </div>
+</header>
 <body class="min-h-screen text-gray-100 py-8 px-4 sm:px-6">
 	<br>
-		<br>
-		<header>
-        <h1 class="quantum-title">GEO PROJECT</h1>
-    </header>
+		
 	<div class="max-w-4xl mx-auto">
         <div class="glassmorphism p-6 mb-8">
             <div class="flex items-center mb-4">
@@ -428,44 +689,6 @@
     </button>
 </div>
 </div>
-<div class="navbar" id="navbar">
-    <div class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
-        <img src="https://geoproject.biz.id/social/buka.png" alt="Toggle Menu">
-    </div>
-    <div class="navbarconten text-center">
-        <span>
-            <a href="https://wa.me/6282339191527" target="_blank" rel="noopener noreferrer">
-                <img src="https://geoproject.biz.id/social/mobile.png" alt="menu" width="40" class="mt-1">
-            </a>
-        </span>
-        <span>
-            <a href="https://joss.gpj.us.kg/vpn" target="_self" rel="noopener noreferrer">
-                <img src="https://geoproject.biz.id/social/linksub.png" alt="menu" width="40" class="mt-1">
-            </a>
-        </span>
-        <!-- <span>-->
-        <span>
-            <a href="https://joss.gpj.us.kg/web" target="_self" rel="noopener noreferrer">
-                <img src="https://geoproject.biz.id/social/vpn.png" alt="menu" width="40" class="mt-1">
-            </a>
-        </span> 
-        <span>
-            <a href="https://t.me/sampiiiiu" target="_blank" rel="noopener noreferrer">
-                <img src="https://geoproject.biz.id/social/tele.png" alt="menu" width="40" class="mt-1">
-            </a>
-        </span>
-        <span>
-            <a href="https://t.me/VLTRSSbot" target="_blank" rel="noopener noreferrer">
-                <img src="https://geoproject.biz.id/social/bot.png" alt="menu" width="40" class="mt-1">
-            </a>
-        </span>
-        <span>
-            <a href="/" target="_self" rel="noopener noreferrer">
-                <img src="https://geoproject.biz.id/social/home.png" alt="menu" width="40" class="mt-1">
-            </a>
-        </span>
-    </div>
-</div>
 
 <div id="notification"></div>
 
@@ -475,7 +698,7 @@
         <span class="inline-block w-2 h-2 bg-indigo-500 rounded-full mr-0.5"></span>
         <span class="inline-block w-2 h-2 bg-blue-500 rounded-full"></span>
     </div>
-    <p class="text-gray-300 text-sm">Checking proxy IP...</p>
+    <p class="text-lg animated-text">Checking proxy IP...</p>
     <div class="w-full bg-gray-700 h-0.5 rounded-full mt-1 overflow-hidden">
         <div id="progress-bar" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full" style="width: 0%"></div>
     </div>
@@ -486,32 +709,31 @@
 
 <div id="ipData"></div>
 
-<footer class="footer bg-transparent backdrop-blur-lg bg-blue-500/30">
-    <div class="container mx-auto px-8 flex flex-col justify-center items-center">
-        <h2 class="quantum-title1 text-center">
-            <p>&copy; PROXY IP CHECKER</p>
-        </h2>
-        
-    </div>
-</footer>
+<footer class="bg-gray-200 dark:bg-[#111827] py-2 mt-10 w-4/5 mx-auto text-sm">
+        <div class="container mx-auto px-4 flex flex-col justify-center items-center">
+            <div class="text-gray-800 dark:text-gray-300 text-center">
+                &copy; 2025 Proxy Checker. All rights reserved.
+            </div>
+            <div class="flex space-x-4 mt-1">
+                <a href="https://github.com/tedjo877" target="_blank"
+                    class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/radhen_mas877" target="_blank"
+                    class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://t.me/seaker877" target="_blank"
+                    class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
 
-    <div class="toggle-container" onclick="toggleSwitch()">
-        <div class="toggle-circle"></div>
-    </div>
-<script>
-    function toggleNavbar() {
-        const navbar = document.getElementById("navbar");
-        const menuBtn = document.getElementById("menu-btn").querySelector('img');
+    
 
-        if (navbar.classList.contains("show")) {
-            navbar.classList.remove("show");
-            menuBtn.src = "https://geoproject.biz.id/social/buka.png";
-        } else {
-            navbar.classList.add("show");
-            menuBtn.src = "https://geoproject.biz.id/social/tutup.png";
-        }
-    }
-</script>
+
 <script>
         const ipinput = document.getElementById("ipinput");
         const proxyCount = document.getElementById("proxy-count");
@@ -606,12 +828,12 @@
             <div class="flex items-center">
 
                 <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
-                    <span class="text-xl">${ipInfo.country}</span>
+                    <span class="text-xl">IP</span>
                 </div>
                 <span class="text-lg font-bold text-[17px] text-blue-200">${ipInfo.ip}</span>
             </div>
             <span class="bg-green-700 text-[10px] font-semibold text-white px-3 py-1 rounded">
-    ${ipInfo.message === "ACTIVE ✅" ? "🟢 ACTIVE" : ipInfo.message === "DEAD ❌" ? "🔴 DEAD" : ipInfo.message || 'N/A'}
+    ${ipInfo.message === "🟢 ACTIVE" ? "🟢 ACTIVE" : ipInfo.message === "🔴 DEAD" ? "🔴 DEAD" : ipInfo.message || 'N/A'}
 </span>
         </div>
 
