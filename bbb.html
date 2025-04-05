@@ -813,8 +813,9 @@ body.light-mode .theme-toggle {
         }
 
         apiUrl = portPart ? 
-            `https://api.ndeso.xyz/check?ip=${ipPart}:${portPart}`: 
-            
+            `https://api.ndeso.xyz/check?ip=${ipPart}:${portPart}` : 
+            `https://api.ndeso.xyz/check?ip=${ipPart}`;
+        
         const proxyUrl = `${apiUrl}`;
         
         const response = await fetch(proxyUrl);
