@@ -863,8 +863,9 @@ body.light-mode .theme-toggle {
                 <span class="text-lg font-bold text-[17px] text-blue-200">${ipInfo.ip}</span>
             </div>
             <span class="bg-green-700 text-[10px] font-semibold text-white px-3 py-1 rounded">
-    ${ipInfo.message === "🟢 ACTIVE" ? "🟢 ACTIVE" : ipInfo.message === "🔴 DEAD" ? "🔴 DEAD" : ipInfo.message || 'N/A'}
-</span>
+    ${ipInfo.message?.includes("ACTIVE") ? "🟢 ACTIVE" : ipInfo.message?.includes("DEAD") ? "🔴 DEAD" : ipInfo.message || "N/A"}
+
+    </span>
         </div>
 
         <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
