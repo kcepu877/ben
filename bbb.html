@@ -527,7 +527,7 @@
         ipinput.addEventListener("input", updateProxyCount);
 
         exampleBtn.addEventListener("click", () => {
-            ipinput.value = `38.76.145.162\n38.76.145.162:443\n38.76.145.162,443\n38.76.145.162-443\n38.76.145.162=443\n38.76.145.162,443,US,NetLab`; 
+            ipinput.value = `112.170.112.178:27023\n150.95.25.108:2053\n172.232.239.151:587\n185.81.29.113:8080\n190.183.61.62:2053\n139.185.50.5:14594`; 
             updateProxyCount();
         });
 
@@ -590,8 +590,8 @@
         }
 
         apiUrl = portPart ? 
-            `https://api.checker-ip.web.id/check?ip=${ipPart}:${portPart}` : 
-            `https://api.checker-ip.web.id/check?ip=${ipPart}`;
+            `https://api.ndeso.xyz/check?ip=${ipPart}:${portPart}` : 
+            `https://api.ndeso.xyz/check?ip=${ipPart}`;
         
         const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
         
