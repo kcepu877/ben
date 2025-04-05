@@ -1,27 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="description"
-        content="Proxy Checker Yumi - Proyek dengan FastAPI dan tampilan modern.ini adalah proyek yang saya buat dengan bantuan GPT, Gemini, deepseek, ini cuma proyek untuk wolker.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proxy Checker C-BNN</title>
-    <meta property="twitter:image"
-        content="https://bmkg.xyz/img/botvpn.jpg">
-    <meta property="twitter:title" content="Proxy Checker Yumi">
-    <meta property="twitter:description"
-        content="Proxy Checker Yumi - Proyek dengan FastAPI dan tampilan modern. ini adalah proyek yang saya buat dengan bantuan GPT, Gemini, deepseek, ini cuma proyek untuk wolker.">
-    <meta property="og:site_name" content="https://bmkg.xyz/img/botvpn.jpg">
-    <meta property="og:description"
-        content="Proxy Checker Yumi - Proyek dengan FastAPI dan tampilan modern. ini adalah proyek yang saya buat dengan bantuan GPT, Gemini, deepseek, ini cuma proyek untuk wolker." />
-    <link rel="icon" type="image/x-icon" href="https://bmkg.xyz/img/botvpn.jpg">    
-        <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<style>
-    /* Global styling */
-     @keyframes moveColors {
+    <title>Proxy IP Checker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.8/countUp.min.js"></script>
+    <style>
+   @keyframes moveColors {
   0% {
     background-position: 200%;
   }
@@ -42,9 +34,308 @@
 
 	
     
-  
-	
-       .navbarconten {
+
+	    
+    	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    
+    	:root {
+        --primary: #00ff88;
+        --secondary: #00ffff;
+        --accent: #ff00ff;
+        --dark: #080c14;
+        --darker: #040608;
+        --light: #e0ffff;
+        --card-bg: rgba(8, 12, 20, 0.99);
+        --glow: 0 0 20px rgba(0, 255, 136, 0.9);
+      }
+      
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: url('') no-repeat center center fixed;
+            background-size: cover;
+            color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: scroll;
+        }
+
+        .glassmorphism {
+            background: rgba(17, 25, 40, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        .animated-gradient {
+            background: linear-gradient(-45deg, #8b5cf6, #6366f1, #4338ca, #3b0764);
+            background-size: 400% 400%;
+        }
+        .shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg);
+            transition: 0.6s;
+            opacity: 0;
+        }
+        .shine:hover::after {
+            opacity: 1;
+            transition: 0s;
+        }
+        .loading-dots span {
+            background-color: currentColor;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 3px;
+        }
+        .credits {
+      text-align: center;
+      font-size: 14px;
+      color: #fff;
+      margin-top: 20px;
+    }
+
+    .credits a {
+      color: #00a8ff;
+      text-decoration: none;
+    }
+
+    .credits a:hover {
+      text-decoration: underline;
+    }
+    
+.header h1 {
+      font-size: 25px;
+      color: #00a8ff;
+      margin: 0;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      animation: slideInDown 1s ease-out;
+    }
+    
+    h1 {
+      font-family: 'Rajdhani', sans-serif;
+      padding-top: 10px; /* To avoid content being hidden under the header */
+      margin-top: 10px;
+      color: black;
+            text-align: center;
+            font-size: 9vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+    
+         background: linear-gradient(45deg, var(--primary), var(--secondary), var(--dark));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px #000;
+        position: relative;
+        animation: titlePulse 3s ease-in-out infinite;
+    }
+    
+    /* Custom styles for SweetAlert2 */
+.swal2-popup-custom {
+    background: rgba(135, 206, 250, 0.7); /* Light blue sky color with transparency */
+    border-radius: 15px; /* Rounded corners */
+    backdrop-filter: blur(10px); /* Glass effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px;
+    width: 300px; /* Small width */
+}
+
+.swal2-popup-show-custom {
+    animation: popup-show 0.3s ease-out;
+}
+
+.swal2-popup-hide-custom {
+    animation: popup-hide 0.3s ease-in;
+}
+
+@keyframes popup-show {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes popup-hide {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+.toggle-container {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 60px;  /* Ukuran lebih kecil */
+            height: 30px; /* Ukuran lebih kecil */
+            background: #cbd5e1; /* Warna lebih terang */
+            border-radius: 25px;
+            box-shadow: inset -3px -3px 6px #f8fafc, inset 3px 3px 6px #94a3b8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+        }
+
+        .toggle-circle {
+            width: 22px;  /* Ukuran lebih kecil */
+            height: 22px; /* Ukuran lebih kecil */
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 3px 3px 6px #94a3b8, -3px -3px 6px #f8fafc;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-container.active {
+            background: #4CAF50;
+            box-shadow: inset -3px -3px 6px #5ed560, inset 3px 3px 6px #3a9d40;
+        }
+
+        .toggle-container.active .toggle-circle {
+            transform: translateX(30px); /* Menyesuaikan dengan ukuran lebih kecil */
+            background: #ffffff;
+            box-shadow: inset 3px 3px 6px #b0b0b0, inset -3px -3px 6px #ffffff;
+        }
+
+        /* Efek blur ke seluruh halaman kecuali tombol */
+        .blurred {
+            filter: blur(8px);
+        }
+        .animated-gradient {
+            background: linear-gradient(-45deg, #8b5cf6, #6366f1, #4338ca, #3b0764);
+            background-size: 400% 400%;
+        }
+        
+        .divider {
+      border: none;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #fff, transparent);
+            margin: 5px 0;
+        }
+
+
+
+     
+    h2 {
+      color: black;
+            text-align: center;
+            font-size: 4vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+    }
+    header, footer {
+      box-sizing: border-box; /* Pastikan padding dihitung dalam lebar elemen */
+      background-color: ;
+      color: white;
+      text-align: center;
+      border: 0px solid rgba(143, 0, 0, 0.89); /* Border dengan warna abu-abu */
+      border-radius: 10px;
+      padding: 0 20px;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      right: 2px;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    header {
+      top: 0;
+    }
+
+    footer {
+      bottom: 0;
+    }
+    
+      .quantum-title { 
+      font-family: 'Rajdhani', sans-serif;
+      padding-top: 10px; /* To avoid content being hidden under the header */
+      margin-top: 10px;
+      color: black;
+            text-align: center;
+            font-size: 10vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+    
+         background: linear-gradient(45deg, var(--accent), var(--secondary), var(--dark));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px #000;
+        position: relative;
+        animation: titlePulse 3s ease-in-out infinite;
+    }
+
+      @keyframes titlePulse {
+        0%, 100% { transform: scale(1); filter: brightness(1); }
+        50% { transform: scale(1.02); filter: brightness(1.2); }
+     }
+
+      .quantum-title1 {
+        color: black;
+            text-align: center;
+            font-size: 5vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+      }
+
+.quantum-title {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+        
+    .navbarconten {
     width: 100%;
     overflow-x: auto; /* Mengaktifkan scroll horizontal */
     margin-bottom: 0px;
@@ -280,17 +571,14 @@ body.light-mode .theme-toggle {
     }
 }
 
+	    
 </style>
-
-<body>
-    <!-- Dark/Light mode switch button -->
-    <button id="theme-toggle" class="theme-toggle shine">
+    
+</head>
+	<button id="theme-toggle" class="theme-toggle shine">
         <i id="theme-icon" class="fas fa-sun"></i>
     </button>
-
-    <!-- Content here -->
-
-        <script>
+	<script>
         // Dark & Light Mode Toggle
         const themeToggle = document.getElementById("theme-toggle");
         const body = document.body;
@@ -325,7 +613,7 @@ body.light-mode .theme-toggle {
         }
     }
 </script>
-</head>
+	</head>
 <div class="navbar" id="navbar">
         <div class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></div>
        <div class="navbarconten">
@@ -365,68 +653,64 @@ body.light-mode .theme-toggle {
          <h1 class="text-3xl font-semibold text-center w-full"><i class="fas fa-shield-alt text-white text-2xl mr-2"></i>Proxy Checker</h1>
     </div>
 </header>
+	<br><br><br>
 <body class="min-h-screen text-gray-100 py-8 px-4 sm:px-6">
-
-    <div class="max-w-4xl mx-auto">
-        
-
-        <!-- Input Section -->
+	<br>
+		
+	<div class="max-w-4xl mx-auto">
         <div class="glassmorphism p-6 mb-8">
             <div class="flex items-center mb-4">
                 <i class="fas fa-terminal text-purple-400 mr-2"></i>
-                <h2 class="text-xl font-semibold text-white">Enter Proxy Details</h2>
+                <h2 class="text-sm font-semibold text-white">Enter Proxy Details</h2>
             </div>
-            <div class="relative">
-                <textarea id="proxy-input" rows="3"
+            
+           <div class="relative">
+                <textarea id="ipinput" rows="3" 
                     class="w-full px-4 py-3 bg-gray-900/50 text-gray-100 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all resize-none shadow-inner"
-                    placeholder="Format: IP atau IP:PORT pisahkan dengan enter"></textarea>
+                    placeholder="Format: IP or IP:PORT separate with enter"></textarea>
                 <div class="absolute right-3 bottom-3 flex gap-1 text-xs text-gray-400">
-                    <span id="proxy-count">0</span><span></span>
+                    <span id="proxy-count">0</span>/<span>20</span>
                 </div>
             </div>
+            
             <div class="mt-4 flex flex-col sm:flex-row justify-between items-center gap-3">
                 <div class="flex gap-2">
-                    <button id="example-btn"
-                        class="text-sm px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded transition-colors flex items-center">
+                    <button id="example-btn" class="text-sm px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded transition-colors flex items-center">
                         <i class="far fa-lightbulb mr-1"></i> Examples
                     </button>
-                    <button id="clear-btn"
-                        class="text-sm px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded transition-colors flex items-center">
+                    <button id="clear-btn" class="text-sm px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded transition-colors flex items-center">
                         <i class="fas fa-eraser mr-1"></i> Clear
                     </button>
                 </div>
-                <button id="check-proxies"
-                    class="shine w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium py-2 px-6 rounded-lg transition-all hover:shadow-lg hover:from-purple-500 hover:to-indigo-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50">
-                    <i class="fas fa-search-location"></i>
-                    <span>Check Proxies</span>
-                </button>
-            </div>
-        </div>
+                
+    <button id="check-button" onclick="checkIPs()" 
+            class="shine w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium py-2 px-6 rounded-lg transition-all hover:shadow-lg hover:from-purple-500 hover:to-indigo-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50">
+        <i class="fas fa-search-location"></i>
+        <span>Check Proxies</span>
+    </button>
+</div>
+</div>
 
-        <!-- Loading Indicator -->
-        <div id="loading" class="hidden glassmorphism p-10 mb-8 text-center">
-            <div class="flex justify-center items-center mb-4">
-                <span class="inline-block w-3 h-3 bg-purple-500 rounded-full mr-1"></span>
-                <span class="inline-block w-3 h-3 bg-indigo-500 rounded-full mr-1"></span>
-                <span class="inline-block w-3 h-3 bg-blue-500 rounded-full"></span>
-            </div>
-            <p class="text-lg animated-text">Checking proxies...</p>
-            <div class="w-full bg-gray-700 h-1.5 rounded-full mt-4 overflow-hidden">
-                <div id="progress-bar" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full"
-                    style="width: 0%"></div>
-            </div>
-        </div>
+<div id="notification"></div>
 
-        <!-- Results Container -->
-        <div id="result-container" class="hidden space-y-6">
-            <div id="result-body" class="grid gap-5">
-                <!-- Hasil pengecekan proxy akan ditampilkan di sini -->
-            </div>
-        </div>
+<div id="loading-indicator" class="hidden glassmorphism p-3 mb-2 text-center">
+    <div class="flex justify-center items-center mb-1">
+        <span class="inline-block w-2 h-2 bg-purple-500 rounded-full mr-0.5"></span>
+        <span class="inline-block w-2 h-2 bg-indigo-500 rounded-full mr-0.5"></span>
+        <span class="inline-block w-2 h-2 bg-blue-500 rounded-full"></span>
     </div>
+    <p class="text-lg animated-text">Checking proxy IP...</p>
+    <div class="w-full bg-gray-700 h-0.5 rounded-full mt-1 overflow-hidden">
+        <div id="progress-bar" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full" style="width: 0%"></div>
+    </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-200 dark:bg-[#111827] py-2 mt-10 w-4/5 mx-auto text-sm">
+<div id="results-container" class="hidden space-y-1"></div>
+<div class="mt-2 text-center text-gray-400 text-xxs"></div>
+
+<div id="ipData"></div>
+<br><br><br>
+<footer class="bg-gray-200 dark:bg-[#111827] py-2 mt-10 w-4/5 mx-auto text-sm">
         <div class="container mx-auto px-4 flex flex-col justify-center items-center">
             <div class="text-gray-800 dark:text-gray-300 text-center">
                 &copy; 2025 Proxy Checker. All rights reserved.
@@ -448,168 +732,237 @@ body.light-mode .theme-toggle {
         </div>
     </footer>
 
-    <script>
-// Hitung jumlah proxy yang dimasukkan
-document.getElementById("proxy-input").addEventListener("input", function () {
-    const proxies = this.value.trim().split("\n").filter(line => line);
-    document.getElementById("proxy-count").textContent = `${proxies.length}/20`;
-});
+    
 
-// Tombol Clear
-document.getElementById("clear-btn").addEventListener("click", function () {
-    document.getElementById("proxy-input").value = "";
-    document.getElementById("proxy-count").textContent = "0/20";
-});
 
-// Tombol Example
-document.getElementById("example-btn").addEventListener("click", function () {
-    document.getElementById("proxy-input").value = "36.95.152.58:12137\n37.202.222.182:8443\n91.187.93.166:443\n190.183.61.62:8443\n43.218.77.16:1443\n202.91.32.252:15377\n85.208.110.52:8443";
-    document.getElementById("proxy-count").textContent = "7/20";
-});
+<script>
+        const ipinput = document.getElementById("ipinput");
+        const proxyCount = document.getElementById("proxy-count");
+        const exampleBtn = document.getElementById("example-btn");
+        const clearBtn = document.getElementById("clear-btn");
+        const maxCount = 50;
 
-// Pengecekan Proxy menggunakan API FastAPI
-document.getElementById("check-proxies").addEventListener("click", async function () {
-    const input = document.getElementById("proxy-input").value.trim();
-    if (!input) return;
-
-    // Tampilkan loading indicator dan sembunyikan hasil
-    document.getElementById("loading").classList.remove("hidden");
-    document.getElementById("result-container").classList.add("hidden");
-
-    // Ambil maksimal 20 proxy
-    const proxies = input.split("\n").slice(0, 20);
-    let results = [];
-
-    // Loop tiap proxy dan panggil API FastAPI
-    for (const proxy of proxies) {
-        const [ip, port] = proxy.split(":");
-        if (!ip) continue;
-        let actualPort = port || "443";
-        try {
-            const apiUrl = `https://api.ndeso.xyz/proxy?ip=${ip}&port=${actualPort}`;
-            const res = await fetch(apiUrl);
-            const data = await res.json();
-
-            // Tentukan status aktif
-            const isActive = data.message === " ACTIVE ✅";
-            const statusText = isActive ? '🟢ACTIVE' : '🔴INACTIVE';
-
-            // Flag negara
-            const flagHtml = data.country ? `<span class="text-2xl">${data.country}</span>` : '';
-
-            // Masukkan hasil pengecekan ke array
-            results.push({
-                ip: data.ip,
-                port: data.port || actualPort,
-                status: statusText,
-                country: data.country || 'N/A',
-                countryFlag: flagHtml,
-                delay: data.delay || 'N/A',
-                asn: data.asn || 'N/A',
-                isp: data.isp || 'N/A',
-                city: data.city || 'N/A',
-                latitude: data.latitude,
-                longitude: data.longitude,
-                proxyip: data.proxyip || false,
-                error: data.error || false
-            });
-        } catch (e) {
-            console.error("Error fetching:", e);
-            results.push({ ip: ip, port: actualPort, error: true });
+        function updateProxyCount() {
+            const ipList = ipinput.value.split("\n").filter(ip => ip.trim() !== "");
+            proxyCount.textContent = ipList.length > maxCount ? maxCount : ipList.length;
         }
-    }
 
-    // Render hasil pengecekan
-    const resultBody = document.getElementById("result-body");
-    resultBody.innerHTML = "";
-    results.forEach(data => {
-        const isActive = data.status === '🟢ACTIVE';
-        const statusText = isActive ? '🟢ACTIVE' : '🔴INACTIVE';
-        const fullPort = data.port || 'N/A';
+        ipinput.addEventListener("input", updateProxyCount);
 
-        resultBody.innerHTML += `
-    <div class="glassmorphism overflow-hidden">
-        <div class="relative">
-            <div class="absolute top-0 left-0 w-1 h-full ${isActive ? 'bg-green-500' : 'bg-red-500'}"></div>
-            <div class="p-5 space-y-3">
-                <!-- Top Block: IP, Status, Port & ASN; Flag & Country -->
-                <div class="flex flex-col space-y-2">
-                    <div class="flex items-center justify-between">
-                        <h2 class="text-xl font-bold text-white">${data.ip}${data.port ? ':' + data.port : ''}</h2>
-                        <span class="ml-3 px-2 py-1 text-xs font-medium rounded-full ${isActive ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200'}">
-                            ${statusText}
-                        </span>
-                    </div>
-                    <div class="text-gray-400 text-sm">
-                        <i class="fas fa-plug"></i> Port: <span class="font-medium dark:text-white">${fullPort}</span>
-                    </div>
-                    ${data.asn ? `
-                        <div class="text-gray-400 text-sm mt-1">
-                            <i class="fas fa-network-wired"></i> ASN: <span class="font-medium dark:text-white">${data.asn}</span>
-                        </div>
-                    ` : ''}
-                 
+        exampleBtn.addEventListener("click", () => {
+            ipinput.value = `112.170.112.178:27023\n150.95.25.108:2053\n172.232.239.151:587\n185.81.29.113:8080\n190.183.61.62:2053\n139.185.50.5:14594`; 
+            updateProxyCount();
+        });
+
+        clearBtn.addEventListener("click", () => {
+            ipinput.value = "";
+            updateProxyCount();
+        });
+    </script>
+    <script>
+        // Event untuk tombol Clear
+        document.getElementById("clear-btn").addEventListener("click", function() {
+            document.getElementById("ipinput").value = "";
+        });
+
+        const checkIPs = async () => {
+            const ipinput = document.getElementById('ipinput').value;
+            const ipAddresses = ipinput.split(/[\n,]+/).map(ip => ip.trim()).filter(ip => ip);
+
+            if (ipAddresses.length === 0) {
+    Swal.fire({
+        title: 'No IP addresses entered',
+        text: 'Please enter at least one IP address.',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+        customClass: {
+            popup: 'swal2-popup-custom'
+        },
+        showClass: {
+            popup: 'swal2-popup-show-custom'
+        },
+        hideClass: {
+            popup: 'swal2-popup-hide-custom'
+        },
+        backdrop: true,
+        allowOutsideClick: false
+    });
+}
+
+
+            document.getElementById('loading-indicator').classList.remove('hidden');
+            document.getElementById('results-container').classList.add('hidden');
+            document.getElementById('progress-bar').style.width = '0%';
+
+            let checked = 0;
+
+            for (const ip of ipAddresses) {
+    try {
+        let ipPart, portPart;
+        let apiUrl;
+
+         if (ip.includes(',')) {
+            
+            [ipPart, portPart] = ip.split(',');
+        } else if (ip.includes('=')) {
+            
+            [ipPart, portPart] = ip.split('=');
+        } else {
+            ipPart = ip;
+            portPart = null;  
+        }
+
+        apiUrl = portPart ? 
+            `https://api.ndeso.xyz/check?ip=${ipPart}:${portPart}` : 
+            `https://api.ndeso.xyz/check?ip=${ipPart}`;
+        
+        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`;
+        
+        const response = await fetch(proxyUrl);
+        const data = await response.json();
+        const ipInfo = JSON.parse(data.contents);
+
+                    const infoRow = `
+                <div class="container mx-auto px-4">
+    <div class="w-full max-w-7xl bg-gray-900 text-white rounded-lg shadow-lg p-3 border-l-4 border-green-500">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+
+                <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
+                    <span class="text-xl"><i class="fa-solid fa-globe"></i></span>
                 </div>
+                <span class="text-lg font-bold text-[17px] text-blue-200">${ipInfo.ip}</span>
+            </div>
+            <span class="bg-green-700 text-[10px] font-semibold text-white px-3 py-1 rounded">
+    ${ipInfo.message === "🟢 ACTIVE" ? "🟢 ACTIVE" : ipInfo.message === "🔴 DEAD" ? "🔴 DEAD" : ipInfo.message || 'N/A'}
+</span>
+        </div>
 
-                <!-- Middle Block: Country dan Organization -->
-                <div class="flex flex-col space-y-2">
-                    <div class="flex items-center">
-                        <span class="inline-flex items-center justify-center p-1.5 bg-green-500 rounded-full mr-2 text-white">
-                            <i class="fas fa-globe-americas"></i>
-                        </span>
-                        <span class="text-base dark:text-gray-300">Country: <span class="font-medium dark:text-white">${data.country || 'N/A'}</span></span>
-                    </div>
-                    <div class="flex items-center">
-                        <span class="inline-flex items-center justify-center p-1.5 bg-green-500 rounded-full mr-2 text-white">
-                            <i class="fas fa-building"></i>
-                        </span>
-                        <span class="text-base dark:text-gray-300">Organization: <span class="font-medium dark:text-white">${data.isp || 'N/A'}</span></span>
+        <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Port -->
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
+                    <i class="fas fa-plug text-indigo-400"></i>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-400">Port</div>
+                    <div class="text-[10px] font-medium">${ipInfo.port || 'N/A'}</div>
+                </div>
+            </div>
+
+            <!-- ASN -->
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
+                    <i class="fas fa-network-wired text-blue-400"></i>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-400">ASN</div>
+                    <div class="text-[10px] font-medium">${ipInfo.asn || 'N/A'}</div>
+                </div>
+            </div>
+
+            <!-- Organization -->
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
+                    <i class="fas fa-building text-indigo-400"></i>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-400">Organization</div>
+                    <div class="text-[10px] font-medium">${ipInfo.isp || 'N/A'}</div>
+                </div>
+            </div>
+
+            <!-- Colocation -->
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
+                    <i class="fas fa-database text-blue-400"></i>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-400">Colocation</div>
+                    <div class="text-[10px] font-medium">${ipInfo.colo || 'N/A'}</div>
+                </div>
+            </div>
+
+            <!-- Country -->
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
+                    <i class="fas fa-map-marker-alt text-red-400"></i>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-400">Country</div>
+                    <div class="text-[10px] font-medium">${ipInfo.country || 'N/A'}</div>
+                </div>
+            </div>
+
+            <!-- Region -->
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
+                    <i class="fas fa-globe-asia text-green-400"></i>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-400">Region</div>
+                    <div class="text-[10px] font-medium">${ipInfo.city || 'N/A'}</div>
+                </div>
+            </div>
+
+            <!-- Coordinates -->
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
+                    <i class="fas fa-map-pin text-yellow-400"></i>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-400">Coordinates</div>
+                    <div class="text-[10px] font-medium">
+                        ${ipInfo.latitude}, ${ipInfo.longitude} 
+                        <a href="https://www.google.com/maps?q=${ipInfo.latitude},${ipInfo.longitude}" 
+                            target="_blank" 
+                            class="text-blue-400 hover:text-blue-300 ml-2">
+                            <i class="fas fa-external-link-alt"></i> View Google Maps
+                        </a>
                     </div>
                 </div>
-
-                <!-- Separator -->
-                <div class="mt-1 pt-1 border-t border-gray-700/50"></div>
-
-                <!-- Bottom Block: Coordinates dan Delay -->
-                ${isActive ? `
-                    <div class="flex flex-col space-y-2">
-                        <div class="flex items-center">
-                            <div class="w-8 h-8 rounded-full bg-green-900/60 flex items-center justify-center mr-3">
-                                <i class="fas fa-map-pin text-green-400"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="text-base dark:text-gray-300">Coordinates</div>
-                                <div>
-                                    <span class="font-medium dark:text-white">
-                                        ${data.latitude && data.longitude ? `${data.latitude}, ${data.longitude}` : '-'}
-                                    </span>
-                                    <a href="https://www.google.com/maps?q=${data.latitude},${data.longitude}" target="_blank" class="ml-2 text-base dark:text-indigo-300 hover:underline">
-                                        View on Map
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="inline-flex items-center justify-center p-1.5 bg-purple-500 rounded-full mr-2 text-white">
-                                <i class="fas fa-clock"></i>
-                            </span>
-                            <span class="text-base dark:text-gray-300">Delay: <span class="font-medium dark:text-white">${data.delay || '-'}</span></span>
-                        </div>
-                    </div>
-                ` : ''}
             </div>
         </div>
     </div>
-`;
+</div>
 
-    });
+</div>
+<div class="divider"></div>
+                    `;
 
-    // Sembunyikan loading indicator dan tampilkan hasil
-    document.getElementById("loading").classList.add("hidden");
-    document.getElementById("result-container").classList.remove("hidden");
-});
+                    document.getElementById('ipData').innerHTML += infoRow;
+                } catch (error) {
+                    console.error('Error fetching IP data:', error);
+                }
 
+                checked++;
+                let progress = (checked / ipAddresses.length) * 100;
+                document.getElementById('progress-bar').style.width = progress + "%";
+            }
+
+            document.getElementById('loading-indicator').classList.add('hidden');
+            document.getElementById('results-container').classList.remove('hidden');
+        };
+
+        const toggleBlur = () => {
+            document.body.classList.toggle('blur-mode');
+        };
     </script>
+    <script>
+        function toggleSwitch() {
+            let toggle = document.querySelector('.toggle-container');
+            let body = document.body;
+            
+            toggle.classList.toggle('active');
+            
+            if (toggle.classList.contains('active')) {
+                body.classList.add('blurred');
+            } else {
+                body.classList.remove('blurred');
+            }
+        }
+    </script>
+
 </body>
 
 </html>
