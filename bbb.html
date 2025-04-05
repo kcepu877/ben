@@ -816,7 +816,7 @@ body.light-mode .theme-toggle {
             `https://api.ndeso.xyz/check?ip=${ipPart}:${portPart}` : 
             `https://api.ndeso.xyz/check?ip=${ipPart}`;
         
-        const proxyUrl = `${apiUrl}`;
+        const proxyUrl = `https://api.najah.biz.id/get?url=${encodeURIComponent(apiUrl)}`;
         
         const response = await fetch(proxyUrl);
         const data = await response.json();
