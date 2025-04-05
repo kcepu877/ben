@@ -858,7 +858,7 @@ body.light-mode .theme-toggle {
             <div class="flex items-center">
 
                 <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
-                    <span class="text-xl"><i class="fa-solid fa-globe"></i></span>
+                    <span class="text-xl">${ipInfo.flag || '🏳️'}</span>
                 </div>
                 <span class="text-lg font-bold text-[17px] text-blue-200">${ipInfo.ip}</span>
             </div>
@@ -919,7 +919,7 @@ body.light-mode .theme-toggle {
                 </div>
                 <div>
                     <div class="text-xs text-gray-400">Country</div>
-                    <div class="text-[10px] font-medium">${ipInfo.country || 'N/A'}</div>
+                    <div class="text-[10px] font-medium">${ipInfo.country || 'N/A'} ${ipInfo.flag || '🏳️'}</div>
                 </div>
             </div>
 
