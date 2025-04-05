@@ -454,15 +454,13 @@ document.getElementById("proxy-input").addEventListener("input", function () {
     document.getElementById("proxy-count").textContent = `${proxies.length}/20`;
 });
 
-// Tombol Clear
 document.getElementById("clear-btn").addEventListener("click", function () {
     document.getElementById("proxy-input").value = "";
     document.getElementById("proxy-count").textContent = "0/20";
 });
 
-// Tombol Example
 document.getElementById("example-btn").addEventListener("click", function () {
-    const contoh = [
+    const exampleProxies = [
         "36.95.152.58:12137",
         "37.202.222.182:8443",
         "91.187.93.166:443",
@@ -471,27 +469,28 @@ document.getElementById("example-btn").addEventListener("click", function () {
         "202.91.32.252:15377",
         "85.208.110.52:8443"
     ];
-    document.getElementById("proxy-input").value = contoh.join("\n");
-    document.getElementById("proxy-count").textContent = `${contoh.length}/20`;
+    document.getElementById("proxy-input").value = exampleProxies.join("\n");
+    document.getElementById("proxy-count").textContent = `${exampleProxies.length}/20`;
 });
 
-// Tombol Cek Proxy (real-time dan progress)
 document.getElementById("check-proxies").addEventListener("click", async function () {
     const input = document.getElementById("proxy-input").value.trim();
     if (!input) return;
 
-    document.getElementById("loading").classList.remove("hidden");
-    document.getElementById("result-container").classList.add("hidden");
-
-    const proxies = input.split("\n").slice(0, 20);
+    const loading = document.getElementById("loading");
+    const resultContainer = document.getElementById("result-container");
     const resultBody = document.getElementById("result-body");
     const progressBar = document.getElementById("progress-bar");
+
+    loading.classList.remove("hidden");
+    resultContainer.classList.add("hidden");
     resultBody.innerHTML = "";
     progressBar.style.width = "0%";
 
+    const proxies = input.split("\n").slice(0, 20);
+
     for (let i = 0; i < proxies.length; i++) {
-        const proxy = proxies[i];
-        const [ip, port] = proxy.split(":");
+        const [ip, port] = proxies[i].split(":");
         const actualPort = port || "443";
 
         try {
@@ -500,28 +499,23 @@ document.getElementById("check-proxies").addEventListener("click", async functio
 
             const isActive = data.message === " ACTIVE ✅";
             const statusText = isActive ? '🟢ACTIVE' : '🔴INACTIVE';
-            const fullPort = data.port || actualPort;
 
             const html = `
-            <div class="glassmorphism overflow-hidden">
-                <div class="relative">
-                    <div class="absolute top-0 left-0 w-1 h-full ${isActive ? 'bg-green-500' : 'bg-red-500'}"></div>
-                    <div class="p-5 space-y-3">
-                        <div class="flex flex-col space-y-2">
+                <div class="glassmorphism overflow-hidden">
+                    <div class="relative">
+                        <div class="absolute top-0 left-0 w-1 h-full ${isActive ? 'bg-green-500' : 'bg-red-500'}"></div>
+                        <div class="p-5 space-y-3">
                             <div class="flex items-center justify-between">
-                                <h2 class="text-xl font-bold text-white">${data.ip}:${fullPort}</h2>
+                                <h2 class="text-xl font-bold text-white">${data.ip}${data.port ? ':' + data.port : ''}</h2>
                                 <span class="ml-3 px-2 py-1 text-xs font-medium rounded-full ${isActive ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200'}">${statusText}</span>
                             </div>
                             <div class="text-gray-400 text-sm">
-                                <i class="fas fa-plug"></i> Port: <span class="font-medium dark:text-white">${fullPort}</span>
+                                <i class="fas fa-plug"></i> Port: <span class="font-medium dark:text-white">${data.port || actualPort}</span>
                             </div>
                             ${data.asn ? `
-                            <div class="text-gray-400 text-sm mt-1">
-                                <i class="fas fa-network-wired"></i> ASN: <span class="font-medium dark:text-white">${data.asn}</span>
-                            </div>` : ""}
-                        </div>
-
-                        <div class="flex flex-col space-y-2">
+                                <div class="text-gray-400 text-sm mt-1">
+                                    <i class="fas fa-network-wired"></i> ASN: <span class="font-medium dark:text-white">${data.asn}</span>
+                                </div>` : ''}
                             <div class="flex items-center">
                                 <span class="inline-flex items-center justify-center p-1.5 bg-green-500 rounded-full mr-2 text-white">
                                     <i class="fas fa-globe-americas"></i>
@@ -534,54 +528,55 @@ document.getElementById("check-proxies").addEventListener("click", async functio
                                 </span>
                                 <span class="text-base dark:text-gray-300">Organization: <span class="font-medium dark:text-white">${data.isp || 'N/A'}</span></span>
                             </div>
-                        </div>
-
-                        <div class="mt-1 pt-1 border-t border-gray-700/50"></div>
-
-                        ${isActive ? `
-                        <div class="flex flex-col space-y-2">
-                            <div class="flex items-center">
-                                <div class="w-8 h-8 rounded-full bg-green-900/60 flex items-center justify-center mr-3">
-                                    <i class="fas fa-map-pin text-green-400"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="text-base dark:text-gray-300">Coordinates</div>
-                                    <div>
-                                        <span class="font-medium dark:text-white">
-                                            ${data.latitude && data.longitude ? `${data.latitude}, ${data.longitude}` : '-'}
-                                        </span>
-                                        <a href="https://www.google.com/maps?q=${data.latitude},${data.longitude}" target="_blank" class="ml-2 text-base dark:text-indigo-300 hover:underline">
-                                            View on Map
-                                        </a>
+                            <div class="mt-1 pt-1 border-t border-gray-700/50"></div>
+                            ${isActive ? `
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-green-900/60 flex items-center justify-center mr-3">
+                                        <i class="fas fa-map-pin text-green-400"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-base dark:text-gray-300">Coordinates</div>
+                                        <div>
+                                            <span class="font-medium dark:text-white">
+                                                ${data.latitude && data.longitude ? `${data.latitude}, ${data.longitude}` : '-'}
+                                            </span>
+                                            <a href="https://www.google.com/maps?q=${data.latitude},${data.longitude}" target="_blank" class="ml-2 text-base dark:text-indigo-300 hover:underline">
+                                                View on Map
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="inline-flex items-center justify-center p-1.5 bg-purple-500 rounded-full mr-2 text-white">
-                                    <i class="fas fa-clock"></i>
-                                </span>
-                                <span class="text-base dark:text-gray-300">Delay: <span class="font-medium dark:text-white">${data.delay || '-'}</span></span>
-                            </div>
-                        </div>` : ''}
+                                <div class="flex items-center mt-2">
+                                    <span class="inline-flex items-center justify-center p-1.5 bg-purple-500 rounded-full mr-2 text-white">
+                                        <i class="fas fa-clock"></i>
+                                    </span>
+                                    <span class="text-base dark:text-gray-300">Delay: <span class="font-medium dark:text-white">${data.delay || '-'}</span></span>
+                                </div>` : ''}
+                        </div>
                     </div>
-                </div>
-            </div>`;
+                </div>`;
 
-            resultBody.innerHTML += html;
-        } catch (err) {
-            console.error("Error:", err);
-            resultBody.innerHTML += `<div class="glassmorphism p-4 text-red-400 font-bold">Gagal memeriksa proxy ${ip}:${actualPort}</div>`;
+            const wrapper = document.createElement("div");
+            wrapper.innerHTML = html.trim();
+            resultBody.appendChild(wrapper.firstChild);
+
+        } catch (e) {
+            const errorDiv = document.createElement("div");
+            errorDiv.className = "glassmorphism p-4 text-red-400 font-bold";
+            errorDiv.textContent = `Gagal memeriksa proxy ${ip}:${actualPort}`;
+            resultBody.appendChild(errorDiv);
         }
 
-        // Update progress bar
+        // Progress bar update
         const percent = ((i + 1) / proxies.length) * 100;
         progressBar.style.width = `${percent}%`;
     }
 
-    document.getElementById("loading").classList.add("hidden");
-    document.getElementById("result-container").classList.remove("hidden");
+    loading.classList.add("hidden");
+    resultContainer.classList.remove("hidden");
 });
 </script>
+
 
 </body>
 
